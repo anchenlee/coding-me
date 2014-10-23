@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+</head>
+<style type="text/css">
+body {
+background: #FFF;
+max-width: 640px;
+margin: 0 auto;
+font-family: 微软雅黑,Arial, Free Sans;
+position: relative;
+}
+</style>
+<body>
+	<img src="images/image1.jpg" style="width:100%;">
+</body>
+</html>

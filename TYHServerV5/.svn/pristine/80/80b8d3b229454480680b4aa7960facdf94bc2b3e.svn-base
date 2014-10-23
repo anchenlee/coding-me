@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- API description: 参数：uid,taobao_nick,access_token http://api_server_host:port/taobao/favlist?uid=&taonick=&.....(demo) -->
+<resp>
+	<head>
+		<status></status>
+		<desc></desc>
+		<acctoken>sdfsdfsdfsfdsdf</acctoken>
+		<page>1</page>
+		<total>5</total>
+	</head>
+	<data>
+		<favlist>
+			<fitem>
+				<id></id>
+				<icon><![CDATA[http://img2012.i01.wimg.taobao.com/bao/uploaded/i1/T1coCtXaxRXXb1upjX.jpg]]></icon>
+				<title><![CDATA[莫海藻旗舰店]]></title>
+				<click><![CDATA[http://mohaizao.m.tmall.com]]></click>
+				<commission rate="1.2" />
+			</fitem>
+		</favlist>
+	</data>
+</resp>

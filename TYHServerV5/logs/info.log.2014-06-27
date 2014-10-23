@@ -1,0 +1,27 @@
+[ERROR] [2014-06-27 15:21:11.940] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.manager.JedisListManager.size(JedisListManager.java:71)
+	at cn.youhui.api.checkcode.CheckCodeManager.getRandCheckCode(CheckCodeManager.java:25)
+	at cn.youhui.api.checkcode.CheckCodeManager.main(CheckCodeManager.java:61)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 5 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 10 more

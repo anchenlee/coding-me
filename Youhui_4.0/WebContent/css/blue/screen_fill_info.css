@@ -1,0 +1,63 @@
+body {
+	background: #f7f7f7;
+}
+
+#content {
+	margin: 0 auto;
+	padding: 0 20px 0 20px;
+	min-width: 700px;
+}
+
+#content .inner {
+	width: 100%;
+}
+
+#content p label {
+	width: 70px;
+	text-align: right;
+	padding: 5px 15px 5px 0;
+	display: block;
+	float: left;
+}
+
+#content p .form_tips {
+	color: #888;
+	font-size: 12px;
+	padding-left: 20px
+}
+
+#content p .form_tips b {
+	color: #f00;
+	font-family: monospace;
+	font-size: 16px
+}
+
+/* 表单提交按钮样式 */
+.form_submit_btn {
+	padding: 10px 0 10px 85px;
+}
+
+.form_submit_btn input {
+	padding: 10px 50px 10px 50px;
+}
+
+.form_submit_btn a { /* 	text-decoration: underline; */
+	padding-left: 60px;
+}
+
+.data img{
+	padding:3px;
+	background: #fff;
+	border: 1px solid #ccc;
+		
+}
+
+.data tr,.data td{
+	vertical-align: middle;
+		
+}
+
+.data td h3 span{
+	color: #f70;
+		
+}

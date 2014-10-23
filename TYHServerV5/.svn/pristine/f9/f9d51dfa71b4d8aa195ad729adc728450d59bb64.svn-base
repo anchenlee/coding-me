@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<title>随手优惠</title>
+<link rel="stylesheet" type="css" href="css/style.css">
+<style>
+a {
+	TEXT-DECORATION: none
+}
+</style>
+</head>
+<body screen_capture_injected="true">
+	<div id="etouch_logo">
+		<img border="0" alt="logo" src="css/images/m_logo.png" width="169"
+			height="37"> </a>
+	</div>
+	<div id="m_title">随手优惠</div>
+	<div id="m_products_details">
+		<img
+			src="http://cdn.youhui.cn/file/etouch.cn/image/taoyouhui960_310.jpg"
+			width="260px">
+		<p>
+			立即下载:<a href="http://www.youhui.cn/TaoYouhui/apk/TaoYouhui.apk"
+				style="color: #f50"><strong>Android版1.6+</strong></a>
+			&nbsp;&nbsp;&nbsp; <a
+				href="https://itunes.apple.com/cn/app/id595588729?mt=8"
+				style="color: #f50"><strong>苹果APP store</strong></a>
+		</p>
+		<p>
+			随手优惠(淘优惠正式更名为随手优惠)是一款为您收集各种淘宝网的优惠促销信息为一体的客户端，方便您在手机上搜索各种商品，并可获得商品高额的网购返利。
+		</p>
+	</div>
+	<div id="m_products_download"></div>
+	<div id="footer">
+		Copyright © 2010 NJNETTING. All Rights Reserved. <br>
+		<a href="#">宁网科技</a>版权所有
+	</div>
+</body>
+</html>

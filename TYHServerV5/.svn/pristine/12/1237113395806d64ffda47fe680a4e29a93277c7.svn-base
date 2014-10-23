@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>页面找不到了</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+</head>
+<body>
+<img src="./img/error.png" alt="error" style="display:block;margin:0 auto;width:100%;">
+</body>
+</html> 	

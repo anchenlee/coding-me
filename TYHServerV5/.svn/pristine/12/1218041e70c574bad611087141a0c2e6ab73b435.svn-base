@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>立即抢购</title>
+	<script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+    <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?75879559e59c3ba3d1664abbcb0b53ce";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body class="pr" style="background:#f2f2f2;padding: 0;" onload="fontcontrol()">
+<img onclick="hreflogin(this)" class="login" alt="请登录" src="images/login.png" />
+</body>
+<script type="text/javascript">
+	var str = '';
+	var id = GetQueryString('id');
+	var uid = GetQueryString('tyh_web_uid');
+	var imggg = new Image();
+	imggg.src = 'images/loading_big.png';
+	var shareurl = '';
+	console.info(uid);
+	$.ajax({
+		url:'../super/GetSuperById',
+		data:'id='+id+'&uid='+uid,
+		type:'POST',
+		success:function(ret){
+			console.info(ret);
+			var JSONObj = eval('('+ret+')');
+			var imggggg = new Image();
+			imggggg.src = ''+JSONObj.img+'';
+			shareurl = JSONObj.share_item;
+			 /* '<div  onclick="hrefusercodes()" style="z-index:1200;width:16.5%;" class="myallcodes pf"><div class="pr"><img class="width100 db" alt="车篮子" src="images/myallcodes.png"/><span class="myallcodestext db pa cw"></span></div></div>' */
+			str = '<div id="SRBTitleBg" class="pr">'
+					+'<img class="width100 db" src="images/loading_big.png" alt="预加载图片" />'
+					+'<img style="left:0;top:0;" class="width100 db pa imgtestgray" src="'+JSONObj.img+'" alt="商品图片" />';
+				str += '</div>'
+				+'<div id="SRBcontent" style="background:#fff;">'
+					+'<p class="cb">';
+			if (JSONObj.is_baoyou == 1) {    //是否包邮
+				str += '<img class="title_icons vt" src="images/title_icon_baoyou.png" />';
+			}
+				str += ''+JSONObj.title+'</p><p>'
+					+'<span class="cr discount_price">￥'+JSONObj.discount_price+'</span><span class="original_price useness">￥<b>'+JSONObj.original_price+'</b></span>';
+				if(JSONObj.tao_jb > 0){
+					str += '<span class="tjb"><span class="tjb2">淘金币可抵'+JSONObj.di_tao_jb+'元</span></span>';
+				}
+				str	+= '</p></div><div style="padding:0 1%;background:#fff;">'
+						+'<img class="width100" src="images/line.png" alt="分割线">'
+						+'<div class="SRBdiv1">'
+							+'<span>';
+				str += '<p style="text-align:center;">';
+				if(JSONObj.limit_num > 0){
+					str += '<span class="limitNow cb">仅剩<span class="cr">'+JSONObj.remain_num+'</span>件</span>';
+				}
+				str	+= '<img class="robBtn" onclick="javascript:location.href=\'shareMid.jsp\'" src="images/buyBtn3.png" alt="立即购买"></p>';
+			str +=	'</div></div>';
+			if(JSONObj.item_tags.length != 0){
+				str	+= '<div class="SRBdiv1" style="background:#fff;padding:1% 3%;"><p class="cb">此宝贝享受以下特权优惠（点击查看详情介绍）：</p><p class="tags">';
+				for(var i=0;i<JSONObj.item_tags.length;i++){
+					str += '<span onclick="tagexplain('+JSONObj.item_tags[i].id+')" class="tag pxljTag sKill">'+JSONObj.item_tags[i].name+'</span>';
+				}
+				str += '</p></div>';
+			}
+			$('body').append(''+str+'');
+			$('img.lazy').lazyload();
+			fontcontrol();
+		}
+	})
+		
+	$(window).resize(function(){
+		 fontcontrol();
+	})
+	
+ 	function sckill(){   //抢购
+ 		if(uid == '' || uid == null){
+ 			$('.login').show();
+ 		}else{
+ 			location.href="EnterSecurityCode.html?id="+id+"&uid="+uid+"";
+ 		}
+	} 	
+		
+	function GetQueryString(name){   //获取浏览器的参数
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	function  fontcontrol() {
+		var viewWidth = $(window).width();
+		var mFontsize = viewWidth / 28;
+		var bFontsize = viewWidth / 25;
+		var sFontsize = viewWidth / 30;
+		var hFontsize = viewWidth /15;
+		if(viewWidth > 640){
+			$('body').css('font-size','22.85714285714286px');
+			$('.limitNow').css('font-size','25.6px');
+			$('.discount_price').css('font-size','42.6666666666667px');
+			$('.limitNum2').css('font-size','25.6px');
+			$('.tjb').css('font-size','21.33333333333333px');
+			$('.djs_total').css('font-size','21.33333333333333px');
+			$('.djs').css('font-size','25.6px');
+		}else{
+			$('body').css('font-size',mFontsize+'px');
+			$('.limitNow').css('font-size',bFontsize+'px');
+			$('.tjb').css('font-size',sFontsize+'px');
+			$('.discount_price').css('font-size',hFontsize+'px');
+			$('.djs').css('font-size',bFontsize+'px');
+			$('.limitNum2').css('font-size',bFontsize+'px');
+			$('.djs_total').css('font-size',sFontsize+'px');
+		}
+	}
+	
+	function tagexplain(tag_id){
+		window.location.href="tagExplain.html?tag_id="+tag_id;
+	}
+	
+	function backBtn(){  // 返回上页
+		var tyh_web_uid = GetQueryString('uid');
+		window.location.href="index.html?tyh_web_uid="+tyh_web_uid;
+	}
+	
+	function hreflogin(obj){   //登录弹出提示
+		$(obj).hide();
+		window.location.href="suishou://app.youhui.cn/WoDeTaoBaoPage";
+	}
+	
+	function getLocalTime(nS){
+		var  str = parseInt(nS);
+		return new Date(str).format('MM-dd hh:mm:ss');
+	}
+
+	Date.prototype.format = function(format)
+	{
+	 var o = {
+	 "M+" : this.getMonth()+1, //month
+	 "d+" : this.getDate(),    //day
+	 "h+" : this.getHours(),   //hour
+	 "m+" : this.getMinutes(), //minute
+	 "s+" : this.getSeconds(), //second
+	 "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+	 "S" : this.getMilliseconds() //millisecond
+	 }
+	 if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+	 (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+	 for(var k in o)if(new RegExp("("+ k +")").test(format))
+	 format = format.replace(RegExp.$1,
+	 RegExp.$1.length==1 ? o[k] :
+	 ("00"+ o[k]).substr((""+ o[k]).length));
+	 return format;
+	}
+</script>
+</html>

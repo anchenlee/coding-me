@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 获取标签下的商品 提交参数：uid,access_token,tag -->
+<resp>
+	<head>
+		<status>1000</status>
+		<desc><![CDATA[OK]]></desc>
+		<access_token>938589KLJGJKSD87SGSKJ</access_token>
+		<page>1</page>
+		<total>5</total>
+	</head>
+	<data>
+		<item>
+			<item_id>13772574954</item_id>
+			<title><![CDATA[ 2012新款春装 韩版肩章修身包臀送腰带多色长袖连衣裙女2B3100Z0 ]]></title>
+			<img_big><![CDATA[http://img02.taobaocdn.com/bao/uploaded/i2/T1oN18Xh4kXXaukPo._113004.jpg_310x310.jpg]]></img_big>
+			<img_small><![CDATA[http://img02.taobaocdn.com/bao/uploaded/i2/T1oN18Xh4kXXaukPo._113004.jpg_m.jpg]]></img_small>
+			<price phi="16800.0" plow="9744.0" off="580.0" />
+			<commission value="16.13" rate="1200.00" />
+			<click><![CDATA[http://auction1.wap.taobao.com/auction/item_detail-0db2-13772574954.jhtml?tks=jUTwPLKnxBqFxkb2eVeDu%2FQs1%2FFNMr9ZfDuXVHzcn92%2BEiboPFifShpRjuXP0YrOgwyBm5Ys98Da%0AmLqCUkMgk4r95vkUJUfSNNbKLYbUuQ%3D%3D&v=1]]></click>
+		</item>
+		<item>
+			<item_id>13772574954</item_id>
+			<title><![CDATA[ 2012新款春装 韩版肩章修身包臀送腰带多色长袖连衣裙女2B3100Z0 ]]></title>
+			<img_big><![CDATA[http://img02.taobaocdn.com/bao/uploaded/i2/T1oN18Xh4kXXaukPo._113004.jpg_310x310.jpg]]></img_big>
+			<img_small><![CDATA[http://img02.taobaocdn.com/bao/uploaded/i2/T1oN18Xh4kXXaukPo._113004.jpg_m.jpg]]></img_small>
+			<price phi="16800.0" plow="9744.0" off="580.0" />
+			<commission value="16.13" rate="1200.00" />
+			<click><![CDATA[http://auction1.wap.taobao.com/auction/item_detail-0db2-13772574954.jhtml?tks=jUTwPLKnxBqFxkb2eVeDu%2FQs1%2FFNMr9ZfDuXVHzcn92%2BEiboPFifShpRjuXP0YrOgwyBm5Ys98Da%0AmLqCUkMgk4r95vkUJUfSNNbKLYbUuQ%3D%3D&v=1]]></click>
+		</item>
+		<item>
+			<item_id>13772574954</item_id>
+			<title><![CDATA[ 2012新款春装 韩版肩章修身包臀送腰带多色长袖连衣裙女2B3100Z0 ]]></title>
+			<img_big><![CDATA[http://img02.taobaocdn.com/bao/uploaded/i2/T1oN18Xh4kXXaukPo._113004.jpg_310x310.jpg]]></img_big>
+			<img_small><![CDATA[http://img02.taobaocdn.com/bao/uploaded/i2/T1oN18Xh4kXXaukPo._113004.jpg_m.jpg]]></img_small>
+			<price phi="16800.0" plow="9744.0" off="580.0" />
+			<commission value="16.13" rate="1200.00" />
+			<click><![CDATA[http://auction1.wap.taobao.com/auction/item_detail-0db2-13772574954.jhtml?tks=jUTwPLKnxBqFxkb2eVeDu%2FQs1%2FFNMr9ZfDuXVHzcn92%2BEiboPFifShpRjuXP0YrOgwyBm5Ys98Da%0AmLqCUkMgk4r95vkUJUfSNNbKLYbUuQ%3D%3D&v=1]]></click>
+		</item>
+		<item>
+			<item_id>13772574954</item_id>
+			<title><![CDATA[ 2012新款春装 韩版肩章修身包臀送腰带多色长袖连衣裙女2B3100Z0 ]]></title>
+			<img_big><![CDATA[http://img02.taobaocdn.com/bao/uploaded/i2/T1oN18Xh4kXXaukPo._113004.jpg_310x310.jpg]]></img_big>
+			<img_small><![CDATA[http://img02.taobaocdn.com/bao/uploaded/i2/T1oN18Xh4kXXaukPo._113004.jpg_m.jpg]]></img_small>
+			<price phi="16800.0" plow="9744.0" off="580.0" />
+			<commission value="16.13" rate="1200.00" />
+			<click><![CDATA[http://auction1.wap.taobao.com/auction/item_detail-0db2-13772574954.jhtml?tks=jUTwPLKnxBqFxkb2eVeDu%2FQs1%2FFNMr9ZfDuXVHzcn92%2BEiboPFifShpRjuXP0YrOgwyBm5Ys98Da%0AmLqCUkMgk4r95vkUJUfSNNbKLYbUuQ%3D%3D&v=1]]></click>
+		</item>
+	</data>
+</resp>

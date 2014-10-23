@@ -1,0 +1,413 @@
+body {
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #fffaf5;
+    font:normal 100% ����,Arial, Free Sans;
+    font-weight: bold;
+}
+
+img{
+	width: 100%;
+	display: block;
+}
+
+#ad1{
+	width: 100%;
+	position: relative;
+}
+
+#head_portrait{
+	width: 15%;
+	margin-left: 15%;
+	overflow: hidden;
+}
+
+#head_portrait_pic {
+	position: absolute;
+	width: 15%;
+	top: 0;
+}
+
+#ad1_pic2{
+			width: 40%;
+	position: absolute;
+	top: 12%;
+	left: 33%;
+}
+
+#ad1_word{
+	position: absolute;
+	top: 14%;
+	left: 33%;
+	padding:3%;
+	background:url(../images/bg1_12.png) no-repeat;
+	background-size:100%;
+}
+
+#content{
+	position: relative;
+}
+
+#ad2{
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.ad3{
+	width: 100%;
+	position: relative;
+}
+
+.ad3_pic1{
+	width: 2%;
+	position: absolute;
+	top: 8%;
+	left: 26%;
+}
+
+.ad3_word{
+	position: absolute;
+	top: 8%;
+	left: 27.5%;
+	border:1px solid #f32800;
+	padding: 1.5%;
+	border-radius: 2px;
+}
+
+.ad3_pic2{
+	width: 5%;
+	position: absolute;
+	top: 19%;
+	right: 3%;
+}
+
+.data_left{
+	position: absolute;
+	left: 10%;
+	top: 23%;
+}
+.data_left_begin{
+	position: absolute;
+	left: 3%;
+	top: 23%;
+}
+
+.ad4{
+	width: 100%;
+	position: relative;
+}
+
+.ad4_pic1{
+	width: 2.1%;
+	position: absolute;
+	top: 18.35%;
+	left: 26%;
+}
+
+.ad4_word{
+	position: absolute;
+	top: 18%;
+	left: 27.5%;
+	border:0.075em solid #d3cec8;
+	border-left: none;
+	padding: 1.5%;
+	border-radius: 2px;
+}
+
+.year{
+	position: relative;
+}
+
+.year2014{
+	position: absolute;
+	top: 75%;
+	left: 2%;
+}
+
+.year2013{
+	position: absolute;
+	top: 75%;
+	right: 2%;
+}
+
+.year2012{
+	position: absolute;
+	top: 75%;
+	left: 2%;
+}
+
+#circleone{
+	position: absolute;
+	top: 6%;
+	left: 14%;
+}
+
+#circletwo{
+	position: absolute;
+	top: 6%;
+	right: 16%;
+}
+
+.ad5{
+	width: 100%;
+	position: relative;
+}
+
+.ad5_pic1{
+	width: 2%;
+	position: absolute;
+	top: 18.1%;
+	left: 26%;
+}
+
+.ad5_pic2{
+	width: 6%;
+	position: absolute;
+	top: 20%;
+	right: 3%;
+}
+
+.ad5_word{
+	position: absolute;
+	top: 18%;
+	left: 27.5%;
+	border:1px solid #d3cec8;
+	border-left: none;
+	padding: 1.5%;
+	border-radius: 2px;
+}
+
+
+#ad6{
+	width: 100%;
+	position: relative;
+}
+
+#ad6_pic1{
+	width: 62%;
+	position: absolute;
+	top: 2%;
+	left: 10%;
+}
+
+#ad6_pic2{
+	width: 29%;
+	position: absolute;
+	top: 6%;
+	left: 11%;
+}
+
+#ad6 p{
+	width: 30%;
+	position: absolute;
+	top:25%;
+	right:30%;
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+}
+
+.ad7{
+	width: 100%;
+	position: relative;
+}
+
+.ad7_pic1{
+	width: 2%;
+	position: absolute;
+	top: 10%;
+	right: 27.4%;
+}
+
+.ad7_pic2{
+	width: 7%;
+	position: absolute;
+	left: 0%;
+	top: 8%;
+}
+
+.ad7_word{
+	border:1px solid #ffa800;
+	border-right:none;
+	border-radius: 2px;
+	padding: 1.5%;
+	position: absolute;
+	top: 10%;
+	right: 29%;
+}
+
+.data_right{
+	position: absolute;
+	right: 8%;
+	top: 22%;
+}
+
+.data_right_begin{
+	position: absolute;
+	right: 2%;
+	top: 22%;
+}
+
+.ad8{
+	width: 100%;
+	position: relative;
+}
+
+.ad8_pic1{
+	width: 2%;
+	position: absolute;
+	top: 18.2%;
+	left: 71.3%;
+}
+.ad13right_pic{
+	width: 2.3%;
+	position: absolute;
+	top: 18.2%;
+	left: 71.3%;
+}
+.ad8_word{
+	border:1px solid #d3cec8;
+	padding: 1.5%;
+	border-radius: 2px;
+	border-right:none;
+	position: absolute;
+	top: 18%;
+	right: 28%;
+}
+
+.wow{
+	position: absolute;
+	top: -33%;
+	left: 17%;
+	width: 10%;
+}
+
+
+
+#ad11{
+	width: 100%;
+	position: relative;
+}
+
+#ad11_pic1{
+	width: 62%;
+	position: absolute;
+	top: 4%;
+	right: 11.5%;
+}
+
+#ad11_pic2{
+	width: 29%;
+	position: absolute;
+	top: 6%;
+	right: 14%;
+}
+
+#ad11 p{
+	width: 30%;
+	position: absolute;
+	top:28%;
+	left:33%;
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+}
+
+#ad12{
+	width: 100%;
+	position: relative;
+}
+
+#ad12_pic1{
+	width: 2%;
+	position: absolute;
+	top: 15%;
+	right: 71.6%;
+}
+
+#ad12_word{
+	position: absolute;
+	top: 15%;
+	left: 27.6%;
+	border:1px solid #94cb2f;
+	border-left: none;
+	border-radius: 2px;
+	padding:1.5%;
+}
+
+
+
+#ad13{
+	width: 100%;
+	position: relative;
+}
+
+#ad13_pic1{
+	width: 2.25%;
+	position: absolute;
+	top: 20%;
+	right: 71.5%;
+}
+
+#ad13_word{
+	position: absolute;
+	top: 20%;
+	left: 28%;
+	width: 55%;
+	border:1px solid #fe8408;
+	border-radius: 2px;
+	border-left: none;
+	padding: 1.5%;
+}
+
+#ad13 p{
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gray{
+	color: #c8c8c8;
+}
+
+.green{
+	color: #94cb2f;
+}
+
+
+.red{
+	color: #f32800;
+}
+
+.orange{
+	color: #fe8408;
+}
+
+.yellow{
+	color: #ffa800;
+}

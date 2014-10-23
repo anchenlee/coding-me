@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>超级惠</title>
+	<script type="text/javascript" src="../js/jquery.js"></script><!--jquery包-->
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<script type="text/javascript" src="js/controller.js"></script><!--导入js-->
+	<script type="text/javascript" src="../js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+</head>
+<body>
+<img id="titleBg" src="images/titleBg.png" alt="超级惠大海报" />
+<div id="contentPre">
+	<img class="scTitle pa" src="images/scTitle.png" alt="明日预告" />
+	<img class="scTitlePre" src="images/scTitlePre.png" alt="精彩抢先看" />
+</div>
+<div id="content">
+<div class="ads">
+	 <div class="ad">
+		<div class="pr adsTop"><img src="images/adPic.png" alt=""><p class="adInfo"></p></div>
+		<div class="adsBottom">
+			<p class=""><span class="price_now"></span><span class="discount"></span></p>
+			<p class=""><span class="price_before"></span><span class="limitNum"></span></p>
+		</div>
+	</div> 
+</div>
+</div>
+</body>
+</html>

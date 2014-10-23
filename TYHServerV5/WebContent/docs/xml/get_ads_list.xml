@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- API description: 参数：uid,taobao_nick,access_token http://api_server_host:port/taobao/favlist?uid=&taonick=&.....(demo) 
+	id : 广告id|商品id type : item 为商品广告，点击跳转至商品；url为网页广告，点击跳转到网页 content : json字符串，type=url时需包含img(图片地址)、click(链接地址)； 
+	type=item时需包含title、img(图片地址)、click(链接地址)、phi(原价x100)、plow(折后价x100)、off(折扣x100)、rate(返利比率x100) -->
+<resp>
+	<head>
+		<status></status>
+		<desc></desc>
+		<acctoken>access token , maybe encrypted</acctoken>
+	</head>
+	<data>
+		<ads>
+			<ad>
+				<id>1</id>
+				<type>url</type>
+				<content><![CDATA[{"img":"http://i.mmcdn.cn/simba/img/T1FWW.XlXmXXb1upjX.jpg","click":"http://m.etouch.cn"}]]></content>
+			</ad>
+			<ad>
+				<id>2</id>
+				<type>item</type>
+				<content><![CDATA[{"title":"秒杀","rate":"5","off":"800","img":"http://i.mmcdn.cn/simba/img/T1_wq6XkpdXXXXXXXX.jpg","click":"http://a.m.tmall.com/i9051390623.htm","plow":"5800","phi":"12400"}]]></content>
+			</ad>
+		</ads>
+	</data>
+</resp>

@@ -1,0 +1,234 @@
+a {
+	text-decoration: none;
+	color: #999;
+	font-size: 12px;
+}
+
+ul,dl,h1,h2,h3,h4,h5,h6,form,dl,dd {
+	padding: 0;
+	margin: 0;
+}
+
+table,tr,td {
+	border-spacing: 0px;
+	padding: 0px;
+	margin: 0 auto;
+	width: 100%;
+	border: none;
+}
+
+body {
+	font-size: 1.0em;
+	color: #a07182;
+	line-height: 1.5;
+	font-family: Tahoma, Georgia;
+	margin: 0;
+}
+
+h1 {
+	color: #FFF;
+	line-height: 70px;
+	font-size: 24px;
+	font-weight: normal;
+	font-family: '微软雅黑', '黑体';
+}
+
+h2 {
+	font-size: 16px;
+	font-weight: normal;
+	font-family: '微软雅黑', '黑体';
+}
+
+h3 {
+	text-indent: 1em;
+	font-size: 14;
+	font-weight: normal;
+	color: #FFF;
+}
+
+h4 {
+	font-size: 18px;
+}
+
+h5 {
+	line-height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFF;
+}
+
+.section_2 {
+	background-image: url(../img/download.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	max-width: 600px;
+	text-align: center;
+	padding: 0px 0px 10px 25px;
+	margin: 0 auto;
+	height: 60px;;
+}
+
+.section_3 {
+	max-width: 600px;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	margin: 0 auto;
+	height: auto;;
+}
+
+.section_3 h4 {
+	color: #ff166b;
+}
+
+.section_22 {
+	padding-top: 30px;
+	margin: 0 auto;
+	height: auto;
+}
+
+.section_2222 {
+	max-width: 600px;
+	padding-top: 10px;
+	text-align: center;
+	margin: 0 auto;
+	height: auto;
+}
+
+.section_2222 h4 {
+	color: #ff166b;
+}
+
+.section_22 h4 {
+	color: #A6A27C;
+}
+
+#top_banner {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	background-image: url(../img/bg.jpg);
+	background-repeat: repeat-x;
+}
+
+#content {
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
+}
+
+#footer {
+	background: #CDCDCD;
+	text-align: center;
+	margin: 0 auto;
+	height: auto;
+}
+
+#xian {
+	background-image: url(../img/dian.jpg);
+	background-repeat: repeat-x;
+	height: 5px;
+	width: 100%;
+}
+
+#kongbai {
+	text-align: center;
+	height: 65px;
+	background-color: #FFF;
+	width: 100%;
+}
+
+#kongbai1 {
+	height: 100%;
+	background-color: #FED8D9;
+	width: 100%;
+}
+
+span {
+	color: #ff166b;
+}
+
+#kongbai11 {
+	max-width: 600px;
+	padding: 20px 0 15px 0;
+	margin: 0 auto;
+	height: auto;
+}
+
+#kongbai111 {
+	margin-top: 1px;
+	border-top-style: dashed;
+	margin: 0 auto;
+	height: auto;
+}
+
+#kongbai1111 {
+	max-width: 600px;
+	padding-bottom: 10px;
+	margin: 0 auto;
+	height: auto;
+}
+
+#kongbai11111 {
+	max-width: 600px;
+	padding: 20px 0 15px 0;
+	margin: 0 auto;
+	height: auto;
+}
+
+#biaoqian1 {
+	max-width: 600px;
+	margin: 0 auto;
+	height: 35px;
+}
+
+#biaoqianq1r {
+	max-width: 600px;
+	padding: 0px 0px 20px 0px;
+	margin: 0 auto;
+	height: 35px;
+}
+
+#biaoqian1 h4 {
+	color: #FFBD0E;
+}
+
+#biaoqian11 h4 {
+	color: #FFBD0E;
+}
+
+#biaoqian11 {
+	float: left;
+	height: 30px;
+	width: 2%
+}
+
+#biaoqian12 {
+	height: 30px;
+	float: left;
+	width: 5%
+}
+
+#biaoqian13 {
+	margin-right: 3px;
+	height: 30px;
+	float: left;
+	background-color: #F58DA8;
+	width: 90%
+}
+
+#kongbai1111 span {
+	color: #ff166b;
+}
+
+#biaoqian14 {
+	height: 30px;
+	background-color: #ffd462;
+	float: left;
+	width: 16%
+}
+
+#biaoqianq1 {
+	max-width: 600px;
+	margin: 0 auto;
+	height: 35px;
+}

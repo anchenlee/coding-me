@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resp>
+	<head>
+		<status>1000</status>
+		<desc>
+<![CDATA[ OK ]]>
+		</desc>
+		<access_token>13ec3fa4-e87d-44b2-9895-920d38909a0a</access_token>
+		<page>1</page>
+		<total>5</total>
+	</head>
+	<data>
+		<tags>
+			<tag>
+				<id>144</id>
+				<name>
+<![CDATA[ 新款女包 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>146</id>
+				<name>
+<![CDATA[ 单鞋 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>147</id>
+				<name>
+<![CDATA[ 休闲鞋 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>148</id>
+				<name>
+<![CDATA[ 卫衣 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>161</id>
+				<name>
+<![CDATA[ 针织衫 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>162</id>
+				<name>
+<![CDATA[ 短外套 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>163</id>
+				<name>
+<![CDATA[ 美容护肤 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>168</id>
+				<name>
+<![CDATA[ 热裤 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>169</id>
+				<name>
+<![CDATA[ Polo衫 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>196</id>
+				<name>
+<![CDATA[ 凉鞋 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>202</id>
+				<name>
+<![CDATA[ 春装2012 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>208</id>
+				<name>
+<![CDATA[ 笔记本 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+			<tag>
+				<id>7</id>
+				<name>
+<![CDATA[ 连衣裙 ]]>
+				</name>
+				<icon>
+<![CDATA[
+http://img02.taobaocdn.com/bao/uploaded/i2/T1H9C8Xh0aXXXZaSs9_104514.jpg
+]]>
+				</icon>
+			</tag>
+		</tags>
+	</data>
+</resp>

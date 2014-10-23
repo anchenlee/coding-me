@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html><head>
+    <title>秋品上新一减再减</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta content="telephone=no" name="format-detection" /><!--忽略将页面中的数字识别为电话号码-->
+    <link rel="stylesheet" type="text/css" href="css/af/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/af/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/useful.css" />
+    <script type="text/javascript" src="js/appframework.js"></script>
+    <script type="text/javascript" src="js/configuration.js"></script>
+    <script type="text/javascript" src="js/ui/appframework.ui.min.js"></script>
+    <script type="text/javascript">
+	    window.onscroll = function(){
+	    	console.log(1);
+	    }
+    	var menu_item = {1:'stu',2:'off',3:'mom',4:'wife'}; //四个模块
+    	var myscroller;
+        function initt(){
+               $.ui.toggleHeaderMenu(false);
+               $.ui.removeFooterMenu(false);
+	           for(var k=1; k<5; k++){  //4次请求
+		       		$.ajax({
+		       			url:'../item',
+		       			type:'POST',
+		       			async:false,
+		       			data:'uid=&menuid='+k,
+		       			success:function(ret){
+		       				var JSONObj = eval('('+ret+')');
+		       				var target = menu_item[k]; //判断哪个区域
+		       				for(var i=0; i<JSONObj.items.length; i++){
+		       					var j = i + 1;
+		       					$('.'+target+''+j+'').attr('data-name',JSONObj.items[i].itemId); //储存itemId
+		       					//解析第一位到第五位数字分别为多少   依次展示
+		       					if(JSONObj.items[i].status == 0){ //变成未点赞状态
+		       						$('.'+target+''+j+'').attr('src','img/pre/unlike.png');
+		       						$('.'+target+''+j+'').attr('name','0');
+		       					}else if(JSONObj.items[i].status == 1){ //变成点赞状态
+		       						$('.'+target+''+j+'').attr('src','img/pre/like.png');
+		       						$('.'+target+''+j+'').attr('name','1');
+		       					}
+		       				}
+		       			}
+		       		})
+	           }
+	         //绑定滚动置顶事件
+	     		myscroller = $('#pre').scroller({
+	     			verticalScroll:true,
+	     		   horizontalScroll:false,
+	     		   autoEnable:true,
+	     		});
+	         //监听滚动条
+	         $.bind(myscroller,"scrollend",function(){
+	        	 $('#to_top').show();
+			});
+        }
+    	var u = navigator.userAgent;//判断安卓苹果
+        if (u.indexOf('iPhone') > -1) {//苹果手机
+	        $('#afui').scroller({useJsScroll:true});
+	        if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)){
+	            var script = document.createElement("script");
+	            script.src = "js/plugins/af.desktopBrowsers.js";
+	            var tag = $("head").append(script);
+	        }
+        }else{//其他手机
+        	$.feat.nativeTouchScroll=true;
+        	$('#to_top').show();
+        }
+    </script>
+</head>
+<body onload="initt()">
+<div id="afui">
+    <div id="content">
+        <div id="pre" selected="true" data-header="none" data-footer="none" class="panel"><!--    the 兑换中心首页!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+            <div style="background: #ca0300;padding-bottom: 10%">
+                <img class="width100" src="img/pre/pre_img1.jpg" alt=""/>
+                <img class="width100" src="img/praise_time.jpg" alt=""/>
+                <img onclick="location.href='http://youhui.cn'" class="width100 mt_5" src="img/pre/pre_img2.jpg" alt=""/>
+                <div style="position: relative">
+                    <img class="width100 mt_5" src="img/pre/pre_stu.jpg" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="stu1 dz pa dz1" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="stu2 dz pa dz2" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="stu3 dz pa dz3" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="stu4 dz pa dz4" src="img/pre/unlike.png" alt=""/>
+                </div>
+                <div style="position: relative">
+                    <img class="width100 mt_10" src="img/pre/pre_off.jpg" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="off1 dz pa dz1" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="off2 dz pa dz2" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="off3 dz pa dz3" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="off4 dz pa dz4" src="img/pre/unlike.png" alt=""/>
+                </div>
+                <div style="position: relative">
+                    <img class="width100 mt_10" src="img/pre/pre_mom.jpg" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="mom1 dz pa dz1" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="mom2 dz pa dz2" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="mom3 dz pa dz3" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="mom4 dz pa dz4" src="img/pre/unlike.png" alt=""/>
+                </div>
+                <div style="position: relative">
+                    <img class="width100 mt_10" src="img/pre/pre_wife.jpg" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="wife1 dz pa dz1" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="wife2 dz pa dz2" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="wife3 dz pa dz3" src="img/pre/unlike.png" alt=""/>
+                    <img name="0" data-name="" onclick="change_like(this)" class="wife4 dz pa dz4" src="img/pre/unlike.png" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img id="to_top" onclick="myscroller.scrollToTop(200)" class="pa dn" src="img/top.png" />
+</div>
+<script type="text/javascript">
+    function change_like(obj) {
+        var n =$(obj).attr('name');
+        if(n == 0){  //不喜欢 -> 喜欢
+            $(obj).attr('src','img/pre/like.png');
+            $(obj).attr('name',1);
+            var itemid = $(obj).attr('data-name');
+            $.ajax({
+	        	url:'../like',
+	        	type:'POST',
+	        	data:'itemid='+itemid+'&uid=',
+	        	success:function(ret){
+	        		//提交赞成功  没有操作
+	        	}
+	        })
+        }
+    }
+</script>
+</body>
+</html>

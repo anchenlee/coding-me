@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>标签详情</title>
+	<script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+    <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+</head>
+<body class="pr" onload="init()" style="background: #fff7ef;">
+<img alt="笑脸" class="daibi" src="images/daibi.png" />
+<div id="tagContent" class="pr" style="background: #fff;border-bottom: 3px solid #fe8408;">
+	<div class="content_title" style="color:#4d4d4d;"><span class="tagtype"></span></div>
+	<img class="width100" alt="" src="images/line2.png">
+	<div class="content_body">
+		<p class="co" style="padding:0 5%;"><img class="vm" style="width:5%;margin-right: 3%;" src="images/ques_icon.png" /><span class="vm">什么是</span><span class="tagtype vm"></span><span class="vm">?</span></p>
+		<p class="co" style="padding:0 5%;margin-top: 5%;"><img class="vt" style="width:5%;margin-right: 3%;margin-top: 1.5%;" src="images/answ_icon.png" /><span class="vt tagtext di" style="color:#7a7a7a;width:90%;"></span></p>
+	</div>
+	<!-- img class="pa close_btn" onclick="javascript:history.go(-1)" src="images/close_btn.png" -->
+</div>
+<script type="text/javascript">
+
+function init(){
+	$(window).resize(function(){
+		fontcontrol();
+	})
+	var tag_id = GetQueryString('tag_id');
+	$.ajax({
+		url:'../ItemTags',
+		data:'tag_id='+tag_id,
+		type:'POST',
+		success:function(ret){
+			var JSONObj = eval('('+ret+')');
+			$('.tagtype').text(JSONObj.name);
+			$('.tagtext').text(JSONObj.desc);
+		}
+	})
+	fontcontrol();
+}
+
+function GetQueryString(name){   //获取浏览器的参数
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return unescape(r[2]); return '';
+}
+
+function  fontcontrol() {
+	var viewWidth = $(window).width();
+	var mFontsize = viewWidth / 25;
+	var bFontsize = viewWidth / 20;
+	if(viewWidth > 640){
+		$('.content_title').css('font-size','32px');
+		$('.content_body').css('font-size','25.6px');
+	}else{
+		$('.content_title').css('font-size',bFontsize+'px');
+		$('.content_body').css('font-size',mFontsize+'px');
+	}
+}
+</script>
+</body>
+</html>

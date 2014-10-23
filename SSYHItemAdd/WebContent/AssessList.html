@@ -1,0 +1,211 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<!-- 最新 Bootstrap 核心 CSS 文件 -->
+<link href="css/superCheapStyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-switch.css">
+<link href="css/custom.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/reset.css" rel="stylesheet" type="text/css" media="all">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-switch.js"></script>
+<!-- <script type="text/javascript" src="js/bootstrap-switch.min.js"></script> -->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="js/bootstrap.min.js"></script>
+<style type="text/css">
+    body{
+        font-family: "microsoft yahei";
+        font-size: 14px;;
+    }
+</style>
+
+</head>
+<body onload="onLoad()">
+    <div>
+<!-- 			<div id="test" class="switch"  style="height: 33px"  onclick="changeStatus(this,'id')"> -->
+<!--     			<input  name="choose" type="checkbox"  data-on-text="是"  data-off-text="否" /> -->
+<!-- 			</div> -->
+<!-- 			<div class="switch"  style="height: 33px"> -->
+<!--     			<input id="enable"  type="checkbox" checked /> -->
+<!-- 			</div> -->
+        <div class="panel panel-primary">
+            <table class="table">
+                <tr class="tableHeader">
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+// 	$("#enable").bootstrapSwitch('onText','是');
+// 	$("#enable").bootstrapSwitch('offText','否');
+// 	$("[name='choose']").bootstrapSwitch();
+	
+    var jsonList;
+    var parseRe;
+    var cons;
+    var dataTop = '';
+    var data = '';
+    var optionStr = '';
+	function onLoad(){
+		var itemId = GetQueryString("itemId");
+		var date = GetQueryString("date");
+		var type = GetQueryString("type");
+        $.ajax({
+            url:"superDiscount/AssessOptionAction?actionmethod=getAssessOptionList",
+            dataType:"json",
+            type:"POST",
+            success:function(ret){
+                assessOptionJsonList =  ret;
+                for(var i=0; i<assessOptionJsonList.length;i++){
+                    optionStr += '<option value="'+assessOptionJsonList[i].id+'">'+assessOptionJsonList[i].content+'</option>';
+                }
+            }
+        });
+
+		$.ajax({
+			url:"superDiscount/AssessAction?actionmethod=getAssessListByItemIdAndDate",
+			data: "&itemId="+itemId + "&date=" + date + "&type=" + type,
+			dataType:"json",
+			type:"POST",
+			success:function(ret){
+                jsonList =  ret;
+                dataTop = '<th style="width: 50px">编号</th><th style="width: 150px;">联系方式</th>' ;
+                if(type==1){
+                    dataTop+= '<th style="width: 200px">交易完成时间</th>'+
+                    '<th style="width: 300px;">反馈选项: <select id="sel1" class="form-control input-sm" onchange="filter('+type+');" style="width: 150px;display: inline-block">' +
+                            '<option value="all_good"> 所 有</option>'+optionStr+'</select></th>' +
+                            '<th style="width: 180px;">是否已查看 : ' +
+                            '<select id="sel2" class="form-control input-sm" onchange="filterRead('+type+');" style="width: 80px;display: inline-block">' +
+                            '<option value="all_good">全部</option><option value="1">是</option><option value="0">否</option></select></th>' ;
+                }else{
+                    dataTop+='<th style="width: 300px;">反馈选项: <select id="sel1" class="form-control input-sm" onchange="filter('+type+');" style="width: 150px;display: inline-block">' +
+                            '<option value="all_app"> 所 有 </option>'+optionStr+'</select></th>' +
+                            '<th>是否已查看 : ' +
+                            '<select id="sel2" class="form-control input-sm" onchange="filterRead('+type+');" style="width: 80px;display: inline-block">' +
+                            '<option value="all_app">全部</option><option value="1">是</option><option value="0">否</option></select></th>' ;
+                }
+
+                dataTop+='<th style="width: 480px;">反馈意见</th>';
+                $('.tableHeader').append(dataTop);
+
+                for(var i=0; i<jsonList.length;i++){
+                        data+= '<tr><td>'+jsonList[i].id+'</td><td>'+jsonList[i].userContact+'</td>';
+                    if(type==1){
+                        data+='<td>'+jsonList[i].completeTime+'</td><td>'+jsonList[i].assessList+'</td>';
+                        data+=(jsonList[i].isRead ==1)  ?  "'<td><div id='"+jsonList[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否' checked/></div></td>'"  :
+                        "'<td><div id='"+jsonList[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否'/></div></td>'";
+
+                    } else{
+                        data+='<td>'+jsonList[i].assessList+'</td><td>' ;
+                        data+=(jsonList[i].isRead ==1)  ?  "'<td><div id='"+jsonList[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否' checked/></div></td>'"  :
+                            "'<td><div id='"+jsonList[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否'/></div></td>'";
+                    }
+                    data += '<td>'+jsonList[i].assess.substr(0,15)+'<a href="#" tabindex="0" id="example" class="btn btn-sm btn-success" title="详细内容" data-toggle="popover" data-placement="bottom"  data-trigger="focus" onclick="viewContent(this)" data-content="'+jsonList[i].assess+'">查看详情</a>' +
+                            '</td></tr>';
+                }
+                $('.table').append(data);
+                $("[name='choose']").bootstrapSwitch();
+			}
+		})
+	}
+	
+	function changeStatus(obj){
+		var id = $(obj).attr('id');
+		var sclass = $(obj).children().attr('class');
+		var isOn = sclass.indexOf("on");
+		var status = 0;
+		if(isOn != -1){
+			status = 1;
+		}
+// 		alert(isOn+ "    " +id);
+	     $.ajax({
+			     url:"superDiscount/AssessAction?actionmethod=changeAssessReadStatusById",
+			     data:"&id="+id + '&status=' + status,
+			     type:"POST",
+			     success:function(ret){
+// 			         window.location.reload();
+			     }
+ 		});
+	}
+    function filter(type){
+        var son = '';
+        var value = $("#sel1 option:selected").val();
+        $("table tr:gt(0)").empty();
+        $.ajax({
+            url:"superDiscount/AssessAction?actionmethod=getAssessListByAssessOptionId",
+            data:"&id="+value+"&type="+type,
+            dataType:"json",
+            type:"POST",
+            success:function(ret){
+                parseRe =  ret;
+                for(var i=0; i<parseRe.length;i++){
+                son += '<tr><td>'+parseRe[i].id+'</td><td>'+parseRe[i].userContact+'</td>';
+                    if(type==1){
+                        son+='<td>'+parseRe[i].completeTime+'</td><td>'+parseRe[i].assessList+'</td>' ;
+                        son+=(parseRe[i].isRead ==1)?"'<td><div id='"+parseRe[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否' checked/></div></td>'":
+                                "'<td><div id='"+parseRe[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否'/></div></td>'";
+                    }else{
+                        son+='<td>'+parseRe[i].assessList+'</td>' ;
+                        son+=(parseRe[i].isRead ==1)?"'<td><div id='"+parseRe[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否' checked/></div></td>'":
+                                "'<td><div id='"+parseRe[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否'/></div></td>'";
+                    }
+                    son+='<td>'+parseRe[i].assess.substr(0,10)+'<a href="#" tabindex="1" class="btn btn-sm btn-success" id="example" title="详细内容" data-toggle="popover" data-placement="bottom"  data-trigger="focus" onclick="viewContent(this)" data-content="'+parseRe[i].assess+'">查看详情</a>' +
+                         '</td></tr>';
+                }
+                $('.table').append(son);
+                $("[name='choose']").bootstrapSwitch();
+            }
+        });
+    }
+    function filterRead(type){
+        var con = '';
+        var isRead = $("#sel2 option:selected").val();
+        $("table tr:gt(0)").empty();
+        $.ajax({
+            url:"superDiscount/AssessAction?actionmethod=getAssessListByReadStatus",
+            data:"&isRead="+isRead+"&type="+type,
+            dataType:"json",
+            type:"POST",
+            success:function(ret){
+                cons =  ret;
+                for(var i=0; i<cons.length;i++){
+                    con += '<tr><td>'+cons[i].id+'</td><td>'+cons[i].userContact+'</td>';
+                    if(type==1){
+                        con+= '<td>'+cons[i].completeTime+'</td>'+
+                              '<td>'+cons[i].assessList+'</td>' ;
+                        con+=(cons[i].isRead ==1)?"'<td><div id='"+cons[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否'  checked/></div></td>'":
+                                "'<td><div id='"+cons[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否'/></div></td>'";
+                    }else{
+                        con+= '<td>'+cons[i].assessList+'</td>' ;
+                        con+=(cons[i].isRead ==1)?"'<td><div id='"+cons[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' checked data-on-text='是'  data-off-text='否'/></div></td>'":
+                                "'<td><div id='"+cons[i].id+"' class='switch' onclick='changeStatus(this)'><input name='choose' type='checkbox' data-on-text='是'  data-off-text='否'/></div></td>'";
+                    }
+                    con +='<td>'+cons[i].assess.substr(0,10)+'<a href="#" tabindex="2" class="btn btn-sm btn-success" id="example" title="详细内容" data-toggle="popover" data-placement="bottom"  data-trigger="focus" onclick="viewContent(this)" data-content="'+cons[i].assess+'">查看详情</a>' +
+                          '</tr>';
+                }
+                $('.table').append(con);
+                $("[name='choose']").bootstrapSwitch();
+            }
+        });
+    }
+
+    function viewContent(obj){
+        /*table tr:eq(id)*/
+        $(obj).popover("show",100);
+    }
+	function GetQueryString(name){   //获取浏览器的参数
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]);
+	}
+    function transition(key){
+        var dict={'1':true,'0':false};
+        return dict[key];
+    }
+</script>
+</html>

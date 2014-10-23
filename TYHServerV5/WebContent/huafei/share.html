@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html><head>
+    <title>9折充话费-随手优惠</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta content="telephone=no" name="format-detection" /><!--忽略将页面中的数字识别为电话号码-->
+    <link rel="stylesheet" type="text/css" href="css/af/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/af/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script type="text/javascript" src="js/ui/appframework.ui.min.js"></script>
+    <script type="text/javascript">
+        $.ui.ready(function(){
+              //$.ui.toggleHeaderMenu(false);
+               $.ui.removeFooterMenu();
+        })
+        var u = navigator.userAgent;//判断安卓苹果
+	    if (u.indexOf('iPhone') > -1) {//苹果手机
+	        $('#afui').scroller({useJsScroll:true});
+	        if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)){
+	            var script = document.createElement("script");
+	            script.src = "js/plugins/af.desktopBrowsers.js";
+	            var tag = $("head").append(script);
+	        }
+	    }else{//其他手机
+	    	$.feat.nativeTouchScroll=true;
+	    }
+    </script>
+    <style>
+        #download{width:100%;position:relative;z-index:10;}
+        #afui > #header{height: auto;border-bottom:none}
+    </style>
+</head>
+<body>
+<div id="afui">
+	<div id="header">
+        <img id="download" onclick="jump_download()" class="width100" src="img/middle_autumn/download.jpg" alt=""/>
+    </div>
+    <div id="content">
+        <div style="background:#fedc7a" id="start" class="panel"><!--    the 兑换中心首页!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+            <div style="background: #fc3764">
+                <img class="width100" src="img/middle_autumn/share_bg.jpg" alt=""/>
+                <div style="top:48%;left:15%;" class="pa">
+                	<div class="pr">
+                		<img style="width:39%" src="img/middle_autumn/share_discount_bg.png" />
+                		<img style="top:10%;left:5%;width:28%" class="pa" src="img/middle_autumn/share_discount.gif" alt=""/>
+                	</div>
+                </div>
+                <img style="z-index:500" class="width100 pr" src="img/middle_autumn/img2_6.jpg" alt=""/>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/appframework.js"></script>
+<script type="text/javascript" src="js/configuration.js"></script>
+<script type="text/javascript">
+	function jump_download(){//跳转下载
+		window.location.href='http://youhui.cn';
+	}
+</script>
+</body>
+</html>

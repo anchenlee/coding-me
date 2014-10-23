@@ -1,0 +1,513 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>商品管理后台</title>
+<!-- 最新 Bootstrap 核心 CSS 文件 -->
+<link href="css/superCheapStyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+<link href="css/custom.css" rel="stylesheet" type="text/css" media="all">
+<style type="text/css">
+	.chosed{background: #ccc;}
+	.pr{position: relative;}
+	.pa{position: absolute;}
+</style>
+</head>
+<body onload="ol()">
+		<div class="top-panel">
+			<div class="top-logo">
+				<img class="logo-img" alt="" src="img/logo.jpg">
+				<img class="title-img" alt="" src="img/title.jpg">
+				<span class="title">商品管理系统</span>
+				<div class="top-tool">
+				</div>
+			</div>
+			<img class="right-img" alt="" src="img/top_right.jpg">
+			<ul class="nav nav-tabs menu">
+				<li><span class="span_50px"></span></li>
+			</ul>
+		</div>
+		<div class="mainbody">
+		<div class="panel panel-default left-panel" >
+			<div class="panel-heading">
+				<h3 style="display: inline;" class="panel-title">菜单</h3>
+			</div>
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a class="superCheapAdd" name="" onclick="superCheapAdd(this)">添加新商品</a></li>
+					<li><a onclick="location.href='superCheapAddTag.html'">添加商品标签</a></li>
+					<li><a>备用按钮二</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="panel panel-default main-panel" style="width: 1610px">
+			<div class="panel-heading">
+				<h3 style="display: inline;" class="panel-title">内容</h3>
+			</div>
+			<div class="panel-body adBody" style="position: relative;">
+			</div>
+		</div>
+	</div>
+	
+	<!-- 弹框开始 -->
+	<div  style="width:575px;display: none;" class="adddiv modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" onclick="close_adddiv()" class="close" >&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">单品分享信息</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="input-group" style="margin:10px 0;">
+			  <span class="input-group-addon">单品分享标题</span>
+			  <input class="input1 usefulInfo form-control sharetitle" name="title" type="text" placeholder="标题">
+			</div>
+			<div class="input-group" style="margin-top:5px;">
+		  		<span class="input-group-addon">单品分享描述</span>
+		  		<input class="input2 usefulInfo form-control sharedesc" name="img" type="text" id="img" value="" placeholder="描述">
+			</div>
+			<button style="margin-top:5px;" type="button" onclick="submit_adddiv(this)" name="" data-name="0" class="danpin btn btn-primary">提交</button>
+	      </div>
+	    </div>
+	  </div>
+	<!-- 弹框结束 -->
+</body>
+<script type="text/javascript">
+	function hideBtn(obj){  //点击隐藏按钮  呵呵 你麻痹
+		var id = $(obj).parent().prevAll('em').attr('name');
+		var is_hide = 0;
+		var src = '';
+		if($(obj).attr('name') == 0){
+			is_hide = 1;
+			src = 'img/hide.png';
+		}else{
+			is_hide = 0;
+			src = 'img/show.png';
+		}
+		$.ajax({
+			url:'SuperDiscountHide',
+			data:'id='+id+'&is_hide='+is_hide,
+			type:'POST',
+			success:function(ret){
+				if(ret == 'success'){
+					$(obj).attr('name',is_hide);
+					$(obj).attr('src',src);
+				}
+			}
+		})
+	}
+
+	function getPagNow(){
+		var pagNow=GetQueryString('pagNow');
+		if( pagNow== null){
+			return "";
+		}else{
+			return pagNow;
+		}
+	}
+	function superCheapAdd(obj){
+		var url = $(obj).attr('name');
+		location.href = url;
+	}
+	function ol(){
+		var pagNow=getPagNow();
+		$.ajax({
+		url:"super/superdiscount?method=getInfo&pagNow="+pagNow,
+		type:"POST",
+		success:function(ret){
+			console.info(ret);
+			var JSONObj = eval('('+ret+')');
+			if(JSONObj.date != '' ){
+			$('.superCheapAdd').attr('name','superCheapAdd.html?date='+JSONObj.date+'');
+			var son = '';
+			var str = '';
+			for(var j=0;j<JSONObj.items.length;j++){
+					son += '<div class="dayAd">'
+							+'<div class="thumbnail pr" style="margin:0;">'
+							+'<em id="ad_'+j+'" name="'+JSONObj.items[j].id+'" data-name="'+JSONObj.items[j].rank+'" onmousedown="moveAd(this)" style="display:block;height:50px;cursor: move;">点击我就可以拖拽了 少年</em>'
+						    +'<img src="'+JSONObj.items[j].img+'" alt="">'
+						    +'<div class="pa flags" style="top:54px;right:0;">';
+						    for(var k=0; k<JSONObj.items[j].item_tags.length; k++){
+						    	son += '<span style="background:#428bca;color:#fff;width:15px;float:left;margin-left:5px;">'+JSONObj.items[j].item_tags[k].name+'</span>';
+						    }
+					//计算已卖出件数
+					var soldout_num = JSONObj.items[j].num - JSONObj.items[j].remain_num;
+					son += '</div>'
+							+'<p class="dayAd"><span>价格:'+JSONObj.items[j].price_low+'</span><span style="color:red">ID:'+JSONObj.items[j].item_id+'</span></p>'
+							+'<a target="_blank" href="discount_product_taobao.jsp?itemid='+JSONObj.items[j].item_id+'"><textarea class="dayAd" maxlength="10" style="border:none;width:174px;resize:none;outline:none;" readonly>'+JSONObj.items[j].title+'</textarea></a>'
+							+'<p class="dayAd">已卖出:'+soldout_num+'';
+						if(JSONObj.items[j].is_hide == 0){
+							son += '<img onclick="hideBtn(this)" class="hideBtn" style="width:20px;margin-left:20px;cursor:pointer" name="0" src="img/show.png" alt="否隐藏"/>';
+						}else{
+							son += '<img onclick="hideBtn(this)" class="hideBtn" style="width:20px;margin-left:20px;cursor:pointer" name="1" src="img/hide.png" alt="是隐藏"/>';
+						}
+					son += '</p>';
+								if(JSONObj.items[j].share_item != ''){
+									$('.danpin').attr('data-name','1'); //1是编辑   0是提交
+									son	+= '<p style="display:none;" class="share_title_info">'+JSONObj.items[j].share_item.title+'</p>'
+									+'<p style="display:none;" class="share_desc_info">'+JSONObj.items[j].share_item.desc+'</p>';
+								}
+							son	+= '<button onclick="editAd(this)" class="btn btn-primary">编辑</button>'
+								+'<button style="margin-left:5px;" onclick="delAd('+JSONObj.items[j].id+','+JSONObj.items[j].is_second_kill+')" class="btn btn-primary">删除</button>'
+								+'<button style="margin-left:5px;" onclick="show_share(this,'+JSONObj.items[j].id+')" class="btn btn-primary">单品</button>'
+								+'</div>'
+							+'</div>';
+			}
+			for(var i=0;i<JSONObj.totaldates.length;i++){
+				var tttime = getTimeChuo(JSONObj.totaldates[i]);
+				str += '<div style="display:inline-block;margin-left:10px;" onclick="changeDate(this)" name="'+JSONObj.totaldates[i]+'" class="dayTitle date'+JSONObj.totaldates[i]+'">'+tttime+'</div>';
+			}
+				$('.adBody').append('<div id="dayInfo">'+str+'<div class="dayAds">'+son+'</div></div>');
+				$('.dayTitle').each(function(){
+					$(this).removeClass('chosed');
+					if($(this).attr('name') == pagNow){
+						$(this).addClass('chosed');
+					}	
+				})
+				son = '';
+			}else{
+				$('.superCheapAdd').attr('name','superCheapAdd.html');
+			}
+		}
+	});
+	}
+
+	function submit_adddiv(obj){  //提交弹出框内容
+		var title = $(obj).parents('.modal-body').find('.input1').val();
+		var desc = $(obj).parents('.modal-body').find('.input2').val();
+		var discountId = $(obj).attr('name');
+		if($(obj).attr('data-name') == 0){   //data-name==0 提交
+			$.ajax({
+				url:'ShareItemServet',
+				type:'POST',
+				data:'method=add&title='+title+'&desc='+desc+'&discount_id='+discountId,
+				success:function(ret){
+					if(ret == 'success'){
+						alert('提交成功!');
+						location.reload();
+					}else{
+						alert('提交失败，沙尔比!');
+					}
+				}
+			})
+		}else{  // data-name==1  是编辑
+			$.ajax({
+				url:'ShareItemServet',
+				type:'POST',
+				data:'method=update&title='+title+'&desc='+desc+'&discount_id='+discountId,
+				success:function(ret){
+					if(ret == 'success'){
+						alert('编辑成功!');
+						location.reload();
+					}else{
+						alert('编辑失败，沙尔比!');
+					}
+				}
+			})
+		}
+	}
+	
+	function GetQueryString(name){   //获取浏览器的参数
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+
+	
+	function show_share(obj,id){ //弹出编辑框
+		$('.adddiv .sharetitle').val('');
+		$('.adddiv .sharedesc').val('');
+		$('.adddiv').show();
+		if($(obj).prevAll('.share_title_info').length>0){
+			var xx = $(obj).prevAll('.share_title_info').text();
+			var oo = $(obj).prevAll('.share_desc_info').text();
+			$('.adddiv .sharetitle').val(''+xx+'');
+			$('.adddiv .sharedesc').val(''+oo+'');
+			$('.adddiv').find('.danpin').attr('data-name','1');
+		}else{
+			$('.adddiv').find('.danpin').attr('data-name','0');
+		}
+		$('.danpin').attr('name',id);
+	}
+	
+	function close_adddiv(){//关闭编辑框
+		$('.adddiv').hide();
+		$('.adddiv .sharetitle').empty();
+		$('.adddiv .sharetitle').empty();
+		$('.danpin').attr('name','');
+	}
+	//初始化后台请求结束
+   
+   var position_array = new Array();
+   var isDraging=false; //是否可以拖拽
+   var mouseOffsetX = 0;   //偏移
+   var mouseOffsetY = 0;
+   var dragObj={};//拖拽对象
+   //获取类对象
+   	function moveAd(obj){
+   		var e = e||window.event;
+   		dragObj.o = obj.parentNode.parentNode;/*--------------------------------根据模块不同修改部分： 获取拖拽区域--------------------------------------*/
+   		dragObj.id = obj.id;
+   		dragObj.id = parseInt(dragObj.id.substr(3));/*  获取拖拽div的前台id */
+   		dragObj.rank = $(obj).attr('data-name'); //获取rank值
+   		dragObj.realid = obj.getAttribute('name');/*  获取拖拽div的后台id */
+   		dragObj.o.style.filter='alpha(opacity=60)'; //拖动透明效果(IE)
+   		var moveWidth = $(obj).width();   //获取移动div的宽
+   	    var moveHeight = $(obj).height();   //获取移动div的高
+   		var totalWidth = dragObj.o.parentNode.width; //获取总区域的宽度
+   		var num = parseInt(totalWidth / moveWidth); //获取每行的个数
+   		var shang = parseInt(dragObj.id / num);  //第几行
+   		var yu = dragObj.id % num;	//第几列
+   		var target_top = shang * moveHeight;  //算出top值
+   		var target_left = yu * moveWidth;  //算出left值
+   		dragObj.o.style.top = target_top +'px';
+   		dragObj.o.style.left = target_left +'px';
+   		dragObj.o.style.zIndex = 1000;
+   		dragObj.o.style.position = 'absolute';
+   		dragObj.o.style.opacity='0.6';//拖动透明效果(firefox)
+   		mouseOffsetX = e.pageX - dragObj.o.offsetLeft;
+   		mouseOffsetY = e.pageY - dragObj.o.offsetTop;
+   		isDraging = true;
+   		/*修改被拖动者后面的前台id*/
+   		var changeID = dragObj.id;
+   		while(changeID>=0){
+   			changeID++;
+   			if(document.getElementById('ad_'+changeID)){
+   				var xx = parseInt($('#ad_'+changeID).attr('id').substr(3)) - 1;
+   				$('#ad_'+changeID).attr('id','ad_'+xx);
+   			}else{
+   				break;
+   			}
+   		}
+   	}
+
+//鼠标移动
+document.onmousemove = function(e){
+	var e = e || window.event;
+	var mouseX = e.pageX;//鼠标当前的位置
+	var mouseY = e.pageY;
+	
+	var moveX = 0;  //div的新位置
+	var moveY = 0;
+	
+	if( isDraging === true){
+		moveX = mouseX - mouseOffsetX;
+		moveY = mouseY - mouseOffsetY;
+		
+		var pageWidth = document.documentElement.clientWidth;
+		var pageHeight = document.documentElement.clientHeight;
+		
+		var dialogWidth = dragObj.o.offsetWidth;
+		var dialogHeight = dragObj.o.offsetHeight;
+		
+		var maxX = (pageWidth - dialogWidth)*0.98;
+		var maxY = pageHeight - dialogHeight;
+		
+		moveX = Math.min( maxX,Math.max(0,moveX));
+		moveY = Math.min( maxY,Math.max(0,moveY));
+		
+		dragObj.o.style.left = moveX + 'px';
+		dragObj.o.style.top= moveY + 'px';
+	}
+}
+
+document.onmouseup = function(){//鼠标松开
+	var newLeft = parseInt(dragObj.o.style.left);//当前拖拽的div的  left
+	var newTop = parseInt(dragObj.o.style.top);//当前拖拽的div的  top
+	
+	//寻找位置
+	var moveW = dragObj.o.offsetWidth + 16;   //获取移动div的宽
+   	var moveH = dragObj.o.offsetHeight + 16;   //获取移动div的高
+	var cols = newLeft / moveW;  //列
+	var rows_judge = newTop % moveH;   //通过余数判断位置
+	var rows = parseInt(newTop / moveH);
+	
+
+	if(cols < 0 && -1<cols){     //属于第0列
+		if(rows_judge <100){     //属于上一行
+			cols = 0;
+		}else if (rows_judge >180){     //属于下一行
+			rows++;
+			cols = 0;
+		}
+	}
+	else if(cols < 1 && 0<cols){     //属于第1列
+		if(rows_judge <100){
+			cols = 1;
+		}else if (rows_judge >180){
+			rows++;
+			cols = 1;
+		}
+	}
+	else if(cols < 2 && 1<cols){     //属于第2列
+		if(rows_judge <100){
+			cols = 2;
+		}else if (rows_judge >180){
+			rows++;
+			cols = 2;
+		}
+	}
+	else if(cols < 3 && 2<cols){     //属于第3列
+		if(rows_judge <100){
+			cols = 3;
+		}else if (rows_judge >180){
+			rows++;
+			cols = 3;
+		}
+	}
+	else if(cols < 4 && 3<cols){     //属于第4列
+		if(rows_judge <100){
+			cols = 4;
+		}else if (rows_judge >180){
+			rows++;
+			cols = 4;
+		}
+	}
+	else if(cols < 5 && 4<cols){ //属于第5列
+		if(rows_judge <100){
+			cols = 5;
+		}else if (rows_judge >180){
+			rows++;
+			cols = 5;
+		}
+	}
+	else if(5<cols){ //属于第0列
+			cols = 0;
+			rows++;
+	}
+	exchangPosition(rows,cols);
+	    //寻找位置结束 
+	isDraging = false;
+	dragObj={};
+	resetID();
+};
+
+function exchangPosition(exRows,exCols){  //调整位置(行，列)
+	var exID = exCols + exRows * 6;
+	/* while(exID >= 0){
+		var oo = exID - 1;
+		if(document.getElementById('ad_'+oo) == null){
+			console.info(oo+'不0存在');
+			break;
+			exID--;
+		}
+	} */
+ 	console.info('新的id:'+exID);
+	var moveID = dragObj.realid;   //获取被拖者的后台id
+	var moveRank = dragObj.rank; //获取被拖着的rank
+	var movePreID = $('#ad_'+exID).parents('.dayAd').prev().find('em').attr('name'); //被拖者前一个的id
+	var movePreRank = $('#ad_'+exID).parents('.dayAd').prev().find('em').attr('data-name'); //被拖者前一个的rank
+	var moveNextID = $('#ad_'+exID).attr('name'); //被拖者后一个的id
+	var moveNextRank = $('#ad_'+exID).attr('data-name'); //被拖者后一个的rank
+	var rank2,id2 = 0;
+	if(moveNextRank < moveRank){  //往后拖
+		rank2 = movePreRank;
+		id2 = movePreID;
+	}else if(moveNextRank > moveRank){   //往前拖
+		rank2 = moveNextRank;
+		id2 = moveNextID;
+	}
+	var discount_timestamp = 0;
+	if(GetQueryString('pagNow')==null){
+		discount_timestamp = $('.dayTitle').attr('name');
+	}else{
+		discount_timestamp = GetQueryString('pagNow');
+	}
+
+	var addDiv = dragObj.o.innerHTML;//记录被拖动者内容
+	$('#ad_'+dragObj.id).parents('.dayAd').remove(); //删除被拖动者
+	if(exID == 0){
+		$('.dayAds').prepend('<div class="dayAd">'+addDiv+'</div>'); //在新位置添加被拖动者   type1
+	}else{
+		exID--;
+		$('#ad_'+exID).parents('.dayAd').after('<div class="dayAd">'+addDiv+'</div>');//在新位置添加被拖动者  type2
+	}
+	/* $.ajax({
+		url:'SuperDiscountRank',
+		type:'POST',
+		data:'rank1='+moveRank+'&id1='+moveID+'&rank2='+rank2+'&id2='+id2+'&discount_timestamp='+discount_timestamp,
+		success:function(ret){}
+	}) */
+	//通知后台   页面拖拽变化
+	var id_array = new Array();
+	$('.dayAd').find('em').each(function(){
+		id_array.push($(this).attr('name'));
+	})
+	id_array = id_array.join(",");
+	var id_string = '['+id_array+']';
+	var discount_timestamp = $('.chosed').attr('name');
+	$.ajax({
+		url:'SuperDiscountRank',
+		type:'POST',
+		aysnc:false,
+		data:'data='+id_string+'&discount_timestamp='+discount_timestamp,
+		success:function(ret){}
+	})
+}
+
+function resetID(){    //重置所有的ID
+	var j = 0;
+	$('#dayInfo em').each(function(){
+		$(this).attr('id','ad_'+j);
+		j++;
+	});
+}
+
+function editAd(obj){   //编辑按钮
+	var id = $(obj).prevAll('em').attr('name');
+	location.href='superCheapEdit.html?adId='+id+'';
+}
+
+function delAd(id,isSecondKill){   //删除按钮
+	 if(confirm("确定要删除吗？")){
+		  $.ajax({
+				url:"super/superdiscount?method=del",
+				type:"POST",
+				data:"id="+id+"&is_second_kill="+isSecondKill,
+				success:function(ret){
+					window.location.reload();
+				}
+		})
+	 }
+}
+
+function changeDate(obj){
+	var date = $(obj).attr('name');
+	window.location.href="superCheap.html?pagNow="+date;
+}
+
+Date.prototype.format = function(format)
+{
+ var o = {
+ "M+" : this.getMonth()+1, //month
+ "d+" : this.getDate(),    //day
+ "h+" : this.getHours(),   //hour
+ "m+" : this.getMinutes(), //minute
+ "s+" : this.getSeconds(), //second
+ "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+ "S" : this.getMilliseconds() //millisecond
+ }
+ if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+ (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+ for(var k in o)if(new RegExp("("+ k +")").test(format))
+ format = format.replace(RegExp.$1,
+ RegExp.$1.length==1 ? o[k] :
+ ("00"+ o[k]).substr((""+ o[k]).length));
+ return format;
+}
+
+function getTimeChuo(str_time){
+	var  str = parseInt(str_time);
+	return new Date(str).format('MM.dd');
+}
+//拖拽结束
+</script>
+</html>

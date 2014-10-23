@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>下期预告</title>
+	<script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<script type="text/javascript" src="js/outTimePreController.js"></script><!--导入js-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+    <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+</head>
+<body style="background: url(images/diwen.png) repeat;">
+<img id="titleBg" class="db" src="images/titleBg.png" alt="即将开始" />
+<img class="outtimepre_body" alt="预告详情" src="images/outtimepre_body.png" />
+</body>
+</html>

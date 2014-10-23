@@ -1,0 +1,34 @@
+﻿body {
+    max-width: 640px;
+    margin: 0 auto;
+    font-family: 黑体,Arial, Free Sans;
+    background: #eaeae8;
+}
+
+p{margin: 0;padding: 0;}
+img{display: block;width: 100%;}
+
+#content{
+	width: 88.605%;
+	margin: 0 auto;
+}
+
+.adContent{
+	padding: 3% 0;
+	background: #fff
+}
+
+.cg{color: #696969;}
+.cr{color: #f32800;}
+
+p{width: 91.30434782608696%;margin: 1% auto 0;}
+
+.buyBtn,.standbyBtn{
+	float: left;
+	width: 45%;
+	text-align: center;
+	color: #fff;
+	background: #fe8408;
+	padding: 3% 1%;
+	margin:3% 0 0 2%;
+}

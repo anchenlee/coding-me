@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/json_parse.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <title>后台管理</title>
+</head>
+<body>
+    <div class="panel panel-primary" style="width: 180px;float: left;box-shadow: 0 0 10px #aaa">
+        <div class="panel-heading" style="font-size: 24px;line-height: 40px;text-align: center;text-shadow: 0 0 10px #000;">后台管理</div>
+        <div class="panel-body" style="font-size: 20px;text-align: center;">
+            <a href="itemsugmanage.html">商品信息</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="statrealtime.html">统计信息</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="keyWord.html">关键字查询</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="showGoods.html">商品库管理</a>
+        </div>
+    </div>
+    <div class="panel panel-default main-panel" id="content" style="width: 1200px">
+        <div class="panel-heading">
+            <h1 style="display: inline;" class="panel-title">添加商品</h1>
+            <button type="button" class="btn btn-mini btn-info" onclick="location.href='showGoods.html'" style="float: right">商品展示</button>
+        </div>
+        <div class="panel-body" style="position: relative;">
+            <form class="form" role="form" style="width: 900px;margin: 0 auto;padding: 30px 0;">
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">Pid</div>
+                        <input class="form-control" type="text" required="required" placeholder="商品ID">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">Title</div>
+                        <input class="form-control" type="text" required="required" placeholder="商品名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">Img</div>
+                        <input class="form-control" type="text" required="required" placeholder="商品图片">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">Price</div>
+                        <input class="form-control" type="number" required="required" placeholder="商品价格">
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success" onclick="confirmAdd()">确认添加</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var height = $(window).height();
+        //alert(height);
+        if(height>760){
+            $('.panel-primary').height(height);
+        }
+        else{
+            $('.panel-primary').height(760);
+        }
+    });
+
+    var urlinfo = window.location.href;
+    console.log(urlinfo);
+
+    function confirmAdd(){
+        var pid = $("input:eq(0)").val();
+        var title = $("input:eq(1)").val();
+        var img = $("input:eq(2)").val();
+        var price = $("input:eq(3)").val();
+        if((pid == '')||(title == '')||(img == '')){alert('商品信息不能为空!')}
+        //alert(isNaN(price));
+        if(isNaN(price)!==false){alert('请输入数字金额!')}
+        $.ajax({
+            url:'AddSugItems',
+            data:'pid='+pid+'&title='+title+'&img='+img+'&price='+price,
+            type:'post',
+            success:function(ret){
+                alert("添加成功! 3s后跳转到展示页面");
+                setTimeout("location.href='showGoods.html'",3000);
+            }
+        });
+    }
+</script>
+</html>

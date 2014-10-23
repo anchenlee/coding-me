@@ -1,0 +1,25 @@
+package cn.suishou.some.talk.service.impl;
+
+import java.util.List;
+
+import cn.suishou.some.talk.dao.MessageDao;
+import cn.suishou.some.talk.dao.impl.MessageDaoImpl;
+import cn.suishou.some.talk.bean.Message;
+import cn.suishou.some.talk.service.MessageService;
+
+public class MessageServiceImpl implements MessageService {
+
+	private MessageDao msgDao = new MessageDaoImpl();
+	@Override
+	public void saveMessage(Message msg) {
+		this.msgDao.saveMessage(msg);
+		
+	}
+
+	@Override
+	public List<Message> getListMessage(String lastTime) {
+		List<Message> msgList = this.msgDao.getListMessage(lastTime);
+		return msgList;
+	}
+
+}

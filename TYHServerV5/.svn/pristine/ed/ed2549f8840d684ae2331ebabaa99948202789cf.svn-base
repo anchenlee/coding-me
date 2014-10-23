@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>请输入验证码</title>
+	<script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+    <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+</head>
+<body style="background:#fff7ef;" class="cb" onload="getsCode()">
+<img src="images/daibi.png" class="daibi" alt="小头像">
+	<div class="pr" id="GSCcontent">
+		<p class="content_title tc" style="color:#4d4d4d;">验证输入</p>
+		<img class="width100" src="images/line2.png" alt="">
+		<div style="overflow: hidden;" class="securityCodeImg db pr">
+			<img class="width100 db" onclick="getsCode()" src="images/code_loading.png" alt="">
+			<img style="top:0;left:0;" class="realCodeImg width100 db pa" onclick="getsCode()" src="images/code_loading.png" alt="">
+		</div>
+		<p onclick="getsCode()" class="changeSCode">看不清楚点击换一张</p>
+		<p class="enterSCode">输入答案：<input class="enterSCodeInput di" type="text" /><img class="di fr" onclick="subSafeCode(this)" src="images/sureBtn.png" alt=""></p>
+<!-- 		<img class="pa close_btn" onclick="javascript:history.go(-1)" src="images/close_btn.png"> -->
+	</div>
+<script type="text/javascript">
+	function getsCode(){
+		fontcontrol();
+		var t = new Date().getTime();
+		var sid = getCookie('sid');
+		$('.realCodeImg').attr('src','../checkcode?sid='+sid+'&t='+t);
+	}
+	
+	$(window).resize(function(){
+		fontcontrol();
+	})
+	
+	function subSafeCode(obj){   //提交验证码
+		var code = $(obj).prevAll('input').val();   //验证码
+		var id = GetQueryString('id');
+		var uid = GetQueryString('uid');
+		$.ajax({
+			url:'../super/secondKill?method=buy',
+			data:'code='+code+'&uid='+uid+'&id='+id,
+			type:'POST',
+			success:function(ret){
+				console.info(ret);
+				if(ret=='codeerror'){
+					alert('验证码输入错误！');
+					return;
+				}else if(ret=='no_such_uid'){
+					alert('用户不存在！');
+					return;
+				}else if(ret=='not_on_time'){
+					alert('还没开抢！');
+					return;
+				}else if(ret=='out_of_time'){
+					alert('活动已经结束！');
+					return;
+				}
+				var obj = eval('('+ret+')');
+				var status = obj.resp.head.status;
+				var orderid= obj.resp.code;   //订单号
+				if(status=='1000'){
+					window.location.href="robsuccess.html?orderid="+orderid+"&uid="+uid;
+					/* realcode = obj.resp.code;
+					window.location.href='get_string_code.html?id='+id+'&code='+realcode; */
+				}
+// 				else if(status =='1010'){
+// 					alert('签名验证失败');
+// 				}else if(status =='1016'){
+// 					alert('商品库存不足');
+// 				}else if(status == '1019'){
+// 					alert('余额不足');
+// 				}
+				else if(status == '1022'){
+					alert('您已购买过此商品');
+				}
+//else if(status == '1025' || status == '1017' || status == '1020' || status == '1007' || status == '1021' || status == '1012' || status == '1002'){
+// 					alert('支付失败');
+// 				}
+				else{
+					alert('未抢到！');
+				}
+			}
+		})
+	}
+	
+	function getCookie(name) 
+	{ 
+	    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+	    if(arr=document.cookie.match(reg))
+	        return unescape(arr[2]); 
+	    else 
+	        return null; 
+	}
+	
+	function GetQueryString(name){   //获取浏览器的参数
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	function fontcontrol(){
+		var viewwidth = $(window).width();
+		var b_size = viewwidth/16;
+		var bFontsize = viewwidth / 20;
+		if (viewwidth < 640) {
+			$('.enterSCode').css('font-size',b_size+'px');
+			$('.enterSCodeInput').css('height',b_size+'px');
+			$('.enterSCodeInput').css('font-size',b_size+'px');
+			$('.content_title').css('font-size',bFontsize+'px');
+		}
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>获取帐号信息</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript">
+    var senddata;
+	function sendDataFunction(){
+       return senddata;
+	}
+	function notifyWebPage(toast) 
+	{        
+		window.local_info.toast(toast);
+    }
+
+	function resumeWebPage(){
+		window.local_info.toast("resumeWebPage!!");
+	}
+
+	function getInfo(){
+		var result = window.local_info.getInfo();
+		window.local_info.toast(result);
+	}
+	
+
+	function clearCookie(){
+		window.local_info.clearCookie();
+	}
+
+	function getLocalTimeMillis(){
+		var tm = window.local_info.getLocalTimeMillis();
+		window.local_info.toast("本地时间戳:"+tm);
+	}
+
+	function unlogin(){
+		window.local_info.unLogin();
+	}
+
+	function login(){
+		senddata='';
+		window.local_info.login();
+	}
+	
+	function share(share_json){
+        senddata=share_json;
+		window.local_info.share(share_json);
+	}
+
+	function test(j){
+		alert(j);
+	}
+
+
+	</script>
+</head> 
+<body> 
+<div data-role="page" >
+	<div data-role="header" data-theme="c">
+		<h1>获取帐号信息</h1>
+	</div><!-- /header -->
+	<div data-role="content">	
+		<button value="get json data" onclick="javascript:getInfo()">获取客户端json数据</button>	</br>
+		<button value="say hello" onclick="javascript:notifyWebPage('弹出toast！')">弹出toast</button></br>
+		<button value="get json data" onclick="javascript:clearCookie()">清理浏览器cookie</button>	</br>
+		<button value="get json data" onclick="javascript:getLocalTimeMillis()">获取本地时间戳</button>	</br>
+		<button value="get json data" onclick="javascript:unlogin()">退出登录</button>	</br>
+		<button value="get json data" onclick="javascript:login()">打开登录界面</button>	</br>
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;weixin&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;product_type&quot;,&quot;click_url&quot;:&quot;http://b17.cn/skip/item?itemid=36068664413&quot;,&quot;img_url&quot;:&quot;http://q.i02.wimg.taobao.com/bao/uploaded/i4/T1TBt4Fz0bXXXXXXXX_!!0-item_pic.jpg_640x640q75.jpg&quot;,&quot;content&quot;:&quot;%E6%99%BA%E5%88%A9%E8%BD%A6%E5%8E%98%E5%AD%90&quot;,&quot;title&quot;:&quot;test&quot;,&quot;item_id&quot;:&quot;36068664413&quot;}')">微信好友-分享商品</button>	</br>
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;pengyou&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;product_type&quot;,&quot;click_url&quot;:&quot;http://b17.cn/skip/item?itemid=36068664413&quot;,&quot;img_url&quot;:&quot;http://q.i02.wimg.taobao.com/bao/uploaded/i4/T1TBt4Fz0bXXXXXXXX_!!0-item_pic.jpg_640x640q75.jpg&quot;,&quot;content&quot;:&quot;%E6%99%BA%E5%88%A9%E8%BD%A6%E5%8E%98%E5%AD%90&quot;,&quot;title&quot;:&quot;test&quot;,&quot;item_id&quot;:&quot;36068664413&quot;}')">朋友圈-分享商品</button>	</br>
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;txwb&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;product_type&quot;,&quot;click_url&quot;:&quot;http://b17.cn/skip/item?itemid=36068664413&quot;,&quot;img_url&quot;:&quot;http://q.i02.wimg.taobao.com/bao/uploaded/i4/T1TBt4Fz0bXXXXXXXX_!!0-item_pic.jpg_640x640q75.jpg&quot;,&quot;content&quot;:&quot;%E6%99%BA%E5%88%A9%E8%BD%A6%E5%8E%98%E5%AD%90&quot;,&quot;title&quot;:&quot;test&quot;,&quot;item_id&quot;:&quot;36068664413&quot;}')">腾讯微博-分享商品</button>	</br>
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;qqkj&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;product_type&quot;,&quot;click_url&quot;:&quot;http://b17.cn/skip/item?itemid=36068664413&quot;,&quot;img_url&quot;:&quot;http://q.i02.wimg.taobao.com/bao/uploaded/i4/T1TBt4Fz0bXXXXXXXX_!!0-item_pic.jpg_640x640q75.jpg&quot;,&quot;content&quot;:&quot;%E6%99%BA%E5%88%A9%E8%BD%A6%E5%8E%98%E5%AD%90&quot;,&quot;title&quot;:&quot;test&quot;,&quot;item_id&quot;:&quot;36068664413&quot;}')">QQ空间-分享商品</button>	</br>
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;weibo&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;product_type&quot;,&quot;click_url&quot;:&quot;http://b17.cn/skip/item?itemid=36068664413&quot;,&quot;img_url&quot;:&quot;http://q.i02.wimg.taobao.com/bao/uploaded/i4/T1TBt4Fz0bXXXXXXXX_!!0-item_pic.jpg_640x640q75.jpg&quot;,&quot;content&quot;:&quot;%E6%99%BA%E5%88%A9%E8%BD%A6%E5%8E%98%E5%AD%90&quot;,&quot;title&quot;:&quot;test&quot;,&quot;item_id&quot;:&quot;36068664413&quot;}')">新浪微博-分享商品</button>	</br>
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;renren&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;product_type&quot;,&quot;click_url&quot;:&quot;http://b17.cn/skip/item?itemid=36068664413&quot;,&quot;img_url&quot;:&quot;http://q.i02.wimg.taobao.com/bao/uploaded/i4/T1TBt4Fz0bXXXXXXXX_!!0-item_pic.jpg_640x640q75.jpg&quot;,&quot;content&quot;:&quot;%E6%99%BA%E5%88%A9%E8%BD%A6%E5%8E%98%E5%AD%90&quot;,&quot;title&quot;:&quot;test&quot;,&quot;item_id&quot;:&quot;36068664413&quot;}')">人人-分享商品</button>	</br>
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;email&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;product_type&quot;,&quot;click_url&quot;:&quot;http://b17.cn/skip/item?itemid=36068664413&quot;,&quot;img_url&quot;:&quot;http://q.i02.wimg.taobao.com/bao/uploaded/i4/T1TBt4Fz0bXXXXXXXX_!!0-item_pic.jpg_640x640q75.jpg&quot;,&quot;content&quot;:&quot;%E6%99%BA%E5%88%A9%E8%BD%A6%E5%8E%98%E5%AD%90&quot;,&quot;title&quot;:&quot;test&quot;,&quot;item_id&quot;:&quot;36068664413&quot;}')">邮箱-分享商品</button>	</br>
+		<button value="get json data"  onclick="javascript:share('{&quot;sns_type&quot;:&quot;sm&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;product_type&quot;,&quot;click_url&quot;:&quot;http://b17.cn/skip/item?itemid=36068664413&quot;,&quot;img_url&quot;:&quot;http://q.i02.wimg.taobao.com/bao/uploaded/i4/T1TBt4Fz0bXXXXXXXX_!!0-item_pic.jpg_640x640q75.jpg&quot;,&quot;content&quot;:&quot;%E6%99%BA%E5%88%A9%E8%BD%A6%E5%8E%98%E5%AD%90&quot;,&quot;title&quot;:&quot;test&quot;,&quot;item_id&quot;:&quot;36068664413&quot;}')">短信-分享商品</button>	</br>
+
+		<hr>
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;weixin&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;activity_type&quot;,&quot;share_encryption_code&quot;:&quot;eyJpc3NoYXJlIjp0cnVlLCJ0aXRsZSI6IuWIhuS6q+i9r+S7tu+8jOmAgembhuWIhuWunSIsImNvbnRlbnQiOiLmiJHmraPlnKjnlKgj6ZqP5omL5LyY5oOgI+a3mOWunei0ne+8jOi0reeJqei/mOiDvei1mumbhuWIhuWunei/lOWIqe+8jOmmluasoeeZu+mZhuWFjei0uemihjUw5Liq6ZuG5YiG5a6d77yM5q+P5pel562+5Yiw6IO96aKG5pu05aSa77yM5biu5L2g5reY5a6d55yB6ZKx5peg5LiL6ZmQ77yM5LiL6L296ZO+5o6l77yaaHR0cDovL3lvdWh1aS5jbi8g4oCU4oCU5p2l6Ieq5Y+y5LiK5pyA6auY6L+U5Yip55qE5omL5py65bqU55SoIiwiY2xpY2t1cmwiOiJodHRwOi8veW91aHVpLmNuIiwiaW1ndXJsIjoiaHR0cDovL2Jjcy5kdWFwcC5jb20vdGFveW91aHVpLWFkL2FkSW1nLzhiNXM5cTc2NXkuanBnIiwiYWN0aXZpdHlfa2V5IjoiZTFidnRnY2IiLCJqaWZlbl9udW0iOiI1IiwiY2hhbm5lbCI6IndlaXhpbixwZW5neW91LHR4d2IscXFraixyZW5yZW4sZHVvYmFuLGVtYWlsLHNtIn0=&quot;}')">微信好友-分享活动</button>	</br>
+		
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;pengyou&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;activity_type&quot;,&quot;share_encryption_code&quot;:&quot;eyJpc3NoYXJlIjp0cnVlLCJ0aXRsZSI6IuWIhuS6q+i9r+S7tu+8jOmAgembhuWIhuWunSIsImNvbnRlbnQiOiLmiJHmraPlnKjnlKgj6ZqP5omL5LyY5oOgI+a3mOWunei0ne+8jOi0reeJqei/mOiDvei1mumbhuWIhuWunei/lOWIqe+8jOmmluasoeeZu+mZhuWFjei0uemihjUw5Liq6ZuG5YiG5a6d77yM5q+P5pel562+5Yiw6IO96aKG5pu05aSa77yM5biu5L2g5reY5a6d55yB6ZKx5peg5LiL6ZmQ77yM5LiL6L296ZO+5o6l77yaaHR0cDovL3lvdWh1aS5jbi8g4oCU4oCU5p2l6Ieq5Y+y5LiK5pyA6auY6L+U5Yip55qE5omL5py65bqU55SoIiwiY2xpY2t1cmwiOiJodHRwOi8veW91aHVpLmNuIiwiaW1ndXJsIjoiaHR0cDovL2Jjcy5kdWFwcC5jb20vdGFveW91aHVpLWFkL2FkSW1nLzhiNXM5cTc2NXkuanBnIiwiYWN0aXZpdHlfa2V5IjoiZTFidnRnY2IiLCJqaWZlbl9udW0iOiI1IiwiY2hhbm5lbCI6IndlaXhpbixwZW5neW91LHR4d2IscXFraixyZW5yZW4sZHVvYmFuLGVtYWlsLHNtIn0=&quot;}')">朋友圈-分享活动</button>	</br>
+		
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;txwb&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;activity_type&quot;,&quot;share_encryption_code&quot;:&quot;eyJpc3NoYXJlIjp0cnVlLCJ0aXRsZSI6IuWIhuS6q+i9r+S7tu+8jOmAgembhuWIhuWunSIsImNvbnRlbnQiOiLmiJHmraPlnKjnlKgj6ZqP5omL5LyY5oOgI+a3mOWunei0ne+8jOi0reeJqei/mOiDvei1mumbhuWIhuWunei/lOWIqe+8jOmmluasoeeZu+mZhuWFjei0uemihjUw5Liq6ZuG5YiG5a6d77yM5q+P5pel562+5Yiw6IO96aKG5pu05aSa77yM5biu5L2g5reY5a6d55yB6ZKx5peg5LiL6ZmQ77yM5LiL6L296ZO+5o6l77yaaHR0cDovL3lvdWh1aS5jbi8g4oCU4oCU5p2l6Ieq5Y+y5LiK5pyA6auY6L+U5Yip55qE5omL5py65bqU55SoIiwiY2xpY2t1cmwiOiJodHRwOi8veW91aHVpLmNuIiwiaW1ndXJsIjoiaHR0cDovL2Jjcy5kdWFwcC5jb20vdGFveW91aHVpLWFkL2FkSW1nLzhiNXM5cTc2NXkuanBnIiwiYWN0aXZpdHlfa2V5IjoiZTFidnRnY2IiLCJqaWZlbl9udW0iOiI1IiwiY2hhbm5lbCI6IndlaXhpbixwZW5neW91LHR4d2IscXFraixyZW5yZW4sZHVvYmFuLGVtYWlsLHNtIn0=&quot;}')">腾讯微博-分享活动</button>	</br>
+		
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;qqkj&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;activity_type&quot;,&quot;share_encryption_code&quot;:&quot;eyJpc3NoYXJlIjp0cnVlLCJ0aXRsZSI6IuWIhuS6q+i9r+S7tu+8jOmAgembhuWIhuWunSIsImNvbnRlbnQiOiLmiJHmraPlnKjnlKgj6ZqP5omL5LyY5oOgI+a3mOWunei0ne+8jOi0reeJqei/mOiDvei1mumbhuWIhuWunei/lOWIqe+8jOmmluasoeeZu+mZhuWFjei0uemihjUw5Liq6ZuG5YiG5a6d77yM5q+P5pel562+5Yiw6IO96aKG5pu05aSa77yM5biu5L2g5reY5a6d55yB6ZKx5peg5LiL6ZmQ77yM5LiL6L296ZO+5o6l77yaaHR0cDovL3lvdWh1aS5jbi8g4oCU4oCU5p2l6Ieq5Y+y5LiK5pyA6auY6L+U5Yip55qE5omL5py65bqU55SoIiwiY2xpY2t1cmwiOiJodHRwOi8veW91aHVpLmNuIiwiaW1ndXJsIjoiaHR0cDovL2Jjcy5kdWFwcC5jb20vdGFveW91aHVpLWFkL2FkSW1nLzhiNXM5cTc2NXkuanBnIiwiYWN0aXZpdHlfa2V5IjoiZTFidnRnY2IiLCJqaWZlbl9udW0iOiI1IiwiY2hhbm5lbCI6IndlaXhpbixwZW5neW91LHR4d2IscXFraixyZW5yZW4sZHVvYmFuLGVtYWlsLHNtIn0=&quot;}')">QQ空间-分享活动</button>	</br>
+		
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;weibo&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;activity_type&quot;,&quot;share_encryption_code&quot;:&quot;eyJpc3NoYXJlIjp0cnVlLCJ0aXRsZSI6IuWIhuS6q+i9r+S7tu+8jOmAgembhuWIhuWunSIsImNvbnRlbnQiOiLmiJHmraPlnKjnlKgj6ZqP5omL5LyY5oOgI+a3mOWunei0ne+8jOi0reeJqei/mOiDvei1mumbhuWIhuWunei/lOWIqe+8jOmmluasoeeZu+mZhuWFjei0uemihjUw5Liq6ZuG5YiG5a6d77yM5q+P5pel562+5Yiw6IO96aKG5pu05aSa77yM5biu5L2g5reY5a6d55yB6ZKx5peg5LiL6ZmQ77yM5LiL6L296ZO+5o6l77yaaHR0cDovL3lvdWh1aS5jbi8g4oCU4oCU5p2l6Ieq5Y+y5LiK5pyA6auY6L+U5Yip55qE5omL5py65bqU55SoIiwiY2xpY2t1cmwiOiJodHRwOi8veW91aHVpLmNuIiwiaW1ndXJsIjoiaHR0cDovL2Jjcy5kdWFwcC5jb20vdGFveW91aHVpLWFkL2FkSW1nLzhiNXM5cTc2NXkuanBnIiwiYWN0aXZpdHlfa2V5IjoiZTFidnRnY2IiLCJqaWZlbl9udW0iOiI1IiwiY2hhbm5lbCI6IndlaXhpbixwZW5neW91LHR4d2IscXFraixyZW5yZW4sZHVvYmFuLGVtYWlsLHNtIn0=&quot;}')">新浪微博-分享活动</button>	</br>
+		
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;renren&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;activity_type&quot;,&quot;share_encryption_code&quot;:&quot;eyJpc3NoYXJlIjp0cnVlLCJ0aXRsZSI6IuWIhuS6q+i9r+S7tu+8jOmAgembhuWIhuWunSIsImNvbnRlbnQiOiLmiJHmraPlnKjnlKgj6ZqP5omL5LyY5oOgI+a3mOWunei0ne+8jOi0reeJqei/mOiDvei1mumbhuWIhuWunei/lOWIqe+8jOmmluasoeeZu+mZhuWFjei0uemihjUw5Liq6ZuG5YiG5a6d77yM5q+P5pel562+5Yiw6IO96aKG5pu05aSa77yM5biu5L2g5reY5a6d55yB6ZKx5peg5LiL6ZmQ77yM5LiL6L296ZO+5o6l77yaaHR0cDovL3lvdWh1aS5jbi8g4oCU4oCU5p2l6Ieq5Y+y5LiK5pyA6auY6L+U5Yip55qE5omL5py65bqU55SoIiwiY2xpY2t1cmwiOiJodHRwOi8veW91aHVpLmNuIiwiaW1ndXJsIjoiaHR0cDovL2Jjcy5kdWFwcC5jb20vdGFveW91aHVpLWFkL2FkSW1nLzhiNXM5cTc2NXkuanBnIiwiYWN0aXZpdHlfa2V5IjoiZTFidnRnY2IiLCJqaWZlbl9udW0iOiI1IiwiY2hhbm5lbCI6IndlaXhpbixwZW5neW91LHR4d2IscXFraixyZW5yZW4sZHVvYmFuLGVtYWlsLHNtIn0=&quot;}')">人人-分享活动</button>	</br>
+		
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;email&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;activity_type&quot;,&quot;share_encryption_code&quot;:&quot;eyJpc3NoYXJlIjp0cnVlLCJ0aXRsZSI6IuWIhuS6q+i9r+S7tu+8jOmAgembhuWIhuWunSIsImNvbnRlbnQiOiLmiJHmraPlnKjnlKgj6ZqP5omL5LyY5oOgI+a3mOWunei0ne+8jOi0reeJqei/mOiDvei1mumbhuWIhuWunei/lOWIqe+8jOmmluasoeeZu+mZhuWFjei0uemihjUw5Liq6ZuG5YiG5a6d77yM5q+P5pel562+5Yiw6IO96aKG5pu05aSa77yM5biu5L2g5reY5a6d55yB6ZKx5peg5LiL6ZmQ77yM5LiL6L296ZO+5o6l77yaaHR0cDovL3lvdWh1aS5jbi8g4oCU4oCU5p2l6Ieq5Y+y5LiK5pyA6auY6L+U5Yip55qE5omL5py65bqU55SoIiwiY2xpY2t1cmwiOiJodHRwOi8veW91aHVpLmNuIiwiaW1ndXJsIjoiaHR0cDovL2Jjcy5kdWFwcC5jb20vdGFveW91aHVpLWFkL2FkSW1nLzhiNXM5cTc2NXkuanBnIiwiYWN0aXZpdHlfa2V5IjoiZTFidnRnY2IiLCJqaWZlbl9udW0iOiI1IiwiY2hhbm5lbCI6IndlaXhpbixwZW5neW91LHR4d2IscXFraixyZW5yZW4sZHVvYmFuLGVtYWlsLHNtIn0=&quot;}')">邮箱-分享活动</button>	</br>
+		
+		<button value="get json data" onclick="javascript:share('{&quot;sns_type&quot;:&quot;sm&quot;,&quot;request_code&quot;:&quot;abcd&quot;,&quot;share_type&quot;:&quot;activity_type&quot;,&quot;share_encryption_code&quot;:&quot;eyJpc3NoYXJlIjp0cnVlLCJ0aXRsZSI6IuWIhuS6q+i9r+S7tu+8jOmAgembhuWIhuWunSIsImNvbnRlbnQiOiLmiJHmraPlnKjnlKgj6ZqP5omL5LyY5oOgI+a3mOWunei0ne+8jOi0reeJqei/mOiDvei1mumbhuWIhuWunei/lOWIqe+8jOmmluasoeeZu+mZhuWFjei0uemihjUw5Liq6ZuG5YiG5a6d77yM5q+P5pel562+5Yiw6IO96aKG5pu05aSa77yM5biu5L2g5reY5a6d55yB6ZKx5peg5LiL6ZmQ77yM5LiL6L296ZO+5o6l77yaaHR0cDovL3lvdWh1aS5jbi8g4oCU4oCU5p2l6Ieq5Y+y5LiK5pyA6auY6L+U5Yip55qE5omL5py65bqU55SoIiwiY2xpY2t1cmwiOiJodHRwOi8veW91aHVpLmNuIiwiaW1ndXJsIjoiaHR0cDovL2Jjcy5kdWFwcC5jb20vdGFveW91aHVpLWFkL2FkSW1nLzhiNXM5cTc2NXkuanBnIiwiYWN0aXZpdHlfa2V5IjoiZTFidnRnY2IiLCJqaWZlbl9udW0iOiI1IiwiY2hhbm5lbCI6IndlaXhpbixwZW5neW91LHR4d2IscXFraixyZW5yZW4sZHVvYmFuLGVtYWlsLHNtIn0=&quot;}')">短信-分享活动</button>	</br>
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>抢购成功</title>
+	<script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+    <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+</head>
+<body onload="fontcontrol()" style="background: #fff7ef;">
+<img alt="笑脸" class="daibi" src="images/daibi.png" />
+<div id="tagContent" class="pr">
+	<div class="content_title" style="color:#4d4d4d;">抢购成功</div>
+	<img class="width100" alt="" src="images/line2.png">
+	<div class="content_body pr">
+		<img class="width100 notice" alt="注意" src="images/notice.png" />
+		<div class="robs_text pa">
+			<p>您已抢购成功</p>
+			<p>请在<span>2</span>小时内付款哦</p>
+		</div>
+	</div>
+	<img class="width100 painbtn db" onclick="hrefpay()" alt="付款按钮" src="images/painbtn.png">
+</div>
+<script type="text/javascript">
+$(window).resize(function(){
+	fontcontrol();
+});
+function fontcontrol(){
+	var viewwidth = $(window).width();
+	var b_size = viewwidth/23;
+	var m_size = viewwidth/28;
+	if (viewwidth < 640) {
+		$('.content_title').css('font-size',b_size+'px');
+		$('p').css('font-size',m_size+'px');
+	}
+}
+
+function hrefpay(){ //跳转到付款界面
+	$.ajax({ //请求跳转地址
+		url:'../GetVerifyBallanceStatusUrl',
+		success:function(ret){
+			var uid = GetQueryString('uid');
+			var orderid = GetQueryString('orderid');
+			location.href = ret+"?uid="+uid+"&orderid="+orderid;
+		}
+	})
+}
+
+function GetQueryString(name){   //获取浏览器的参数
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+</script>
+</body>
+</html>

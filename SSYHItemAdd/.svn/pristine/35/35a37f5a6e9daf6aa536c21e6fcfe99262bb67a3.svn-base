@@ -1,0 +1,197 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>添加验证码</title>
+<link href="css/superCheapStyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/bootstrap-theme.css" />
+<link href="css/custom.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery-ui-slide.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+<style type="text/css">
+.ui-datepicker{width:235px;}
+.di{display: block;}
+.fl{float: left;}
+.pa{position: absolute;left:-60px;top:-30px;width:50px;}
+</style>
+</head>
+<body onload="init()">
+		<div class="top-panel">
+			<div class="top-logo">
+				<img class="logo-img" alt="" src="img/logo.jpg">
+				<img class="title-img" alt="" src="img/title.jpg">
+				<span class="title">商品管理系统</span>
+				<div class="top-tool">
+				</div>
+			</div>
+			<img class="right-img" alt="" src="img/top_right.jpg">
+			<ul class="nav nav-tabs menu">
+				<li><span class="span_50px"></span></li>
+			</ul>
+		</div>
+		<div class="mainbody">
+
+		<div class="panel panel-default left-panel" >
+			<div class="panel-heading">
+				<h3 style="display: inline;" class="panel-title">菜单</h3>
+			</div>
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a>添加新商品</a></li>
+					<li><a onclick="location.href='superCheap.html'">查看商品列表</a></li>
+					<li><a>备用按钮二</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="panel panel-default main-panel" style="width: 1610px">
+			<div class="panel-heading">
+				<h3 style="display: inline;" class="panel-title">内容</h3>
+			</div>
+			<div class="panel-body" style="display: inline;position: relative;">
+				<div id="dayInfo">
+					<div class="tags">
+					<!-- 添加产品  -->
+					<!-- <div class="eachtag" style="margin-top:20px;position:relative;">
+								<div class="input-group">
+								  <span class="input-group-addon">验证码的值</span>
+								  <input class="input1 usefulInfo form-control" value="" name="title" type="text" placeholder="验证码的值">
+								</div>
+								<div class="input-group" style="width:800px;">
+								<img class="fl di pa" src="ad" />
+								<input class="input2 di usefulInfo form-control" value="" name="title" type="text" placeholder="验证码图片地址">
+								</div>
+								<button type="button" name="'+JSONObj[i].id+'" onclick="submit(this)" class="btn btn-primary">提交</button>
+								<button type="button" name="'+JSONObj[i].id+'" onclick="del(this)" class="btn btn-primary">删除</button>
+							</div> -->
+					
+					<!-- 添加产品结束  -->
+					</div>
+				</div>
+			</div>
+			<!-- 按钮组 -->
+			<div style="padding:5px 0;text-align: center;">
+				<button type="button" onclick="show_adddiv()" data-toggle="modal" data-target="#editdiv" class="btn btn-primary">+</button>
+				<!-- <button type="button" class="btn btn-primary" onclick="javascript:history.go(-1)">取消</button> -->
+			</div>
+		</div>
+	</div>
+
+<!-- 弹出添加框 -->
+	  <div  style="width:575px;display: none;" class="modal-dialog adddiv">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" onclick="close_adddiv()" class="close" >&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">添加新的验证码</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="input-group" style="margin:10px 0;">
+			  <span class="input-group-addon">验证码的值</span>
+			  <input class="input1 usefulInfo form-control" name="title" type="text" placeholder="验证码的值">
+			</div>
+			<div class="input-group" style="margin-top:5px;">
+		  		<span class="input-group-addon">验证码图片</span>
+		  		<input class="input2 usefulInfo form-control" name="img" type="text" id="img" value="" placeholder="">
+			</div>
+			<form id="upload_gift_ImgForm" method="post" enctype="multipart/form-data" action="" target="ImgUploadIfr">
+				<div class="input-group"  style="width:350px;">
+						    <label>&nbsp;</label>
+						    <input class="btn btn-primary" id="gift_imgFile" name="file" type="file">
+						    <input class="btn btn-primary" type="button" onclick="add_ImgName('1tm47e2v1mm')" value="上传" class="button">
+				</div>
+			</form>
+			<iframe name="ImgUploadIfr" style="display:none"></iframe>
+			<button type="button" onclick="submit_adddiv(this)" class="btn btn-primary">提交</button>
+	      </div>
+	    </div>
+	  </div>
+<!-- 弹出添加框 -->
+</body>
+<script type="text/javascript">
+	function add_ImgName()
+	{
+		var date = (new Date()).valueOf();
+	    var filename = $("#gift_imgFile").val();  
+	    var suffix = filename.substring(filename.lastIndexOf("."));
+		var prefix = "http://static.etouch.cn/suishou/ad_img/";
+		var url = prefix+date+suffix;
+	    $("#img").val(url);
+	    $("#upload_gift_ImgForm").attr('action','http://a.suishouyouhui.cn/img/upload?imgsn='+date);
+	    $("#upload_gift_ImgForm").submit();
+	}
+
+  	function init(){ //初始化生成itemtags
+		$.ajax({
+			url:'CheckCodeServlet?method=get',
+			type:'POST',
+			success:function(ret){
+				console.info(ret);
+				var JSONObj = eval('('+ret+')');
+				var str = '';
+				for(var i=0;i<JSONObj.length;i++){
+					var array = JSONObj[i].split(',');
+						str += '<div class="eachtag" style="margin-top:20px;position:relative;">'
+								+'<div class="input-group">'
+								  +'<span class="input-group-addon">标签名称</span>'
+								  +'<input class="input1 usefulInfo form-control" value="'+array[0]+'" name="title" type="text" placeholder="标签名称">'
+								+'</div>'
+								+'<div class="input-group" style="width:800px;">'
+								+'<img class="fl di pa" src="'+array[1]+'" />'
+								+'<input class="input2 di usefulInfo form-control" value="'+array[1]+'" name="title" type="text" placeholder="标签名称">'
+								+'</div>'
+								+'<button type="button" name="'+JSONObj[i]+'" onclick="del(this)" class="btn btn-primary">删除</button>'
+							+'</div>';
+				}
+				$('.tags').append(''+str+'');
+			}
+		})
+	}
+	
+	function del(obj){   //删除单个标签
+		var val = $(obj).attr('name');
+		if(confirm("确定要删除数据吗？")){
+			$.ajax({
+				url:'CheckCodeServlet?method=del&val='+val,
+				type:'POST',
+				success:function(ret){
+					if(ret == 'success'){
+						alert('删除成功');
+						location.reload();
+					}else{
+						alert('删除失败sb');
+					}
+				}
+			})
+		}
+	}
+	
+	function close_adddiv(){   //关闭添加信息
+		$('.adddiv').hide();
+	}
+	
+	function show_adddiv(){    //打开添加信息
+		$('.adddiv').show();
+	}
+	
+	function submit_adddiv(obj){  //提交添加信息
+		var val = $(obj).parents('.modal-content').find('.input1').val();
+		val += ','+$(obj).parents('.modal-content').find('.input2').val();
+		$.ajax({
+			url:'CheckCodeServlet?method=add&val='+val,
+			type:'POST',
+			success:function(ret){
+				if(ret == 'success'){
+					alert('提交成功')
+					location.reload();
+				}else{
+					alert('提交失败sb');
+				}
+			}
+		})
+	}
+</script>
+</html>

@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+<head>
+    <title>Bargain Travel</title>
+     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+      
+   <!--  <link rel="stylesheet" type="text/css" href="css/af.ui.css" title="default" /> -->
+   <!--必须影响list样式和颜色-->
+    <link rel="stylesheet" type="text/css" href="../appframework/css/main.css"  />
+    <link rel="stylesheet" type="text/css" href="../appframework/css/appframework.css"  />
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css" /> 
+    
+    <script type="text/javascript" charset="utf-8" src="../appframework/appframework.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../appframework/ui/appframework.ui.js"></script>      
+    <script type="text/javascript" charset="utf-8" src="../appframework/plugins/af.scroller.js"></script>
+
+    <script charset="utf-8" src="../appframework/plugins/af.css3animate.js"></script><!--必须，PC页面显示-->
+    <script charset="utf-8" src="../appframework/plugins/af.touchLayer.js"></script><!--必须。手机页面显示-->
+    <script type="text/javascript" charset="utf-8" src="./json_parse.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./self.js"></script>     
+</head>
+
+<body onload="jsonAppend()">
+    <div id="afui">
+        <div id="content">          
+            <div id="webslider" class="panel" selected="true" data-header="none" data-footer="none">    
+                <div id="Bgd">
+                    <div id="Bgd2">
+                        <img src="images/image2.jpg" class="p_02" />
+                        <img src="images/bgd21.png" class="bgd21 Ab" />
+                        <!--
+                        <img src="images/image4.png" class="p_04 Ab" />    
+                        <img src="images/image5.png" class="p_05 Ab" />
+                        <img src="images/image6.png" class="p_06 Ab" />
+                        <img src="images/image7.png" class="p_07 Ab" />-->
+                        <div class="Info Ab">
+                            <div class="SelfInfo Ab">
+                                <img class="p_08 Ab" src="images/image8.png" />
+                                <div class="SelfName Ab F1">
+                                    吴小cai
+                                </div>
+                                <div class="SelfRank Ab">
+                                    <img class="p_09 Ab" src="images/image91.png" />
+                                    <img class="i_02 Ab" src="images/Icon2.png" />
+                                    <a  class="Rankgo Ab" href="# ">
+                                        <img src="images/Icon3.png" class="i_03"/>
+                                    </a>
+                                </div>
+                            </div>              
+                            <div class="EarnInfo Ab">
+                                <div class="Save Ab">
+                                    <span class="Savetext F9">累计省钱</span>
+                                    <span class="SaveNumber F8">300</span>
+                                    <span class="unit F9">元</span>
+                                    <span class="change">
+                                        <a href="# ">
+                                            <img src="images/Icon1.png" class="i_01"/>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="GetMoney Ab">
+                                    <div class="Total Ab">
+                                        <span class="TotalMoney">
+                                            <span class="Fhtext F5">本月分红总额&nbsp;&nbsp;:</span>
+                                            <span class="Money F5">2560</span>
+                                        </span>                        
+                                    </div>
+                                    <div class="Caculate Ab">
+                                        <span class="Shopping">
+                                            <div class="text C1 F1 Ab">购物奖励</div>
+                                            <div class="Number Ca1 F5 Ab">4500</div>
+                                        </span>
+                                        <span class="multiply F5">x</span>
+                                        <span class="Proption">
+                                            <span class="ProPart ">
+                                                <div class="text C2 F1" style="float:right;">分红比例</div>
+                                                <div class="Number Ca2 F5" style="text-align:center;">12%</div>
+                                            </span>
+                                            <span class="add F9">+</span>
+                                            <img src="images/Icon10.png"  class="i_10 Ab" />
+                                            <span class="ExtralPart ">   
+                                                <div class="text C3 F1" style="float:right;">
+                                                加送
+                                                </div>
+                                                <div class="Number Ca3 F5">12%</div>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>          
+                    <div id="Bgd3">                                        
+                    <!-- <div class="path" id="type_fir">
+                            <img src="images/path.png" class="part"/>
+                            <div class="Box b1 Ab">
+                                <div id="FisrtDate"class=" Box2">
+                                    <p class="date d1 ">2.23</p>
+                                    <img src="images/Icon12.png" class="Circle i1" />
+                                    <img src="images/Icon4.png" class="i_4 Ab"  />
+                                    <p class="Msg m1 ">连续签到45天</p>
+                                </div>  
+                            </div>
+                            <div class="Box b2 Ab">
+                                <div id="FisrtDate" class=" Box2">
+                                    <p class="date d2 ">2.16</p>
+                                    <img src="images/Icon12.png" class="Circle i2" />
+                                    <img src="images/Icon5.png" class="i_5 Ab"  />
+                                    <p class="Msg m2 ">又升级啦</p>
+                                </div>    
+                            </div>                                                    
+                            <div  class="Box b3 Ab">
+                                <div id="FisrtDate" class=" Box2">
+                                    <p class="date d3 ">2.01</p>
+                                    <img src="images/Icon12.png" class="Circle i1" />
+                                    <img src="images/Icon6.png" class="i_6 Ab"  />
+                                    <p class="Msg m3 ">绑定密保日</p>
+                                </div>  
+                            </div>
+                            <div  class="Box b4 Ab">
+                                <div id="FisrtDate" class=" Box2">
+                                    <p class="date d4 ">2.10</p>                                    
+                                    <img src="images/Icon12.png" class="Circle i2" />
+                                    <img src="images/Icon7.png" class="i_7 Ab"  />    
+                                    <p class="Msg m4 ">与优惠君一起过的第一个生日</p>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="path" id="type_sec">
+                           <img src="images/path.png" class="part"/> 
+                           <div id="Month-Nov" class="Tip T2 Ab">
+                                <div class="Tip2">
+                                    <img src="images/image13.png" class="p_13"/>
+                                    <div class="Tip_number Ab">
+                                        <p>
+                                            <span class="F6">5962</span>
+                                        </p>
+                                    </div>
+                                    <div class="Tip_text Ab">
+                                        <div class="sign">
+                                            <span class="wenben">签到</span>&nbsp;
+                                            <span class="num">160</span>
+                                        </div>
+                                        <div class="fenhong">
+                                            <span class="wenben">分红</span>&nbsp;
+                                            <span class="num">1065</span>
+                                        </div>
+                                        <div class="trade">
+                                            <span class="wenben">购物</span>&nbsp;
+                                            <span class="num">2056</span>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div> -->
+ 
+                      <!--   <div class="path">
+                            <img src="images/image11.png" class="part"/>
+                            <div  class="Box b3 Ab">
+                                <div id="FisrtDate" class=" Box2">
+                                    <p class="date d3 ">2.01</p>
+                                    <img src="images/Icon12.png" class="Circle i1" />
+                                    <img src="images/Icon6.png" class="i_6 Ab"  />
+                                    <p class="Msg m3 ">绑定密保日</p>
+                                </div>  
+                            </div>
+                            <div  class="Box b4 Ab">
+                                <div id="FisrtDate" class=" Box2">
+                                    <p class="date d4 ">2.10</p>                                    
+                                    <img src="images/Icon12.png" class="Circle i2" />
+                                    <img src="images/Icon7.png" class="i_7 Ab"  />    
+                                    <p class="Msg m4 ">与优惠君一起过的第一个生日</p>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="path">
+                            <img src="images/image10.png"  class="part"/>
+                            <div  class="Box b2 Ab">
+                                <div id="FisrtDate" class=" Box2">
+                                    <p class="date d2 ">11.16</p>
+                                    <img src="images/Icon12.png" class="Circle i2" />
+                                    <img src="images/Icon5.png" class="i_5 Ab"  />
+                                    <p class="Msg m2 ">又升级啦</p>
+                                </div>  
+                            </div>
+                            
+                            <div id="Month-Dec"class="Tip T1 Ab">
+                                <div class="Tip2">
+                                    <img src="images/image14.png" class="p_13"/>
+                                    <div class="Tip_number Ab">
+                                        <p>
+                                            <span class="F6">5962</span>
+                                        </p>
+                                    </div>
+                                    <div class="Tip_text Ab" >                                       
+                                            <div class="sign">
+                                               <span class="wenben" >签到</span>&nbsp;
+                                               <span class="num">160</span>  
+                                            </div>                                                
+                                            <div class="fenhong">
+                                                <span class="wenben">分红</span>&nbsp;
+                                                <span class="num">1065</span>
+                                            </div> 
+                                            <div class="trade">
+                                                <span class="wenben">购物</span>&nbsp;
+                                                <span class="num">2056</span>
+                                            </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="path">
+                            <img src="images/image11.png"  class="part"/>
+                            <div id="Month-Nov" class="Tip T2 Ab">
+                                <div class="Tip2">
+                                    <img src="images/image13.png" class="p_13"/>
+                                    <div class="Tip_number Ab">
+                                        <p>
+                                            <span class="F6">5962</span>
+                                        </p>
+                                    </div>
+                                    <div class="Tip_text Ab">
+                                        <div class="sign">
+                                            <span class="wenben">签到</span>&nbsp;
+                                            <span class="num">160</span>
+                                        </div>
+                                        <div class="fenhong">
+                                            <span class="wenben">分红</span>&nbsp;
+                                            <span class="num">1065</span>
+                                        </div>
+                                        <div class="trade">
+                                            <span class="wenben">购物</span>&nbsp;
+                                            <span class="num">2056</span>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div> -->
+                        <!-- <div id="Month-Oct" class="path">
+                            <img src="images/image10.png"  class="part"/>
+                            <div class="Tip T3 Ab">
+                                <div class="Tip2">
+                                    <img src="images/image12.png" class="Oct p_13"/>
+                                    <div class="Tip_message Ab">
+                                        <div class="wenben F5" id="monthNone">
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div> -->                              
+                    </div>  
+                </div>                                                     
+            </div>          
+        </div>
+    </div>
+    </body>
+ 
+</html>

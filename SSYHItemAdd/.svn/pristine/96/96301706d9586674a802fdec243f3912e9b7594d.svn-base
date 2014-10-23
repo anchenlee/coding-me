@@ -1,0 +1,84 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+    <!-- 最新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/superCheapStyle.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/custom.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/reset.css" rel="stylesheet" type="text/css" media="all">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body{
+            font-family: "microsoft yahei";
+            font-size: 14px;;
+        }
+        .editBox{
+            padding: 30px;
+        }
+    </style>
+</head>
+<body onload="onLoad()">
+<div class="editBox">
+  
+</div>
+</body>
+<script type="text/javascript">
+    function onLoad(){
+        var id = GetQueryString("id");
+        var data = '';
+        $.ajax({
+            url:"superDiscount/AssessOptionAction?actionmethod=getAssessOptionById",
+            data: "&id="+id,
+            dataType:"json",
+            type:"POST",
+            success:function(ret){
+                var jsonList = ret;
+                data = '<form class="form-horizontal" role="form">' +
+                        '<div class="input-group"><span class="input-group-addon">显示内容</span>' +
+                        '<textarea id="desc" type="text" class="form-control" rows="6" style="resize: none">'+jsonList.content+'</textarea>' +
+                        '</div>' +
+                        '<div class="input-group" style="margin: 20px -15px"><label class="radio-inline">是否显示:</label>' +
+                        '<label class="radio-inline"><input name="optionsRadios" type="radio" id="inlineRadio1" value="1"/>是</label>' +
+                        '<label class="radio-inline"><input name="optionsRadios" type="radio" id="inlineRadio2" value="0"/>否</label></div>' +
+                        '<div class="modal-footer"><button type="button" class="btn btn-danger" id="closePop" style="float: right;margin: 20px 10px;" onclick="myclose()">关闭</button>' +
+                        '<button type="button" class="btn btn-primary" style="float: right;margin: 20px 10px;" onclick="updateOption('+jsonList.id +')">保存</button></div>' +
+                        '</form>';
+                $('.editBox').append(data);
+                if(jsonList.isShow==0){
+                    $('#inlineRadio2').attr("checked",'checked');
+                }
+                else{
+                    $('#inlineRadio1').attr("checked",'checked');
+                }
+            }
+        })
+    }
+    function updateOption(id){
+        var content = document.getElementById("desc").value;
+        var isShow =$('input:radio:checked').val();
+        $.ajax({
+            url:"superDiscount/AssessOptionAction?actionmethod=updateAssessOption",
+            data: "&id="+id+"&is_show="+isShow+"&content="+content,
+            type:"POST",
+            success:function(ret){
+            window.parent.location.reload();
+                close();
+            }
+       })
+    }
+    function GetQueryString(name){   //获取浏览器的参数
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]);
+    }
+	function myclose(){
+	  	window.parent.$("#mask").remove();
+	  	window.parent.$("#maskTop").remove();
+	}
+</script>
+</html>

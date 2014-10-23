@@ -1,0 +1,91 @@
+/* 
+CUSTOM STYLESHEET
+---------------------
+
+Instructions:
+
+Add your custom styles in this file instead of style.css so it 
+is easier to update the theme. Simply copy an existing style 
+from style.css to this file, and modify it to your liking. */
+.left-panel{
+	float:left;
+	width: 200px;
+	margin: 10px;
+}
+
+.top-panel{
+	height: 140px;
+}
+.main-panel{
+	float:left;
+	
+	position:absolute;
+	margin: 10px;
+	left:211px;
+}
+.menu{
+	width:100%;
+	position: absolute;
+	top: 98px;
+}
+.span_50px{
+	padding-left:50px;
+}
+
+.right-img{
+	float:right;
+	height: 140px;
+}
+.top-logo{
+	z-index:10;
+	position: absolute;
+	left: 50px;
+	top: 20px;
+}
+
+.top-logo .logo-img{
+	float:left;
+	height: 60px;
+	margin-left:5px;
+}
+
+.top-logo .title-img{
+	margin-left:10px;
+	float:left;
+	height:  30px;
+}
+
+.top-logo .title{
+	
+	float:left;
+	margin-left:5px;
+	font-size: 24px;
+}
+
+.top-tool{
+	position: absolute;
+	left: 78px;
+	top:40px;
+}
+.item-detail{
+	float:left;
+	padding-left:10px;
+}
+.item-detail .nick{
+}
+
+.item-detail .nickvalue{
+	margin-left:10px;
+}
+
+.item-detail .price{
+	margin-left:20px;
+}
+.item-detail .pricevalue{
+	margin-left:10px;
+	color: red;
+}
+.item-img{
+	float:left;
+	
+}

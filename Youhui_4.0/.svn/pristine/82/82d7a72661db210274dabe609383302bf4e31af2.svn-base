@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<title>Ipad标签配置界面</title>
+	<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+	<link rel="stylesheet" href="../../css/jquery-ui.css" />
+	<script type="text/javascript" src="../../js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+	<script type="text/javascript" src="../../js/jquery-ui-slide.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-ui-timepicker-addon.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/bootstrap.css" />
+<!--     <link rel="stylesheet" href="../../css/bootstrap-theme.css" /> -->
+    <link rel="stylesheet" href="../../css/style1.css"/>
+
+	<script type="text/javascript" src="../../js/ui.datepicker-zh-CN.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../js/controller1.js"></script>
+	<script type="text/javascript" src="../../js/json_parse.js"></script>
+
+</head>
+<body onload="ol()">
+    <div id="box">
+    </div>
+    <div id="buttons" style="margin-left: 153px;">
+			<button type="button" class="btn btn-info btn-sm combine">合 并</button>
+			<button type="button" class="btn btn-info btn-sm separate">分 离</button>
+			<button type="button" class="btn btn-info btn-sm update" data-toggle="modal" >更 新</button>
+			<button type="button" class="btn btn-info btn-sm add" data-toggle="modal" >添加信息</button>
+			
+	</div>
+	<div style="margin-top: 57px;margin-left: 153px;">
+			<button type="button" class="btn btn-info btn-sm delMartix" data-toggle="modal" >删除矩阵</button>
+			<button type="button" class="btn btn-info btn-sm addMartix" data-toggle="modal" >增加矩阵</button>
+	</div>
+    <!--data-target="#myModalAdd"data-target="#myModalUpdate"-->
+
+    <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close btn-sm" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h2 class="modal-title" id="myModalLabel"></h2>
+                </div>
+                <div class="modal-body" style="padding: 33px;">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">标签样式</div>
+                                <select class="form-control" id="action_type"  style="width: 131px;" onchange="actionTypeChange()">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div id="showTitle" class="input-group-addon">标签内容</div>
+                                <input class="form-control" type="text" id="inputaction_value"  name="inputaction_value" style="display: none;"/>
+                                <select class="form-control" id="sel_system"  style="width: 131px;display: none" >
+                                </select>
+                                <select class="form-control" id="action_value"  style="width: 131px;">
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <form id="uploadImgForm" method="post" enctype="multipart/form-data"  action="" target="uploadIfr" >
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">图片</div>
+                                    <input class="form-control" type="text" id="imgNote" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span style="display: inline-block"><input class="form-control" id="filename"  name="filename"  type="file"/></span>
+                                    <span style="display: inline-block"><input type="button" id="uploadButton" class="form-control btn-primary" value="上传"/></span>
+                                </div>
+                            </div>
+		                </form>
+
+                        <div class="input-group" style="margin-top: 100px;">
+                            <span class="input-group-addon" >开始时间</span>
+                            <input id="startTime" type="text" value="" class="form-control">
+                            <span class="input-group-addon">结束时间</span>
+                            <input id="endTime" type="text" value="" class="form-control">
+                        </div>
+
+						<form id="uploadRegImgForm" method="post" enctype="multipart/form-data"  action="" target="uploadRegIfr" >
+	                        <div class="form-group" style="margin-top: 20px;">
+	                            <div class="input-group">
+	                                <div class="input-group-addon">定时图片</div>
+	                                <input class="form-control" type="text" id="imgReg" />
+	                            </div>
+	                        </div>
+	
+	                        <div class="form-group">
+	                            <div class="input-group">
+	                                <span style="display: inline-block"><input class="form-control" id="filenameReg"  name="filename"  type="file"/></span>
+	                                <span style="display: inline-block"><input type="button" id="uploadButtonReg" class="form-control btn-primary" value="上传"/></span>
+	                            </div>
+	                        </div>	
+                        </form>
+
+                    
+
+                </div>
+                <iframe name="uploadIfr" style="display:none"></iframe>
+                <iframe name="uploadRegIfr" style="display:none"></iframe>
+                <div class="modal-footer" style="margin-top: 107px;">
+                    <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save">save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+
+	$('#startTime').datetimepicker();
+  	$('#endTime').datetimepicker();
+
+    function ol(){
+        $.ajax({
+            url: "../../tags/ipad_tags_action?method=getAllMartixLayout",
+            dataType:"json",
+            type: "POST",
+            success: function(ret){
+                $('#box').empty();
+                var rel = ret;
+                var data = '';
+                var cnt=0;
+                for(var j in ret){cnt++};
+                console.debug(ret);
+                var widths = cnt * 375 + 170;
+                var widths = widths +"px";
+                $("#box").css("width",widths);
+                
+                var martixIds = "";
+                for(var j in ret){
+                	martixIds += ret[j][0].martix;
+                };
+                var marArray = martixIds.split("");
+                for ( var int = 0; int < marArray.length; int++) {
+					
+				}
+                for(var i = 0 ;i< marArray.length;i++){
+                	var k = marArray[i];
+                    data += '<div class=\'mar mar'+rel[k][0].martix+'\'> ';
+                    for(var j=1;j<7;j++){
+                        data+='<div class=\'span'+j+'\'>'+j+'</div>';
+                    }
+                    data+='<input type="checkbox" id="ids'+k+'" style="margin-top: 472px;margin-left: 166px;background-color: white;">';
+                    data+='</div>';
+                }
+                $('#box').append(data);
+                for(var i = 0 ;i< marArray.length;i++){
+                	var kk = marArray[i];
+                    var mar = rel[kk][0].martix;
+                    for(var j=0;j<rel[kk].length;j++){
+                        var divs = [];
+                        divs = rel[kk][j].divIds.split("");
+                        for(var k=0;k<divs.length;k++){
+                            $('mar'+rel[kk][0].martix+' span'+divs[k]+'').remove();
+                            if (rel[kk][j].img == ' ') {
+                            	$('<div class=\'span'+rel[kk][j].divIds+'\'>'+rel[kk][j].divIds+'</div>').appendTo('.mar'+rel[kk][0].martix+'');
+							} else {
+								$('<div class=\'span'+rel[kk][j].divIds+'\'><img id=\''+rel[kk][j].id+'\' src=\''+rel[kk][j].img+'\'/></div>').appendTo('.mar'+rel[kk][0].martix+'');
+							}
+                        }
+                    }
+                }
+            }
+        });
+
+
+        $.ajax({
+            url: "../../tags/ipad_tags_action?method=getTagsList",
+            dataType:"json",
+            type: "POST",
+            success: function(ret){
+                var styleMap='';
+                var sytleValue='';
+                var action_value='';
+                
+                //样式
+                for(var j in ret[0]){
+                	styleMap += '<option value='+j+'>'+ret[0][j]+'</option>';
+                };
+                $(".modal #action_type").append(styleMap);
+                
+                //系统值
+                for(var j in ret[1]){
+                	sytleValue += '<option value='+j+'>'+ret[1][j]+'</option>';
+                };
+                $(".modal #sel_system").append(sytleValue);
+                
+                //样式值
+                 for(var j in ret[2]){
+                	for(var k in ret[2][j]){
+                		action_value += '<option value='+k+'>'+ret[2][j][k]+'</option>';
+                    };
+                };
+                $(".modal #action_value").append(action_value);
+            }
+        });
+    }
+    
+    function actionTypeChange(){
+    	var type = $("#action_type").val();
+    	if(type == 'tagStyleWaterflow' || type == 'tagStyleGrid'  || type == 'tagStyleSale')
+    	{
+    		eval("inputaction_value.style.display=\"none\"");
+    		eval("action_value.style.display=\"block\"");
+    		eval("sel_system.style.display=\"none\"");
+    	}
+    	else if(type=='tagStyleAppPage') 
+    	{
+    		eval("inputaction_value.style.display=\"none\"");
+    		eval("action_value.style.display=\"none\"");
+    		eval("sel_system.style.display=\"block\"");
+    	}
+    	else
+    	{
+    		eval("inputaction_value.style.display=\"block\"");
+    		eval("action_value.style.display=\"none\"");
+    		eval("sel_system.style.display=\"none\"");
+    	}
+    }
+</script>
+</html>

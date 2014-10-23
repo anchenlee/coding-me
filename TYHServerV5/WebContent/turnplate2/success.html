@@ -1,0 +1,214 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>恭喜你中奖啦</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type='text/javascript' src='js/jquery.min.js'></script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+<script src="js/jQueryRotate.2.2.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<style type="text/css">
+    body{
+    	max-width: 640px;
+    	margin: 0 auto;
+    	font-family: 微软雅黑;
+    	color:#434343
+    }
+    img{
+    	-webkit-tap-highlight-color:rgba(0,0,0,0);
+    	display: block;
+    	width: 100%;
+    	outline: none;
+    }
+    .width100{
+    	margin-top: 2%;
+    	width: 100%;
+    }
+    .di{
+    	vertical-align:middle;
+    	display: inline-block;
+    	width: 30%;
+    }
+    .fr{margin-left: 1%;}
+    .jfb_or_mdl,.share_to{margin-top: 5%;}
+    .succ_btns{text-align: center;}
+    .enter_phone{
+    	outline: none;
+    	text-align:center;
+    	padding: 1%;
+    	border: 1px solid #575757;
+    	color:#575757;
+    }
+    .dn{display: none;}
+    .phone_charge p{text-align: center;padding: 0;margin: 0;}
+    .chongzhiing,.sjnum_repeat,.share_success,.sj_repeat{
+    	position: absolute;
+    	top: 20%;
+    	width: 100%;
+    	display: none;
+    	z-index: 3000;
+    }
+    .share_jfb{
+    	margin: 2% 0;
+    }
+    .mask{top:0;left:0;background: #000;opacity:0.5;height: 100%;width:100%;z-index: 2000;position: absolute;}
+</style>
+</head>
+<body onload="init()" style="position: relative;">
+	<img alt="开头图片" src="images/success_pic1.jpg" />
+	<img class="jfb_or_mdl" style="display: none;" alt="" src="" />
+	<div class="phone_charge" style="display: none">
+		<p>输入手机号码领取10元话费</p>
+		<p><input maxlength="11" class="enter_phone" type="text" /></p>
+		<img onclick="submit()" class="make_sure" style="width: 25%;margin: 1% auto 0;" src="images/make_sure.png" alt="确定按钮" />
+	</div>
+	<img class="share_to" alt="分享至" src="images/share_to.png" />
+	<div class="succ_btns">
+		<img onclick="weixin_share()" class="width100" alt="微信分享" src="images/weixin_share.png" />
+		<img onclick="friend_share()" class="width100" alt="朋友圈分享" src="images/friend_share.png" />
+		<img onclick="xinlang_share()" class="width100" alt="新浪微博分享" src="images/xinlang_share.png" />
+	</div>
+	<img class="share_jfb" alt="分享可获得集分宝" src="images/share_jfb.png" />
+	<img alt="底部图片" src="images/success_pic2.png" />
+	<div style="display: none;" class="mask pa"></div>
+	<img class="chongzhiing" alt="充值中" src="images/chongzhiing.png" />
+	<img class="sjnum_repeat" alt="号码已经充值过" src="images/sjnum_repeat.png" />
+	<img class="sj_repeat" alt="手机已经弄过" src="images/sj_repeat.png" />
+	<img class="share_success" alt="分享成功" src="images/share_success.png" />
+<script type="text/javascript">
+function submit(){
+	var phone_num = $('.enter_phone').val();
+	var imei = GetQueryString('imei');
+	var uid = GetQueryString('uid');
+	if((!isNaN(phone_num)) && (phone_num.length==11)){
+		
+		$.ajax({
+			url:'../turnplate/huafei',
+			data:'uid='+uid+'&imei='+imei+'&phone_num='+phone_num,
+			type:'POST',
+			success:function(ret){
+				if(ret == 10){
+					alert("广东联通号码，暂不支持充值");
+				}else if(ret == 1){
+					$('.mask').show();
+					$('.chongzhiing').fadeIn();
+				}else if(ret == 2){//手机号码已经参与过
+					$('.mask').show();
+					$('.sjnum_repeat').fadeIn();
+				}else if(ret == 3){
+					alert('充值失败');
+				}else if(ret == 4){ //手机参与过
+					$('.mask').show();
+					$('.sj_repeat').fadeIn();
+				}else{
+					alert('你未中奖哦');
+				}
+			}
+		});
+	}else{
+		alert('输入的手机号码有误!');
+	}
+}
+
+$(window).resize(function(){
+	fontcontrol();
+})
+
+$('.chongzhiing').bind('touchstart',function(){//绑定点击事件
+	$(this).fadeOut();
+	$('.mask').hide();
+})
+$('.sjnum_repeat').bind('touchstart',function(){//绑定点击事件
+	$(this).fadeOut();
+	$('.mask').hide();
+})
+$('.sj_repeat').bind('touchstart',function(){//绑定点击事件
+	$(this).fadeOut();
+	$('.mask').hide();
+})
+$('.share_success').bind('touchstart',function(){//绑定点击事件
+	$(this).fadeOut();
+	$('.mask').hide();
+})
+
+function GetQueryString(name){   //获取浏览器的参数
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+
+function init(){
+	fontcontrol();
+	var imggg = new Image();
+	imggg.src = 'images/jfb.png';
+	var imgggg = new Image();
+	imgggg.src = 'images/mdl.png';
+	var code = parseInt(GetQueryString('code'));
+	console.info(code);
+	switch(code){
+		case 10:
+			$('.jfb_or_mdl').show();
+			$('.jfb_or_mdl').attr('src','images/shixiao.png');
+			break;
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			$('.jfb_or_mdl').show();
+			$('.jfb_or_mdl').attr('src','images/jfb.png');
+			$('.jfb_or_mdl').bind('click',function(){
+				location.href = "suishou://app.youhui.cn/JFBHistoryPage";
+			});
+			break;
+		case 5:
+			$('.phone_charge').show();
+			break;
+		default:
+			break;
+	}
+}
+
+function fontcontrol(){
+	var w = $(window).width();
+	font_width = w / 20;
+	if(w < 640){
+		$('body').css('font-size',font_width+'px');
+		$('.enter_phone').css('font-size',font_width+'px');
+	}	
+}
+
+function weixin_share(){
+	var share_str = '{"sns_type":"weixin","request_code":"","share_type":"activity_type","click_url":"http://mp.weixin.qq.com/s?__biz=MjM5MjMzMDM0MQ==&mid=200349846&idx=6&sn=76461fe187d9ffb419e6a81e75ad7e85#rd","img_url":"http://static.etouch.cn/suishou/ad_img/2lq4kkr36lo.jpg","content":"下载随手优惠，小米盒子每天一个免费送！告别RP比拼！百分百有奖！福利不断，动动手指，奖品就是你的！","title":"好礼“赚”起来 ","item_id":"","activity_key":"leo52fn1","channel":"own","jifenbao_num":"0","sst":""}';
+	local_info.share(share_str);
+}
+
+function friend_share(){
+	var share_str = '{"sns_type":"pengyou","request_code":"","share_type":"activity_type","click_url":"http://mp.weixin.qq.com/s?__biz=MjM5MjMzMDM0MQ==&mid=200349846&idx=6&sn=76461fe187d9ffb419e6a81e75ad7e85#rd","img_url":"http://static.etouch.cn/suishou/ad_img/2lq4kkr36lo.jpg","content":"下载随手优惠，小米盒子每天一个免费送！告别RP比拼！百分百有奖！福利不断，动动手指，奖品就是你的！","title":"好礼“赚”起来 ","item_id":"","activity_key":"leo52fn1","channel":"own","jifenbao_num":"0","sst":""}';
+	local_info.share(share_str);
+}
+
+function xinlang_share(){
+	var share_str = '{"sns_type":"weibo","request_code":"","share_type":"activity_type","click_url":"http://youhui.cn","img_url":"http://static.etouch.cn/suishou/ad_img/2lq4kkr3i6c.jpg","content":"下载随手优惠，小米盒子每天一个免费送！告别RP比拼！百分百有奖！福利不断，动动手指，奖品就是你的！","title":"好礼“赚”起来 ","item_id":"","activity_key":"leo52fn1","channel":"own","jifenbao_num":"0","sst":""}';
+	local_info.share(share_str);
+}
+
+function notifyWebPage(local_info){
+	local_info = eval('('+local_info+')');
+	var result = local_info.result_code;
+	var nick = local_info.taobao_nick;
+	var uid = local_info.uid;
+	var activityKey = "r868znm4";
+	if(result == "OK"){
+		$.ajax({
+			url:'../tyh2/joinact?',
+			data:'uid='+uid+'&taobao_nick='+encodeURIComponent(nick)+'&key='+activityKey,
+			type:'POST',
+			success:function(ret){
+				$('.share_success').fadeIn();
+			}
+		})
+	}
+}
+</script>
+</body>
+</html>

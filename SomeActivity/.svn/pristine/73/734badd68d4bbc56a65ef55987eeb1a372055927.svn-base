@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>弹幕聊天</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script><!--jquery包-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+	<meta content="telephone=no" name="format-detection" /><!--忽略将页面中的数字识别为电话号码-->
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" /><!--顶端的状态条样式-->
+  	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+</head>
+<body style="max-width:640px;margin:0 auto;text-align:center">
+	<div id="discussion">
+		<p>吹牛逼第一段</p>
+		<p>吹牛逼第二段</p>
+		<p>吹牛逼第三段</p>
+		<p>吹牛逼第四段</p>
+		<p name="2014-09-17 16:25:51">吹牛逼第五段</p>
+	</div>
+	<input id="info" style="outline:none" type="text" />
+	<input onclick="submit()" value="提交" type="submit" />
+	<script type="text/javascript">
+		$(document).ready(function(){
+				var act_name = '聊天框';
+		  		var act_topic = '聊天话题';
+		  		var start_time = '2014-09-17';
+		  		var end_time = '2014-09-20';
+			  	$.ajax({
+					url:'../talk_init_servlet',
+					type:'POST',
+					data:'act_name='+act_name+'&act_topic='+act_topic+'&start_time='+start_time+'&end_time='+end_time,
+					success:function(ret){
+						var JSONObj = eval('('+ret+')');
+						$('#discussion').append('<p>'+JSONObj.resp.head.desc+'</p>');
+					}
+				})
+				shit();
+		})
+		function shit(){
+			setTimeout(function(){
+				/* var times = Date.parse(new Date());
+				times = getTimeChuo(times); */
+				var times = $('#discussion p').last().attr('name');
+				$.ajax({//定时获取用户数据
+					url:'../get_message_servlet',
+					type:'POST',
+					data:'last_time='+times,
+					success:function(ret){
+						var JSONObj = eval('('+ret+')');
+						$('#discussion').append('<p>'+JSONObj.resp.head.desc+'</p>');
+					}
+				})
+				shit();
+			},5158);
+		}
+		
+		function submit(){
+			var xx = 2555;
+			var mesg = document.getElementById('info').value;
+			if(mesg == ''){
+				alert('不能为空');
+			}else{
+				var uid = GetQueryString('tyh_web_uid');//用户ID
+				var nick = GetQueryString('tyh_web_nick');;//用户昵称
+				$.ajax({//定时获取用户数据
+					url:'../send_message_servlet',
+					type:'POST',
+					data:'uid='+uid+'&message='+mesg+'&nick='+nick+'&platform='+xx+'&app_version='+xx+'&aid='+xx,
+					success:function(ret){
+						var JSONObj = eval('('+ret+')');
+						if(JSONObj.resp.head.status == 100){
+							alert('提交成功');
+						}else if(JSONObj.resp.head.status == 101){
+							alert('提交失败');
+						}
+					}
+				})
+			}
+		}
+		
+		function GetQueryString(name){   //获取浏览器的参数
+	   	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	   	     var r = window.location.search.substr(1).match(reg);
+	   	     if(r!=null)return  unescape(r[2]); return null;
+	   	}
+		
+		Date.prototype.format = function(format)
+		{
+		 var o = {
+		 "Y+" : this.getYear(), //year
+		 "M+" : this.getMonth()+1, //month
+		 "d+" : this.getDate(),    //day
+		 "h+" : this.getHours(),   //hour
+		 "m+" : this.getMinutes(), //minute
+		 "s+" : this.getSeconds(), //second
+		 "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+		 "S" : this.getMilliseconds() //millisecond
+		 }
+		 if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+		 (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+		 for(var k in o)if(new RegExp("("+ k +")").test(format))
+		 format = format.replace(RegExp.$1,
+		 RegExp.$1.length==1 ? o[k] :
+		 ("00"+ o[k]).substr((""+ o[k]).length));
+		 return format;
+		}
+
+		function getTimeChuo(str_time){
+			var  str = parseInt(str_time);
+			return new Date(str).format('20YY.MM.dd hh:mm:ss:S');
+		}
+	</script>
+</body>
+</html>

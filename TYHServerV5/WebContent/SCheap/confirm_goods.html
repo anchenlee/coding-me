@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>已确认收货</title>
+  <script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+  <link rel="stylesheet" href="css/style.css"/><!--导入css-->
+  <script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+  <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+  <style type="text/css">
+  	.shits_right{
+  		right:0;
+  		top:43%;
+  		width:5%;
+  	}
+  	.confirm_content{padding: 5%;}
+  	.vm{
+  		vertical-align: middle;
+  		display: inline-block;
+  	}
+  	.shitbtn{
+  		margin-left: 30%;
+  		width:6.45%;
+  		float: right;
+  	}
+  	.select_row{background: #fff7ef;}
+  	.suggestion{
+  		resize:none;
+  		outline: none;
+  		width: 100%;
+  		border:1px solid #fe8a15;
+  		margin: 1% 0 0 0;
+  		padding: 0;
+  		word-break:break-all;
+  		text-indent: 3%;
+  		color:#696969;
+  	}
+  	.payphone{
+  		outline:none;
+  		border:1px solid #fe8a15;
+  		width: 100%;
+  		margin: 1% 0 0 0;
+  		padding: 0;
+  		text-indent: 3%;
+  		color:#696969;
+  	}
+  	.submit_btn{
+  		background: #fe8408;
+  		color: #fff;
+  		text-align: center;
+  		padding: 3% 0;
+  		width:50%;
+  		margin: 5% auto 0;
+  		position: relative;
+  	}
+  	.corners{width:2%;position: absolute;}
+  	.corner_lt{
+  		left: 0;
+  		top: 0;
+  	}
+  	.corner_rt{
+  		top: 0;
+  		right: 0;
+  		-webkit-transform:rotate(90deg);
+  	}
+  	.corner_ld{
+  		bottom: 0;
+  		left: 0;
+  		-webkit-transform:rotate(270deg);
+  	}
+  	.corner_rd{
+  		bottom: 0;
+  		right: 0;
+  		-webkit-transform:rotate(180deg);
+  	}
+  </style>
+</head>
+<body onload="start()">
+	<div onclick="" class="confirm_content" style="background: #fff7ef">
+		<img class="di" src="xx.png" alt="" style="width:18%;vertical-align: top;">
+		<div class="di pr" style="width:72%;vertical-align: top;margin-left: 5%;">
+			<p style="color:#864502">商品的介绍商品的介绍商品的介绍商品的介绍商品的介绍</p>
+			<p style="margin-top: 2%;"><span style="color:#b9b9b9;text-decoration: line-through;">￥258元</span><span style="color:#ef2b8c">&nbsp&nbsp9集分宝</span></p>
+		</div>
+	</div>
+	<div id="shit_content">
+		<span style="color:#ef2b8c;">反馈选项</span>
+		<div class="select_row" style="border:1px solid #fe8a15;margin-top: 1%;padding:3%">
+			<span class="vm" style="color:#864502">商品质量差</span>
+			<img class="vm shitbtn" name="0" src="images/shits/no_chose.png" />
+		</div>
+		<div class="select_row" style="border:1px solid #fe8a15;padding:3%;border-top:none">
+			<span class="vm" style="color:#864502">商品未发货</span>
+			<img class="vm shitbtn" name="0" src="images/shits/no_chose.png" />
+		</div>
+		<div class="select_row" style="border:1px solid #fe8a15;padding:3%;border-top:none">
+			<span class="vm" style="color:#864502">商品与描述不符</span>
+			<img class="vm shitbtn" name="0" src="images/shits/no_chose.png" />
+		</div>
+		<p style="color:#ef2b8c;margin-top: 3%;">亲还有什么补充意见吗</p>
+		<textarea class="suggestion" maxlength="200"></textarea>
+		<p style="color:#ef2b8c;margin-top: 3%;">留下您的手机号以便我们回复您</p>
+		<input class="payphone" type="text" maxlength="11" />
+		<div class="submit_btn">提交
+			<img class="corners corner_lt" alt="左上" src="images/shits/corner.png" />
+			<img class="corners corner_rt" alt="右上" src="images/shits/corner.png" />
+			<img class="corners corner_ld" alt="左下" src="images/shits/corner.png" />
+			<img class="corners corner_rd" alt="右下" src="images/shits/corner.png" />
+		</div>
+	</div>
+</body>
+<script>
+$(window).resize(function(){font_control();})
+
+$('.shitbtn').bind('click',function(){  //点击选择
+	if($(this).attr('name')==0){
+		$(this).attr('src','images/shits/no_chose.png');
+		$(this).attr('name',1);
+	}else{
+		$(this).attr('src','images/shits/chosed.png');
+		$(this).attr('name',0);
+	}
+})
+
+function start(){ //初始化
+	font_control();
+	$.ajax({
+		url:'/superDiscount/GoodsAction?getGoodsById',
+		data:'&id='+id,
+		type:'POST',
+		success:function(ret){
+			
+		}
+	})
+}
+
+function font_control(){
+	var w = $(window).width();
+	var h = w / 5 +'px';
+	var h2 = w / 15 +'px';
+	var ms = w / 28;
+	var bs = w / 25;
+	if(w < 640){
+		$('.suggestion').width($('.suggestion').width() - 2).height(h);
+		$('.payphone').width($('.payphone').width() - 2).height(h2);
+		$('body').css('font-size',ms+'px');
+		$('#shit_content').css('font-size',bs+'px');
+		$('.suggestion').css('font-size',bs+'px');
+		$('.payphone').css('font-size',bs+'px');
+	}
+}
+</script>
+</html>

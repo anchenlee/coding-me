@@ -1,0 +1,270 @@
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 微软雅黑,Arial, Free Sans;
+    background: url(../images/p_bg.png) repeat;
+}
+
+img,p{
+	padding: 0;
+	margin: 0;
+}
+
+img{
+	display: block;
+}
+
+.width100{
+	width: 100%;
+}
+
+.pa{
+	position: absolute;
+}
+
+#content1{
+	background: #f5c12d;
+	position: relative;
+	padding: 10.376% 0;
+}
+
+.cj_bg{
+	margin: 0 auto;
+	width: 86.75%;
+}
+
+.lights{
+	width: 76.7%;
+	top: 34%;
+	left: 12%;
+}
+
+.cj_btn,.cj_btn_ye,.cj_btn_mask{
+	top: 39.7%;
+	width: 71.25%;
+	left: 14.8%;
+}
+
+.cj_btn_mask{
+	padding-top:4%;
+	padding-left:26%;
+	display:none;
+	color: #fff;
+}
+
+#content2{
+	background: #00bc80;
+	position: relative;
+	padding:  2.125% 0;
+}
+
+.share_bg{
+	width: 57.6%;
+	margin: 0 auto;
+}
+
+.share_btn{
+	width: 50.25%;
+	top: 6%;
+	left: 25%;
+}
+
+.b1{
+	width: 2.375%;
+	top: 19%;
+	left: 11.625%;
+}
+
+.b2{
+	width: 7%;
+	top: 20%;
+	right: 9.375%;
+}
+
+.machine{
+	margin-top: 6.375%;
+}
+
+.flyship{
+	width: 69.875%;
+	margin: 2.5% auto 0;
+}
+
+.checkL,.checkR{
+	bottom:29%;
+	width: 22.5%;
+}
+
+.checkLye,.checkRye{
+	bottom:33%;
+	width: 22.5%;
+}
+
+.checkL,.checkLye{
+	left: 17%;
+}
+
+.checkR,.checkRye{
+	right: 23%;
+}
+
+#content3{
+	background: #f7ca4d;
+	position: relative;
+	padding: 5% 0;
+}
+
+#content3 p{
+	color: #c42821;
+	text-align: center;
+}
+
+.kefu{
+	width: 12.75%;
+	top:-55%;
+	left: 5%; 
+}
+
+#prize_content,#weixin_content{
+	width: 100%;
+	background: url(../images/p_bg.png) repeat;
+	padding: 5% 0;
+	position: relative;
+}
+
+#weixin_content{background: #fff;}
+
+.weixinLogo{
+	width:26.1%;
+	margin:0 auto;
+}
+
+.weixinText{
+	width:51.4%;
+	margin:3% auto 0;
+}
+
+.weixinApple,.weixinAndroid{
+	width:14.4%;
+	display:inline-block;
+}
+
+.weixinApple{
+	margin-left:31%;
+}
+
+.weixinAndroid{
+	margin-left:10%;
+}
+
+#p_part1{
+	position: relative;
+	width: 92.5%;
+	margin: 0 auto;
+	padding: 3.78378378378% 0 2% 0;
+	background: #676767;
+	border-radius: 1px;
+}
+
+#p_part1 p{
+	color: #fff;
+	font-weight: bold;
+	width: 70.135135135135135%;
+	margin-left: 2%;
+}
+
+.tenyuan{
+	margin: 3.78378378378% auto 0;
+	width: 95.945945945945945945945%;
+}
+
+.pCheckBtn{
+	width: 25.675675675675675%;
+	bottom: 7.540540540540%;
+	right: 4.459459459%;
+}
+
+.closeBtn{
+	width: 15%;
+	top: 0;
+	right: 2%;
+}
+
+.pGongxi,.pLujing{
+	margin-top: 5%;
+}
+
+.mask{
+	z-index: 1000;
+	left: 20%;
+	bottom: 22%;
+	width: 2.837837837837837%;
+	opacity: 0.5;
+}
+
+.confirm{
+	width:95.405405405405%;
+	bottom:4%;
+	left:2.3%;
+}
+
+.tc_text{
+	width:80%;
+	top:20%;
+	left:10%;
+}
+
+.tanchuang{
+	display:none;
+	position: fixed;
+	top:5%;
+	left:2%;
+	z-index: 2500;
+}
+
+.txtarea{
+	overflow-y:visible;
+	color:#982f04;
+	resize:none;
+	outline:none;
+	width:100%;
+	border:none;
+	font-weight: bold;
+}
+
+#float_ad{
+	width:19%;
+	top: 35%;
+	right: 0;
+	z-index: 2000;
+	position: fixed;
+}
+
+.login,.sign,.yue{
+	left: 10%;
+	width: 77.48344370860927%;
+}
+
+.gotop{
+	top:22%;
+	left:24%;
+	width: 52.31788079470199%;
+}
+
+.login{
+	top:59%;
+}
+
+.sign{
+	top:59.5%;
+}
+
+.yue{
+	top:39%;
+}
+
+.signNow,.downloadnow{
+	width: 25.675675675675675%;
+	bottom:7%;
+	right:5%;
+}

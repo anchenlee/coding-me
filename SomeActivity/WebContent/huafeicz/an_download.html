@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html><head>
+    <title>9.3充话费送集分宝</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" type="text/css" href="css/af/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/af/af.ui.css" />
+    <script type="text/javascript" src="js/appframework.js"></script>
+    <script type="text/javascript" src="js/ui/appframework.ui.min.js"></script>
+    <script type="text/javascript">
+        $.ui.ready(function(){
+              //$.ui.toggleHeaderMenu(false);
+               $.ui.removeFooterMenu();
+        })
+        $('#afui').scroller({useJsScroll:true});
+        if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+            var script = document.createElement("script");
+            script.src = "js/plugins/af.desktopBrowsers.js";
+            var tag = $("head").append(script);
+        }
+    </script>
+    <style>
+        #afui #header h1{display: none}
+        #backButton {display:none !important;}
+        .width100{display: block;width: 100%}
+        #afui .panel{background: #f4ec3e;padding: 0}
+        .pr{position: relative}
+        .pa{position: absolute}
+        .discount{right: 7%;top: -22%;width: 15%}
+        .share_btns{text-align: center}
+        .share_btns img{display: inline-block;width: 25%}
+        #download{top: 0;left: 0;z-index: 10;}
+        #download2{top: 0;left: 0;z-index: 10;position:fixed;}
+        #jfb_left{color: #ff3552}
+        #afui > #header{height: auto;border-bottom:none}
+    </style>
+</head>
+<body>
+<div id="afui">
+    <div id="header">
+        <img id="download" onclick="jump_download()" class="width100" src="img/middle_autumn/download.jpg" alt=""/>
+    </div>
+    <div id="content" class="pr">
+        <div id="announce_weixin" selected="true" class="panel"><!--    the first  weixin   PAGE~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+            <div class="pr">
+                <img class="width100" src="img/middle_autumn/img1_1.jpg" alt=""/>
+                <img class="width100" src="img/middle_autumn/img1_2.jpg" alt=""/>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function jump_download(){
+        window.location.href = 'http://youhui.cn';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>商品管理后台</title>
+<link href="css/superCheapStyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/bootstrap-theme.css" />
+<link href="css/custom.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery-ui-slide.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+<style type="text/css">
+.ui-datepicker{width:235px;}
+</style>
+</head>
+<body onload="init()">
+		<div class="top-panel">
+			<div class="top-logo">
+				<img class="logo-img" alt="" src="img/logo.jpg">
+				<img class="title-img" alt="" src="img/title.jpg">
+				<span class="title">商品管理系统</span>
+				<div class="top-tool">
+				</div>
+			</div>
+			<img class="right-img" alt="" src="img/top_right.jpg">
+			<ul class="nav nav-tabs menu">
+				<li><span class="span_50px"></span></li>
+			</ul>
+		</div>
+		<div class="mainbody">
+
+		<div class="panel panel-default left-panel" >
+			<div class="panel-heading">
+				<h3 style="display: inline;" class="panel-title">菜单</h3>
+			</div>
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+					<li><a>添加新商品</a></li>
+					<li><a onclick="location.href='superCheap.html'">查看商品列表</a></li>
+					<li><a>添加验证码</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="panel panel-default main-panel" style="width: 1610px">
+			<div class="panel-heading">
+				<h3 style="display: inline;" class="panel-title">内容</h3>
+			</div>
+			<div class="panel-body" style="display: inline;position: relative;">
+				<div id="dayInfo">
+					<div class="dayAds">
+					<!-- 添加产品  -->
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">商品名称</span>
+					  <input class="usefulInfo form-control" name="title" type="text" placeholder="商品名称">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">商品ID</span>
+					  <input class="usefulInfo form-control item_id" name="item_id" type="text" placeholder="商品ID">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+		  				<span class="input-group-addon">商品图片</span>
+		  				<input class="usefulInfo form-control" name="img" type="text" id="img" value="" placeholder="">
+					</div>
+					<form  method="post" enctype="multipart/form-data" action="" target="ImgUploadIfr">
+						    <label></label>
+						    <input id="gift_imgFile" name="file" type="file">
+						    <input type="button" onclick="add_ImgName(this)" value="上传" class="button">
+					</form>
+					<iframe name="ImgUploadIfr" style="display:none"></iframe>
+					 <!-- <form id="uploadImgForm" method="post" enctype="" action="" target="" >
+					    <div class="input-group"  style="width:350px;">
+					      <span class="input-group-btn">
+					        <input id="imgFile" name="file" class="btn btn-primary" type="file" />
+					      </span>
+					      <span class="input-group-btn">
+					        <button onclick="addImgName()" class="btn btn-primary" style="margin-left:5px;" type="button">上传</button>
+					      </span>
+				    	</div>
+					</form> -->
+				<!--内容结束-->
+					<div class="input-group item_tags" style="margin-top:5px;"><!--勾选tags内容-->
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">原价</span>
+					  <input class="usefulInfo form-control" name="price_before" type="text" placeholder="原价">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">现价</span>
+					  <input class="usefulInfo form-control" name="price_low" type="text" placeholder="现价">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">淘金币</span>
+					  <input readonly class="tao_jb usefulInfo form-control" name="tao_jb" type="text" placeholder="淘金币">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">商品个数</span>
+					  <input class="usefulInfo form-control" name="num" type="text" placeholder="商品个数">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="btn input-group-addon">选择是否包邮</span>
+					  <label class="form-control i_check" style="width:50px;"><input onclick="cPostage(this)" class="usefulInfo postAge" name="postage" type="checkbox" value="0" /><span></span></label><span></span>
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">添加日期</span>
+					  <input class="usefulInfo form-control" name="discount_date" id="add_time" type="text" placeholder="个数">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">开始时间</span>
+					  <input class="usefulInfo form-control" name="start_timestamp" id="start_time" type="text" placeholder="个数">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">结束时间</span>
+					  <input class="usefulInfo form-control" name="end_timestamp" id="end_time" type="text" placeholder="个数">
+					</div>
+					<div class="input-group" style="margin-top:5px;"><!-- 隐藏功能单独 接口  -->
+					  <span class="btn input-group-addon">选择是否隐藏</span>
+					  <label class="form-control i_check" style="width:50px;"><input onclick="is_hide(this)" class="usefulInfo is_hide" name="is_hide" type="checkbox" value="1" /><span style="display: inline-block;"></span></label><span></span>
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="btn input-group-addon">选择是否秒杀</span>
+					  <label class="form-control i_check" style="width:50px;"><input onclick="is_second_kill(this)" class="usefulInfo is_second_kill" name="is_second_kill" type="checkbox" value="0" /><span></span></label><span></span>
+					</div>
+					<div class="input-group" style="margin-top:5px;display:none;">
+					  <span class="input-group-addon">秒杀价格</span>
+					  <input class="usefulInfo form-control" name="kill_price" id="kill_price" type="text" placeholder="秒杀价格">
+					</div>
+					<div class="input-group" style="margin-top:5px;display:none;">
+					  <span class="input-group-addon">秒杀数量</span>
+					  <input class="usefulInfo form-control" name="kill_num" id="kill_num" type="text" placeholder="秒杀数量">
+					</div>
+					<div class="input-group" style="margin-top:5px;display:none;">
+					  <span class="input-group-addon">秒杀开始时间</span>
+					  <input class="usefulInfo form-control" name="kill_start_timestamp" id="kill_start_timestamp" type="text" placeholder="秒杀开始时间">
+					</div>
+					<div class="input-group" style="margin-top:5px;display:none;">
+					  <span class="input-group-addon">秒杀结束时间</span>
+					  <input class="usefulInfo form-control" name="kill_end_timestamp" id="kill_end_timestamp" type="text" placeholder="秒杀开始时间">
+					</div>
+					<!-- 添加产品结束  -->
+					</div><!-- 添加产品结束  -->
+					<!-- 添加产品结束  -->
+					<div class="input-group" style="margin-top:5px;">
+		  				<span class="input-group-addon">轮播大图片</span>
+		  				<input class="usefulInfo2 form-control" name="bigImg" type="text" id="bigImg" value="" placeholder="">
+					</div>
+					<form method="post" enctype="multipart/form-data" action="" target="ImgUploadIfr2">
+						    <label></label>
+						    <input id="gift_imgFile" name="file" type="file">
+						    <input type="button" onclick="add_ImgName(this)" value="上传" class="button">
+					</form>
+					<iframe name="ImgUploadIfr2" style="display:none"></iframe>
+					<div class="input-group" style="margin-top:5px;">
+		  				<span class="input-group-addon">轮播小图片</span>
+		  				<input class="usefulInfo2 form-control" name="smallImg" type="text" id="smallImg" value="" placeholder="">
+					</div>
+					<form method="post" enctype="multipart/form-data" action="" target="ImgUploadIfr3">
+						    <label></label>
+						    <input id="gift_imgFile" name="file" type="file">
+						    <input type="button" onclick="add_ImgName(this)" value="上传" class="button">
+					</form>
+					<iframe name="ImgUploadIfr3" style="display:none"></iframe>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">RGB颜色</span>
+					  <input class="usefulInfo2 form-control" maxlength="6" name="color" id="color" type="text" placeholder="RGB颜色">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">fromUID</span>
+					  <input class="usefulInfo2 form-control" maxlength="6" name="fromUid" id="fromUid" type="text" placeholder="填写你的id">
+					</div>
+					<div class="input-group" style="margin-top:5px;">
+					  <span class="input-group-addon">优惠券</span>
+					  <input class="yhq_url usefulInfo form-control" name="yhq_url" id="yhq_url" type="text" placeholder="填写优惠券地址" />
+					  <input class="yhq_title usefulInfo form-control" name="yhq_title" id="yhq_title" type="text" placeholder="填写优惠券title" />
+					</div>
+				</div>
+			</div>
+			<!-- 按钮组 -->
+			<div style="padding:5px 0;text-align: center;">
+				<button type="button" onclick="scSubmit()" class="btn btn-primary">提交</button>
+				<button type="button" class="btn btn-primary" onclick="javascript:history.go(-1)">取消</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$('#add_time').datetimepicker({
+		timeFormat: "00:00"
+	});
+	$('#start_time').datetimepicker();
+	$('#end_time').datetimepicker();
+	$('#kill_end_timestamp').datetimepicker();
+	$('#kill_start_timestamp').datetimepicker();
+
+	function init(){ //初始化生成itemtags
+		var date = GetQueryString('date');
+		$('#add_time').val(date);
+		$.ajax({
+			url:'SuperItemTags?method=get_all',
+			type:'POST',
+			success:function(ret){
+				console.info(ret)
+				var JSONObj = eval('('+ret+')');
+				var str = '';
+				for (var i = 0; i < JSONObj.length; i++) {
+					str += '<span class="btn input-group-addon">'+JSONObj[i].name+'</span>'
+					  +'<label class="form-control i_check" style="width:50px;"><input onclick="tagchoose(this)" class="tags" name="'+JSONObj[i].id+'" type="checkbox" value="0" /><span></span></label><span></span>';
+				}
+				$('.item_tags').append(''+str+'');
+			}
+		})
+	}
+	
+	function rep(str){
+		str = str.replace(/\%/g,"%25"); 
+		str = str.replace(/\+/g,"%2b");
+		str = str.replace(/\&/g,"%26");
+		return str;
+	}
+	
+	function scSubmit(){
+		var info = '{';
+		var str = '"item_tags":"';
+		$('.usefulInfo').each(function(){
+			var val=$(this).val();
+			val=rep(val);
+			if(($(this).attr('name')=='tao_jb') && (val=='')){
+				val = 0;
+			}
+			info += '"'+$(this).attr('name')+'":"'+val+'",';
+		});
+		$('.tags').each(function(){
+			if($(this).val() == 1){
+				str += ''+$(this).attr('name')+',';
+			}
+		});
+		info += str;
+		info += '';
+		info += '"}';
+		
+		var super_web ='{';
+		$('.usefulInfo2').each(function(){
+			super_web += '"'+$(this).attr('name')+'":"'+$(this).val()+'",';
+		});
+		super_web += '"id":"132456"}';
+		$.ajax({
+			url:"super/superdiscount?method=insertInfo",
+			data:"info="+info+"&super_web="+super_web,
+			async:false,
+			type:"POST",
+			success:function(ret){
+				if(ret == 'success'){
+					alert('提交成功');
+					window.reload();
+				}else{
+					alert('提交失败');
+				}
+			}
+		})
+	}
+	
+	function tagchoose(obj){  //标签选择控制
+		if($(obj).val()==0){
+			$(obj).val(1);
+			$(obj).next().css('display','inline-block');
+			if($(obj).parent().prev().text() == '淘金币'){   //如果是淘金币标签
+				$('.tao_jb').removeAttr('readonly');
+			}
+		}else{
+			$(obj).val(0);
+			$(obj).next().css('display','none');
+			if($(obj).parent().prev().text() == '淘金币'){   //如果是淘金币标签
+				$('.tao_jb').attr('readonly',true);
+			}
+		}
+	}
+
+	function addImgName(){
+	    var filename = $("#imgFile").val();
+	    $("#img").val(filename);
+	}
+	
+	function cPostage(obj){
+		if($(obj).val()==0){
+			$(obj).val(1);
+			$('.postAge').next().css('display','inline-block');
+		}else{
+			$(obj).val(0);
+			$('.postAge').next().css('display','none');
+		}
+	}
+	
+	function is_second_kill(obj){
+		if($(obj).val()==0){
+			$(obj).val(1);
+			$('.is_second_kill').next().css('display','inline-block');
+			$(obj).parents('.input-group').nextAll().css('display','table');
+		}else{
+			$(obj).val(0);
+			$('.is_second_kill').next().css('display','none');
+			$(obj).parents('.input-group').nextAll().css('display','none');
+		}
+	}
+	
+	function is_hide(obj){
+		if($(obj).val()==0){
+			$(obj).val(1);
+			$('.is_hide').next().css('display','inline-block');
+		}else{
+			$(obj).val(0);
+			$('.is_hide').next().css('display','none');
+		}
+	}
+	
+	function GetQueryString(name){   //获取浏览器的参数
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return unescape(r[2]); return '';
+	}
+	// 上传图标
+    function add_ImgName(obj)
+	{
+		var date = (new Date()).valueOf();
+	    var filename = $(obj).prev().val(); 
+	    var suffix = filename.substring(filename.lastIndexOf("."));
+		var prefix = "http://static.etouch.cn/suishou/ad_img/";
+		var url = prefix+date+suffix;
+	    $(obj).parent().prev().find('input').val(url);
+	    $(obj).parent().attr('action','http://a.suishouyouhui.cn/img/upload?imgsn='+date);
+	    $(obj).parent().submit();
+	}
+</script>
+</html>

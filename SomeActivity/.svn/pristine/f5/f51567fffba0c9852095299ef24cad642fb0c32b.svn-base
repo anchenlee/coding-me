@@ -1,0 +1,73 @@
+package cn.suishou.some.talk.cache;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import com.google.gson.Gson;
+import com.mysql.jdbc.TimeUtil;
+
+import cn.suishou.some.manager.JedisListManager;
+import cn.suishou.some.common.Constant;
+import cn.suishou.some.talk.bean.Message;
+
+/**
+ * 在redis中操作message对象
+ * @author weifeng
+ * 2014-09-17
+ */
+public class OperationMsgCacher {
+	
+	private static OperationMsgCacher instance = null;
+	
+	private OperationMsgCacher() {
+	}
+
+	public static OperationMsgCacher getInstance() {
+		return instance == null ? (instance = new OperationMsgCacher()) : instance;
+	}
+	
+	public void saveMsg(Message msg){
+		JedisListManager jedisList = new JedisListManager(Constant.TALK_MSG);
+		jedisList.add(new Gson().toJson(msg));
+	}
+	
+	public List<Message> getMsgListByTimer(String lastTime){
+		Timestamp stampTime = null;
+		if (null == lastTime || "".equals(lastTime.trim())){
+			Date rightNow = new Date();
+			stampTime = new Timestamp(rightNow.getTime() - TimeUnit.SECONDS.toMillis(2));
+		}else {
+			
+			stampTime = Timestamp.valueOf(lastTime);
+		}
+		
+		List<Message> listMsg = new ArrayList<Message>();
+		JedisListManager jedisList = new JedisListManager(Constant.TALK_MSG);
+		List<String> list = jedisList.getAll();
+		Gson gson = new Gson();
+		for (String msg : list){
+			Message entity = gson.fromJson(msg, Message.class);
+			if (entity.getGenerateTime().after(stampTime)){
+				listMsg.add(entity);
+			}
+		}
+		return listMsg;
+	}
+	
+	public List<Message> getMsgList(){
+		
+		List<Message> listMsg = new ArrayList<Message>();
+		JedisListManager jedisList = new JedisListManager(Constant.TALK_MSG);
+		List<String> list = jedisList.getAll();
+		Gson gson = new Gson();
+		for (String msg : list){
+			Message entity = gson.fromJson(msg, Message.class);
+			listMsg.add(entity);
+		}
+		return listMsg;
+	}
+	
+}

@@ -1,0 +1,22 @@
+log4j.rootLogger=INFO, stdout, E, I
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Threshold=INFO
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=[%5p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%F : %L] - %m%n
+
+#INFO
+log4j.appender.I=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.I.Threshold=INFO
+log4j.appender.I.File=./logs/Youhui_4.0/info.log
+log4j.appender.I.file.DatePattern=yyyy-MM-dd'.log'
+log4j.appender.I.layout=org.apache.log4j.PatternLayout
+log4j.appender.I.layout.ConversionPattern=[%5p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%F : %L] - %m%n
+
+#ERROR
+log4j.appender.E=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.E.Threshold=ERROR
+log4j.appender.E.File=./logs/Youhui_4.0/error.log
+log4j.appender.E.file.DatePattern=yyyy-MM-dd'.log'
+log4j.appender.E.layout=org.apache.log4j.PatternLayout
+log4j.appender.E.layout.ConversionPattern=[%5p] [%d{yyyy-MM-dd HH\:mm\:ss.SSS}] [%F \: %L] - %m%n

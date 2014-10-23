@@ -1,0 +1,208 @@
+[ERROR] [2014-05-06 17:00:08.192] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.ramdata.TagItemCacher.getIsconverted(TagItemCacher.java:232)
+	at cn.youhui.utils.RespStatusBuilder.message(RespStatusBuilder.java:163)
+	at cn.youhui.dao.view.ViewRecordMongo.obtainViewRecord(ViewRecordMongo.java:100)
+	at cn.youhui.dao.view.ViewRecordMongo.main(ViewRecordMongo.java:262)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 6 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 11 more
+[ERROR] [2014-05-06 17:45:49.115] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.ramdata.TagItemCacher.getIsconverted(TagItemCacher.java:232)
+	at cn.youhui.utils.RespStatusBuilder.message(RespStatusBuilder.java:163)
+	at cn.youhui.dao.view.ViewRecordMongo.obtainViewRecord(ViewRecordMongo.java:101)
+	at cn.youhui.dao.view.ViewRecordMongo.main(ViewRecordMongo.java:263)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 6 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 11 more
+[ERROR] [2014-05-06 17:47:18.278] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.ramdata.TagItemCacher.getIsconverted(TagItemCacher.java:232)
+	at cn.youhui.utils.RespStatusBuilder.message(RespStatusBuilder.java:163)
+	at cn.youhui.dao.view.ViewRecordMongo.obtainViewRecord(ViewRecordMongo.java:101)
+	at cn.youhui.dao.view.ViewRecordMongo.main(ViewRecordMongo.java:263)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 6 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 11 more
+[ERROR] [2014-05-06 17:47:42.645] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.ramdata.TagItemCacher.getIsconverted(TagItemCacher.java:232)
+	at cn.youhui.utils.RespStatusBuilder.message(RespStatusBuilder.java:163)
+	at cn.youhui.dao.view.ViewRecordMongo.obtainViewRecord(ViewRecordMongo.java:101)
+	at cn.youhui.dao.view.ViewRecordMongo.main(ViewRecordMongo.java:263)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 6 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 11 more
+[ERROR] [2014-05-06 17:47:53.684] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.ramdata.TagItemCacher.getIsconverted(TagItemCacher.java:232)
+	at cn.youhui.utils.RespStatusBuilder.message(RespStatusBuilder.java:163)
+	at cn.youhui.dao.view.ViewRecordMongo.obtainViewRecord(ViewRecordMongo.java:101)
+	at cn.youhui.dao.view.ViewRecordMongo.main(ViewRecordMongo.java:263)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 6 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 11 more
+[ERROR] [2014-05-06 17:48:49.707] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.ramdata.TagItemCacher.getIsconverted(TagItemCacher.java:232)
+	at cn.youhui.utils.RespStatusBuilder.message(RespStatusBuilder.java:163)
+	at cn.youhui.dao.view.ViewRecordMongo.obtainViewRecord(ViewRecordMongo.java:101)
+	at cn.youhui.dao.view.ViewRecordMongo.main(ViewRecordMongo.java:264)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 6 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 11 more
+[ERROR] [2014-05-06 17:49:08.171] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.ramdata.TagItemCacher.getIsconverted(TagItemCacher.java:232)
+	at cn.youhui.utils.RespStatusBuilder.message(RespStatusBuilder.java:163)
+	at cn.youhui.dao.view.ViewRecordMongo.obtainViewRecord(ViewRecordMongo.java:101)
+	at cn.youhui.dao.view.ViewRecordMongo.main(ViewRecordMongo.java:264)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 6 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 11 more
+[ERROR] [2014-05-06 17:49:29.947] [JedisDBIns.java : 45] - redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool
+	at redis.clients.util.Pool.getResource(Pool.java:22)
+	at cn.youhui.dao.JedisDBIns.getJedis(JedisDBIns.java:41)
+	at cn.youhui.common.RedisExecutor.exe(RedisExecutor.java:14)
+	at cn.youhui.ramdata.TagItemCacher.getIsconverted(TagItemCacher.java:232)
+	at cn.youhui.utils.RespStatusBuilder.message(RespStatusBuilder.java:163)
+	at cn.youhui.dao.view.ViewRecordMongo.obtainViewRecord(ViewRecordMongo.java:101)
+	at cn.youhui.dao.view.ViewRecordMongo.main(ViewRecordMongo.java:264)
+Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: connect timed out
+	at redis.clients.jedis.Connection.connect(Connection.java:124)
+	at redis.clients.jedis.BinaryClient.connect(BinaryClient.java:54)
+	at redis.clients.jedis.BinaryJedis.connect(BinaryJedis.java:1657)
+	at redis.clients.jedis.JedisPool$JedisFactory.makeObject(JedisPool.java:63)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1181)
+	at redis.clients.util.Pool.getResource(Pool.java:20)
+	... 6 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at redis.clients.jedis.Connection.connect(Connection.java:119)
+	... 11 more

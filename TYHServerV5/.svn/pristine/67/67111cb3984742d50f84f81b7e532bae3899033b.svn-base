@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 获取用户标签 提交参数：uid,access_token,tagId -->
+<resp>
+	<head>
+		<status>1000</status>
+		<desc><![CDATA[OK]]></desc>
+		<access_token>938589KLJGJKSD87SGSKJ</access_token>
+	</head>
+</resp>

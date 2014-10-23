@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head>
+    <title>秋品上新一减再减</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta content="telephone=no" name="format-detection" /><!--忽略将页面中的数字识别为电话号码-->
+</head>
+<body style="height:100%;max-width:640px;margin:0 auto">
+	<iframe style="width:100%;height:100%;border:none" src="http://detail.m.tmall.com/item.htm?id=39177364771&fm=detail&spm=0.0.0.0">	        
+	</iframe>
+	<div style="position:fixed;bottom:0;z-index:200;background: rgba(0,0,0,.6);width:100%;color:#fff;height:2em">
+	   	<p>呵呵</p>
+	</div>
+</body>
+</html>

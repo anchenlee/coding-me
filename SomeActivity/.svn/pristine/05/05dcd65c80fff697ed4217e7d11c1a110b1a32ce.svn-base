@@ -1,0 +1,282 @@
+/**
+ * Created by lianchen on 14-9-23.
+ */
+//可以用鼠标拖动屏幕
+function loadedPanel(what) {
+    //We are going to set the badge as the number of li elements inside the target
+    $.ui.updateBadge("#aflink", $("#af").find("li").length);
+}
+function unloadedPanel(what) {
+    console.log("unloaded " + what.id);
+}
+var u = navigator.userAgent;
+if(u.indexOf('iphone') > -1){
+    if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+        var script = document.createElement("script");
+        script.src = "../appframework/plugins/af.desktopBrowsers.js";
+        var tag = $("head").append(script);
+    }
+}else{
+    $.feat.nativeTouchScroll=false;
+}
+/*初始化留言板*/
+$(function(){
+	document.getElementById('if').contentWindow.document.write('<head><style>' +
+        'html{ overflow-x:hidden;} ' +
+        'p{' +
+        '   font-family: "microsoft yahei";' +
+        '   padding: .2rem .5rem;' +
+        '   font-size: .6rem;' +
+        '   line-height: .8rem;' +
+        '   background: #fffec3;' +
+        '   border-radius: .5rem;' +
+        '   border: 1px solid #662819;' +
+        '}' +
+        '</style></head>');
+    document.getElementById('if').contentWindow.document.write('<body>');
+    var act_name = '聊天框';
+    var act_topic = '聊天话题';
+    var start_time = '2014-09-17';
+    var end_time = '2014-09-20';
+    $.ajax({
+        url:'../talk_init_servlet',
+        type:'POST',
+        data:'act_name='+act_name+'&act_topic='+act_topic+'&start_time='+start_time+'&end_time='+end_time,
+        success:function(ret){
+            var JSONObj = JSON.parse(ret);
+            var son = '';
+            for(var i=0;i<JSONObj.resp.data.categorys.length;i++){
+                son+='<p name=\''+JSONObj.resp.data.categorys[i].generateTime+'\'>'+JSONObj.resp.data.categorys[i].msg+'</p>'
+            }
+            if_append(son);
+        }
+    });
+    shit();
+    document.getElementById('if').contentWindow.document.write('</body>');
+    document.getElementById('if').contentWindow.document.write('</html>');
+});
+
+/*定时获取添加留言内容*/
+function shit(){
+    setTimeout(function(){
+        var len = document.getElementById('if').contentWindow.document.getElementsByTagName('p').length;
+        var times = document.getElementById('if').contentWindow.document.getElementsByTagName('p')[len-1].getAttribute("name");
+        $.ajax({//定时获取用户数据
+            url:'../get_message_servlet',
+            type:'POST',
+            data:'last_time='+times,
+            success:function(ret){
+                var JSONObj = JSON.parse(ret);
+                var son = '';
+                if(JSONObj.resp.head.status == 100){
+                    for(var i=0;i<JSONObj.resp.data.categorys.length;i++){
+                        son+='<p name=\''+JSONObj.resp.data.categorys[i].generateTime+'\'>'+JSONObj.resp.data.categorys[i].msg+'</p>'
+                    }
+                }else{
+                    son+='';
+                }
+                if_append(son);
+            }
+        });
+        shit();
+    },5158);
+}
+
+/*添加留言内容*/
+function if_append(mesg){
+    document.getElementById('if').contentWindow.document.write(mesg);
+}
+
+/*用户提交留言内容*/
+function submit(){
+    var xx = 2555;
+    var mesg = document.getElementById('message').value;
+    if(mesg == ''){
+        alert('不能为空');
+    }else{
+        var uid = GetQueryString('tyh_web_uid');//用户ID
+        var nick = GetQueryString('tyh_web_nick');//用户昵称
+        $.ajax({
+            url:'../send_message_servlet',
+            type:'POST',
+            data:'uid='+uid+'&message='+mesg+'&nick='+nick+'&platform='+xx+'&app_version='+xx+'&aid='+xx,
+            success:function(ret){
+                var JSONObj = eval('('+ret+')');
+                if(JSONObj.resp.head.status == 100){
+                    alert('提交成功');
+                }else if(JSONObj.resp.head.status == 101){
+                    alert('提交失败');
+                }
+            }
+        })
+    }
+}
+
+function GetQueryString(name){   //获取浏览器的参数
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+    }
+
+/*5号奖项弹出框设置*/
+function selShow(obj){
+    var ID = $(obj).attr("id");
+    $('#'+ID+' img').show();
+    $("#myPopup").trigger("close");
+}
+
+/*点击手柄开始抽奖*/
+$("#sb_left").bind("click",function(){
+    $("#sb_left").hide();
+    $("#arrow").hide();
+    $("#sb_right").show();
+    var re = Math.ceil(Math.random()*12+12);
+    ani(re);
+});
+var T1 = 200;
+var T2 = 100;
+var T3 = 300;
+/*获取数据前滚动*/
+function ani(re){
+    var ba = -0.04;
+    var Y1 = toPercent(ba*4);
+    var Y2 = toPercent(ba*(re-4));
+    var Y3 = toPercent(ba*re);
+    var t1 = T1*4;
+    var t2 = T2*(re-8);
+    var t3 = T3*4;
+    $("#animate_ul").css3Animate({
+        y: Y1,
+        time: t1,
+        success: function () {
+            $("#animate_ul").css3Animate({
+                y: Y2,
+                time: t2,
+                success: function () {
+                    $("#animate_ul").css3Animate({
+                        y: Y3,
+                        time: t3,
+                        callback: function (){
+                            var me = re -12;
+                            var mesg = msgTrans(1);
+                            $("#afui .top").popup({
+                                id:"myPopup",
+                                message: mesg,
+                                cancelOnly: true
+                            });
+
+
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+/*提交中奖内容*/
+function submitAnswer(){
+    var uid = GetQueryString('tyh_web_uid');
+    var cons;
+    switch (me){
+        case 1:
+            cons = $();
+            break;
+    }
+
+}
+
+
+/*12个奖项的弹出框*/
+function msgTrans(num){
+    var msg = [];
+    msg[1]='<div class="pr wi hi" id="msg1"><img class="wi block pr" src="../dazhaxie/images/pop1_03_03.jpg">' +
+        '<a class="pengyou pa" onclick="window.location.href=" ></a> ' +
+        '<a class="weixin pa" onclick="window.location.href=" ></a> ' +
+        '</div>';
+    msg[2]='<div class="pr wi hi" id="msg2"><img class="wi block pr" src="../dazhaxie/images/pop2_03.jpg">' +
+        '<a class="weibo pa" onclick="window.location.href=" ></a>' +
+        '</div>';
+    msg[3]='<div class="pr wi hi" id="msg3"><img class="wi block pr" src="../dazhaxie/images/pop3_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[4]='<div class="pr wi hi" id="msg4"><img class="wi block pr" src="../dazhaxie/images/pop4_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[5]='<div class="pr wi hi" id="msg5"><img class="wi block pr" src="../dazhaxie/images/pop5_03.jpg">' +
+        '<div id="c1" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c2" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c3" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c4" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c5" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c6" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+
+        '</div>';
+    msg[6]='<div class="pr wi hi" id="msg6"><img class="wi block pr" src="../dazhaxie/images/pop6_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[7]='<div class="pr wi hi" id="msg7"><img class="wi block pr" src="../dazhaxie/images/pop7_03.jpg">' +
+        '<a class="right pa" onclick="window.location.href=" ></a> ' +
+        '<a class="wrong pa" onclick="window.location.href=" ></a> ' +
+        '</div>';
+    msg[8]='<div class="pr wi hi" id="msg8"><img class="wi block pr" src="../dazhaxie/images/pop8_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[9]='<div class="pr wi hi" id="msg9"><img class="wi block pr" src="../dazhaxie/images/pop9_03.jpg">' +
+        '<a class="pengyou pa" onclick="window.location.href=" ></a> ' +
+        '<a class="weixin pa" onclick="window.location.href=" ></a> ' +
+        '</div>';
+    msg[10]='<div class="pr wi hi" id="msg10">' +
+        '<img class="wi block pr" src="../dazhaxie/images/pop10_03.jpg">' +
+        '<input class="pa wi hi" type="text">' +
+        '<input class="pa wi hi" type="button">' +
+        '</div>';
+    msg[11]='<div class="pr wi hi" id="msg11"><img class="wi block pr" src="../dazhaxie/images/pop11_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[12]='<div class="pr wi hi" id="msg12"><img class="wi block pr" src="../dazhaxie/images/pop12_03.jpg">' +
+        '<a class="mmd pa" onclick="window.location.href=\'http://www.baidu.com\'"></a> ' +
+        '<a class="qdb pa" onclick="window.location.href=\'http://www.baidu.com\'" ></a> ' +
+        '<a class="hxq pa" onclick="window.location.href=\'http://www.baidu.com\'" ></a> ' +
+        '<a class="zsm pa" onclick="window.location.href=\'http://www.baidu.com\'" ></a> ' +
+        '</div>';
+    return msg[num];
+}
+/*转换百分数*/
+function toPercent(num){
+    num = Number(num)*100+'%';
+    return num;
+}
+
+
+
+function weixin_share(){
+    var share_str = '{"sns_type":"weixin","request_code":"","share_type":"activity_type","click_url":"http://d.b17.cn/sactivity/weixin_free/pot.jsp","img_url":"http://static.etouch.cn/suishou/ad_img/3eqvu8khsdo.jpg","activity_key":"0tnie1cj","content":"韩式耐高温砂锅,免费抢到手软,根本停不下来！","title":"优惠君福利Time!","item_id":"","activity_key":"0tnie1cj","channel":"own","jifenbao_num":"0","sst":""}';
+    local_info.share(share_str);
+}
+
+function friend_share(){
+    var share_str = '{"sns_type":"pengyou","request_code":"","share_type":"activity_type","click_url":"http://d.b17.cn/sactivity/weixin_free/pot.jsp","img_url":"http://static.etouch.cn/suishou/ad_img/3eqvu8khsdo.jpg","activity_key":"0tnie1cj","content":"韩式耐高温砂锅,免费抢到手软,根本停不下来！","title":"优惠君福利Time!","item_id":"","activity_key":"0tnie1cj","channel":"own","jifenbao_num":"0","sst":""}';
+    local_info.share(share_str);
+}
+function weibo_share(){
+    var share_str = '{"sns_type":"weibo","request_code":"","share_type":"activity_type","click_url":"http://d.b17.cn/sactivity/weixin_free/pot.jsp","img_url":"http://static.etouch.cn/suishou/ad_img/3eqvu8khsdo.jpg","activity_key":"0tnie1cj","content":"韩式耐高温砂锅,免费抢到手软,根本停不下来！","title":"优惠君福利Time!","item_id":"","activity_key":"0tnie1cj","channel":"own","jifenbao_num":"0","sst":""}';
+    local_info.share(share_str);
+}
+

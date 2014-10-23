@@ -1,0 +1,148 @@
+body {
+/*     max-width: 1500px; */
+    height: 1000px;
+    margin: 20px auto;
+    font-family: "microsoft yahei",Arial, Free Sans;
+    position: relative;
+}
+ul,li,p{padding: 0;margin: 0;list-style: none;}
+img{display: inline-block;}
+.fl{float: left;}
+.fr{float: right;}
+.di{display: inline-block;}
+.co{color: #ff9f00;}
+.cw{color: #fff;}
+.pr{position: relative;}
+.pa{position: absolute;}
+#box{
+    position: absolute;
+    width: 6000px;
+    text-align: left;
+    height: 600px;
+    margin-left:150px;
+}
+.mar{
+    position: relative;
+    width: 375px;
+    height: 85%;
+    display: inline-block;
+}
+.mar div{
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    background: #fff5d3;
+}
+.mar div img{
+    position: absolute;
+    padding: 4px;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.span1,
+.span12,
+.span13,
+.span135,
+.span1234,
+.span123456{
+    left: 0;
+    top: 0;
+}
+.span2,
+.span24,
+.span246{
+    left: 50%;
+    top: 0;
+}
+.span3,
+.span34,
+.span35,
+.span3456{
+    left: 0;
+    top: 150px;
+}
+.span4,
+.span46{
+    left: 50%;
+    top: 150px;
+}
+.span5,
+.span56{
+    left: 0;
+    top: 300px;
+}
+.span6{
+    left: 50%;
+    top: 300px;
+}
+.span1,
+.span2,
+.span3,
+.span4,
+.span5,
+.span6{
+    width: 50%;
+    height: 150px;
+}
+.span12,
+.span34,
+.span56{
+    width: 100%;
+    height: 150px;
+}
+.span13,
+.span35,
+.span24,
+.span46{
+    width: 50%;
+    height: 300px;
+}
+.span135,
+.span246{
+    width: 50%;
+    height: 450px;
+}
+.span1234,
+.span3456{
+    width: 100%;
+    height: 300px;
+}
+.span123456{
+    width: 100%;
+    height: 450px;
+}
+
+.btn-info{
+    position: relative;
+	width: 100px;
+	height: 40px;
+	line-height: 30px;
+	text-align: center;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	top: 500px;
+	background: dodgerblue;
+	color: #fff;
+	font-weight: bold;
+    font-size: 14px;
+	border-radius: 5px;
+    font-family: "microsoft yahei";
+    display:inline-block;
+}
+/*button:active{
+	position: relative;
+	top: -3px;
+	left: -3px;
+}*/
+#current{
+    background: #ff8e8e;
+}
+
+.ui-datepicker{
+    z-index: 9999;
+}

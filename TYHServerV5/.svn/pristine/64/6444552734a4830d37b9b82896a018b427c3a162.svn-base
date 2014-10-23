@@ -1,0 +1,444 @@
+@charset "utf-8";
+html{
+	font-size:60%;
+}
+@media screen and (max-width: 800px) {
+	html {
+		font-size: 87.5%;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	html {
+		font-size: 30%;
+	}
+}
+img {
+	display: block;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.di {
+	display: inline-block;
+}
+
+.co {
+	color: #ff9f00;
+}
+
+.cw {
+	color: #fff;
+}
+
+.pr {
+	position: relative;
+}
+
+.pa {
+	position: absolute;
+}
+
+#Bgd {
+	background: #FFF;
+    font-family: "microsoft yahei",Arial, Free Sans;
+	position: relative;
+}
+#webslider{
+	padding: 0;
+}
+.Ab {
+	position: absolute;
+}
+
+.F1{
+	font-size: 3.6rem;
+}
+.F5{
+	font-size: 3.8rem;
+}
+.F6{
+	font-size: 4rem;
+}
+.F8{
+	font-size: 4.2rem;
+}
+.F9{
+	font-size: 5rem;
+}
+#Bgd2{
+	position: relative;
+}
+#Bgd2 span{
+	position: absolute;
+}
+#Bgd3 {
+	position: relative;
+	background: url(../images/image3.png) repeat-y 0px 0px;
+	background-size: 100%;
+}
+
+.bgd21{
+	width:83.75%;
+	left:7.96875%;
+	top:12.95%;
+	z-index: 99;
+}
+.p_02 {
+	width: 100%;
+}
+
+.p_04 {
+	width: 83.925%;
+	top: 12.90426%;
+	left: 7.95%;
+}
+
+.p_05 {
+	width: 83.925%;
+	bottom: -16.7%;
+	left: 7.95%;
+	z-index: 999;
+}
+
+.p_06 {
+	width: 1.735%;
+	left: 7.96875%;
+	top: 15.09574%;
+}
+
+.p_07 {
+	width: 1.71875%;
+	right: 8.125%;
+	top: 16.06%;
+}
+
+.p_08 {
+	width: 74.6478873%;
+	left: 12.97183%;
+	top: 7.8125%;
+}
+
+.p_09 {
+	width: 62.676%;
+	left: 18.309859%;
+	top: 0;
+}
+
+.i_01 {
+	width: 100%;
+}
+
+.i_02 {
+	width: 24.647887%;
+	top: 11.73684%;
+	left: 37.32394%;
+}
+
+.i_03 {
+	width: 100%;
+}
+
+#Bgd2 .Info {
+	display: block;
+	/*background: #fff;*/
+	top: 16.05%;
+	width: 80.5%;
+	height: 80.483%;
+	left: 9.67%;
+	z-index: 100;
+	color: #5f3000;
+}
+   
+#Bgd2 .Info .SelfInfo {
+	width: 26.0625%;
+	height: 100%;
+}
+
+.SelfRank a.Rankgo {
+	width: 3.535%;
+	right: 25.64789%;
+	top: 22.2105%;
+}
+
+#Bgd2 .Info .SelfInfo .SelfName {
+	width: 100%;
+	top: 48.140078%;
+	text-align: center;
+	line-height: 100%;
+}
+
+/*.SelfName .text_0 {
+	top: 20%;
+	left: 19.403%;
+	color: #6f3903;
+}*/
+
+#Bgd2 .Info .SelfInfo .SelfRank {
+	width: 100%;
+	height: 36.96498%;
+	bottom: 0;
+}
+
+#Bgd2 .Info .EarnInfo {
+	height: 100%;
+	width: 73.9375%;
+	right: 0;
+}
+
+.Save {
+	font-weight: 700;
+	width: 96.226415%;
+	height: 29.47984%;
+}
+
+.EarnInfo .Save span.Savetext {
+	top: 22.894737%;
+	color: #5f3000;
+}
+
+.EarnInfo .Save span.SaveNumber {
+	color: #ff0000;
+	top: 27.894737%;
+	left: 32.7374%;
+	width: 30%;
+	text-align: center;
+}
+
+.EarnInfo .Save span.unit {
+	top: 22.894737%;
+	right: 30%;
+	color: #5f3000;
+}
+
+.EarnInfo .Save span.change {
+	width: 17.086835%;
+	right: 0;
+}
+
+.GetMoney {
+	top: 29.182879%;
+	width: 95.698925%;
+	height: 64.20233%;
+	background: #FFF2E7;
+}
+
+.Total {
+	width: 100%;
+	height: 32.121%;
+	top: 0;
+	left: 0;
+}
+
+.Total span.TotalMoney {
+	left: 1.96629%;
+	width: 96.0674%;
+	height: 100%;
+	border-bottom: 1px dashed #826449;
+}
+
+.Total span.Fhtext {
+	left: 0;
+	top: 26.415%;
+	color: #6f3903;
+}
+
+.Total span.Money {
+	top: 28.3018%;
+	left: 48.9662%;
+	color: #6f3903;
+}
+
+.Caculate {
+	width: 100%;
+	height: 67.8788%;
+	left: 0;
+	bottom: 0;
+	color: #b84500;
+}
+.Caculate .Shopping {
+	width: 27.52809%;
+	height: 82.142857%;
+	bottom: 6.25%;
+	left: 1.96629%;
+	background: #FFFFFF;
+	text-align: center;
+}
+
+.Caculate .Shopping .C1 {
+	width: 100%;
+	top: 20.65217%;
+}
+
+.Caculate .Shopping .Ca1 {
+	width: 100%;
+	bottom: 21.73913%;
+}
+
+.Caculate .multiply {
+	left: 31.6849%;
+	bottom: 31.17857%;
+}
+
+.Caculate .Proption {
+	width: 60.11236%;
+	height: 82.142857%;
+	bottom: 6.25%;
+	right: 1.96629%;
+	background: #FFFFFF;
+}
+
+.Caculate .Proption .ProPart {
+	left: 4.186%;
+	top: 18.739%;
+}
+
+.Caculate .Proption .add {
+	top: 30.30435%;
+	right: 44.48837%;
+}
+
+.Caculate .Proption .i_10 {
+	width: 12.2727%;
+	top: 19.5652%;
+	right: 27.2727%;
+}
+
+.Caculate .Proption .ExtralPart {
+	right: 6.5116%;
+	top: 18.739%;
+}
+
+.path {
+	position: relative;
+	width: 100%;
+}
+#Bgd3 p{
+	font-weight: 700;
+	font-size: 3.6rem;
+	position: absolute;
+	line-height: normal;
+	color: #4B2706;
+}
+.part {
+	width: 100%;
+}
+.date {
+	background-color: #ffffff;
+	text-align: center;
+	width: 100%;
+	color: #4B2706;
+	top: -45%;
+	height: 36%;
+}
+.d1{
+
+}
+.Tip {
+	width: 40.46875%;
+}
+.T1 {
+	left: 9.5%;
+	bottom: 8.5%;
+}
+.T2{
+	right: 5.5%;
+	bottom: 2.5%;
+}
+.T3 {
+	right: 11.5%;
+	top: 4%;
+}
+.T4 {
+	left: 12.5%;
+	top: 4%;
+}
+.Tip2 {
+	width: 100%;
+	position: relative;
+}
+.p_13 {
+	width: 100%;
+}
+.Tip_number {
+	top: 29%;
+	width: 40%;
+	left: 10%;
+}
+.Tip_text {
+	top: 12%;
+	left: 45%;
+	color: #4B2706;
+	font-size: 3.6rem;
+}
+.Tip_message {
+	overflow: hidden;
+	text-align: center;
+	top: 15%;
+	width: 100%;
+	color: #4B2706;
+}
+.Box {
+	width: 12.1875%;
+}
+.Box2 {
+	position: relative;
+	width: 100%;
+}
+.b1 {
+	left: 27.5%;
+	top: 34%;
+}
+.b2 {
+	right: 12.5%;
+	top: 46%;
+}
+.b3 {
+	right: 21.28125%;
+	top: 24%;
+}
+.b4 {
+	left: 17.5%;
+	top: 24%;
+}
+.Circle {
+	width: 100%;
+}
+
+.i_4 {
+	width: 56.41%;
+	left: 22%;
+	top: 15%;
+}
+
+.i_5 {
+	width: 65.3846%;
+	left: 18%;
+	top: 20%;
+}
+
+.i_6 {
+	width: 46.1538%;
+	left: 27%;
+	top: 17%;
+}
+
+.i_7 {
+	width: 61.53846%;
+	left: 19.5%;
+	top: 18%;
+}
+
+.Msg {
+	color: #713800;
+	text-align: center;
+	width: 250%;
+	top: 72%;
+	left: -75%;
+}

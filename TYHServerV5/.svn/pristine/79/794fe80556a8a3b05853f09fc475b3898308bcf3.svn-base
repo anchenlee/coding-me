@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>使用帮助</title>
+	<script type="text/javascript" src="js/jquery1-10.js"></script><!--导入js-->
+	<script type="text/javascript" src="js/controller.js"></script><!--导入js-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+</head>
+<body>
+<div id="body_content">
+	<div id="step1">
+		<div class="step1_content content">
+			<img class="step1_pic1 step_pic" src="images/step1.png" alt="">
+			<img class="step1_pic2 text_pic" src="images/step1_text1.png" alt="">
+			<img class="step1_pic3 hand_pic" src="images/hand.png" alt="">
+		</div>
+	</div>
+
+	<div id="step2">
+		<div class="step2_content content">
+			<img class="step2_pic1 step_pic" src="images/step2.png" alt="">
+			<img class="step2_pic2 text_pic" src="images/step2_text1.png" alt="">
+			<img class="step2_pic3 hand_pic" src="images/hand.png" alt="">
+			<img class="step2_pic4 text_pic" src="images/step2_text2.png" alt="">
+		</div>
+	</div>
+
+	<div id="step3">
+		<div class="step3_content content">
+			<img class="step3_pic1 step_pic" src="images/step3.png" alt="">
+			<img class="step3_pic2 text_pic" src="images/step3_text1.png" alt="">
+			<img class="step3_pic3 hand_pic" src="images/hand.png" alt="">
+			<img class="step3_pic4 text_pic" src="images/step3_text2.png" alt="">
+			<img class="step3_pic5 hand_pic" src="images/hand.png" alt="">
+		</div>
+	</div>
+
+	<div id="step4">
+		<div class="step4_content content">
+			<img class="step4_pic1 step_pic" src="images/step4.png" alt="">
+			<img class="step4_pic2 text_pic" src="images/step4_text1.png" alt="">
+			<img class="step4_pic4 text_pic" src="images/step4_text2.png" alt="">
+		</div>
+	</div>
+
+	<div id="step5">
+		<div class="step5_content content">
+			<img class="step5_pic1 step_pic" src="images/step5.png" alt="">
+			<img class="step5_pic2 text_pic" src="images/step5_text1.png" alt="">
+		</div>
+	</div>
+</div>
+</body>
+</html> 	

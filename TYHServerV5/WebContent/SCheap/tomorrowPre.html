@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>下期预告</title>
+	<script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+    <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+</head>
+<body onload="init()" style="background:#fff">
+<img id="titleBg" src="images/titleBg.png" alt="即将开始" />
+<!-- <img class="pa backBtn" onclick="javascript:history.go(-1)" src="images/backBtn.png"> -->
+<div id="contentPre"></div>
+<script type="text/javascript">
+function init(){
+	var imggg = new Image();
+	imggg.src = 'images/loading.gif';
+	var uid = GetQueryString('uid');
+	$.ajax({
+		url:'../tyh3/tomorrow_forecast?type=json',
+		data:'&uid='+uid,
+		type:'POST',
+		success:function(ret){
+			console.info(ret);
+ 			if(ret=='not_on_time'){
+ 				window.location.href='outTimePre.html';
+ 				return;
+ 			}
+	var JSONObj = eval("(" + ret + ")");
+						var son = '';
+						for ( var i = 0; i < JSONObj.resp.data.items.length; i++) {
+							son += '<div onclick="script:window.location.href=\''+JSONObj.resp.data.items[i].click_url+'&uid='+uid+'\'" name="'+JSONObj.resp.data.items[i].id+'" class="ad">'
+									+ '<div class="adsTop pr">'
+									+ '<img class="width100 db" src="images/loading.gif" />'
+									+ '<img style="top:0;left:0;" class="width100 db pa" src="'+JSONObj.resp.data.items[i].img+'" alt="" /><div class="itemtags pa">';
+							if (JSONObj.resp.data.items[i].is_second_kill == 1) {//秒杀
+								son += '<img class="itemtag di" src="images/seckill.png" alt="" />';
+							}
+							for ( var k = 0; k < JSONObj.resp.data.items[i].item_tags.length; k++) {//获取 拍下立减 等标签
+									son += '<img class="itemtag di" src="'+JSONObj.resp.data.items[i].item_tags[k].color_img+'" alt="" />';
+							}
+							son += '</div></div>'
+									+ '<div class="adsBottom">'
+									+ '<p class="cr" style="border-bottom:1px dotted #ccc;">';
+							son += '<span class="cr price_before">￥'
+									+ JSONObj.resp.data.items[i].original_price
+									+ '元</span>'
+									+ '<span class="cr price_before">&nbsp&nbsp&nbsp&nbsp优惠价？</span>'
+									+ '</p>' + '<p class="adInfo cb">'
+									+ JSONObj.resp.data.items[i].title + '</p>'
+									+ '</div>' + '</div>';
+						}
+						$('#contentPre')
+								.append(
+										'<div class="content" style="padding:0 0 2% 0;margin:2.5% auto 0;background:#f5f5f5;"><div class="pr"><img class="scTitle width100 db" src="images/scTitle2.png" alt="明日预告" /><span class="pa preText cw">下期预告</span><span class="pa preText2 cr">即将开始</span></div>'
+												+ son + '</div>');
+						$('img').lazyload();
+					}
+				})
+	}
+
+	function hrefDetail(obj) { //点击跳转到明日预告的详情页
+		var id = $(obj).attr('name');
+		var uid = GetQueryString('tyh_web_uid');
+		window.location.href = 'tomoPreDetail.html?id=' + itemid + '&uid='
+				+ uid;
+	}
+
+	function GetQueryString(name) { //获取浏览器的参数
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return '';
+	}
+</script>
+</body>
+</html>

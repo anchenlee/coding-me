@@ -1,0 +1,115 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>商品管理后台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/superCheapStyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/bootstrap-theme.css" />
+<link href="css/custom.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery-ui-slide.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<style type="text/css">
+#ui-datepicker-div{width:235px;}
+</style>
+</head>
+<body>
+    <div class="panel panel-primary" style="width: 180px;float: left;box-shadow: 0 0 10px #aaa">
+        <div class="panel-heading" style="font-size: 24px;line-height: 40px;text-align: center;text-shadow: 0 0 10px #000;">后台管理</div>
+        <div class="panel-body" style="font-size: 20px;text-align: center;">
+            <a href="itemsugmanage.html">商品信息</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="statmanage.html">统计信息</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="keyWord.html">关键字查询</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="showGoods.html">商品库管理</a>
+        </div>
+    </div>
+    <div class="panel panel-default main-panel" id="content" style="width: 1200px">
+        <div class="panel-heading">
+            <h1 style="display: inline;" class="panel-title">添加商品</h1>
+            <button type="button" class="btn btn-small btn-info" onclick="location.href='itemsugmanage.html'" style="float: right">查看商品列表</button>
+        </div>
+        <div class="panel-body" style="display: inline;position: relative;">
+            <div id="dayInfo">
+                <div class="dayAds">
+                    <!-- 添加产品-->
+                    <div class="input-group" style="margin-top:5px;width: 800px;">
+                        <span class="input-group-addon" style="width: 80px;">pid</span>
+                        <input class="usefulInfo form-control" name="pid" type="text" placeholder="pid">
+                    </div>
+                    <div class="input-group" style="margin-top:5px;width: 800px;">
+                        <span class="input-group-addon" style="width: 80px;">keys</span>
+                        <input class="usefulInfo form-control" name="keys" type="text" placeholder="keys">
+                    </div>
+                    <div class="input-group" style="margin-top:5px;width: 800px;">
+                        <span class="input-group-addon" style="width: 80px;">time</span>
+                        <input id="add_time" class="usefulInfo form-control" name="time" type="text" placeholder="time">
+                    </div>
+                    <!-- 添加产品结束  -->
+                </div>
+            </div>
+        </div>
+        <!-- 按钮组 -->
+        <div style="padding:5px 0;text-align: center;">
+            <button type="button" onclick="scSubmit()" class="btn btn-primary">提交</button>
+            <button type="button" class="btn btn-primary" onclick="javascript:history.go(-1)">取消</button>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+    /*设置左侧菜单高度*/
+    $(document).ready(function(){
+        var height = $(window).height();
+        if(height>760){
+            $('.panel-primary').height(height);
+        }
+        else{
+            $('.panel-primary').height(760);
+        }
+        $('#add_time').datetimepicker();
+    });
+
+	function scSubmit(){
+		var info = '';
+		$('.usefulInfo').each(function(){
+			if($(this).attr('name') != 'time'){
+				info += $(this).attr('name')+'='+$(this).val()+'&';
+			}else if($(this).attr('name') == 'time'){
+                //alert($(this).val());
+				var val = getTimeChuo($(this).val());
+               // alert(val);
+				info += $(this).attr('name')+'='+val+'&';
+			}
+		});
+		info = info.substring(0,info.length-1);
+		console.info(info);
+		$.ajax({
+			url:"InsertSuggestItem",
+			data:info+'&status=0',
+			type:"GET",
+			success:function(ret){
+				if(ret == 'true'){
+					alert('提交成功');
+				}else{
+					alert('提交失败');
+				}
+			}
+		})
+	}
+	
+	function getTimeChuo(str_time){
+	    return Math.round(new Date(str_time));
+	}
+</script>
+</html>

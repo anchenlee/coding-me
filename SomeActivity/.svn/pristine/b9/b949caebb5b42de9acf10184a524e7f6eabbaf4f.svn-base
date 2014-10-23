@@ -1,0 +1,182 @@
+/**
+ * Created by lianchen on 14-9-23.
+ */
+//可以用鼠标拖动屏幕
+function loadedPanel(what) {
+    //We are going to set the badge as the number of li elements inside the target
+    $.ui.updateBadge("#aflink", $("#af").find("li").length);
+}
+function unloadedPanel(what) {
+    console.log("unloaded " + what.id);
+}
+var u = navigator.userAgent;
+if(u.indexOf('iphone') > -1){
+    if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+        var script = document.createElement("script");
+        script.src = "../appframework/plugins/af.desktopBrowsers.js";
+        var tag = $("head").append(script);
+    }
+}else{
+    $.feat.nativeTouchScroll=false;
+}
+
+/*5弹出框*/
+function selShow(obj){
+    var ID = $(obj).attr("id");
+    $('#'+ID+' img').show();
+    $("#myPopup").trigger("close");
+}
+/*
+		var iframe = window.frames['if'];
+		iframe.document.open();
+		iframe.document.write('<!DOCTYPE>');
+        iframe.document.write('<html>/n');
+        iframe.document.write('<head>/n');
+        iframe.document.write('<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />/n');
+        iframe.document.write('</head>');
+        iframe.document.write('<body>');
+        iframe.document.write('This is a iframe!');
+        iframe.document.write('</body>');
+        iframe.document.write('</html>');
+        iframe.document.close();*/
+/*		document.getElementById("if").contentWindow.document.designMode="on";
+		document.getElementById("if").contentWindow.document.contentEditable=true;
+		div.innerHTML="我在这里了哈";
+		document.getElementById("if").contentWindow.document.appendChild(div);*/
+/*    conWin.innerHTML += '<div id="showMsg" class="subScrol pa">' +
+        '<p>dewrfe</p>' +
+        ' <p>111111111111111111</p>' +
+        '<p>222222222222222</p>' +
+        '<p>咖啡因中毒的熊猫夫人：这也太少啦 他俩歌好听的那么多 有些冷门的都快忘掉了 </p>' +
+        '<p>ju黑白一天就44444</p>' +
+        '<p>高中时男神把小谢的海报贴在桌上。那是我们唯一的交集。</p>' +
+        '</div>';*/
+
+
+
+$("#sb_left").bind("click",function(){
+    $("#sb_left").hide();
+    $("#arrow").hide();
+    $("#sb_right").show();
+    var re = Math.ceil(Math.random()*12+12);
+    console.log(re);
+    ani(re);
+});
+var T1 = 200;
+var T2 = 100;
+var T3 = 300;
+/*获取数据前滚动*/
+function ani(re){
+    var ba = -0.04;
+    var Y1 = toPercent(ba*4);
+    var Y2 = toPercent(ba*(re-4));
+    var Y3 = toPercent(ba*re);
+    var t1 = T1*4;
+    var t2 = T2*(re-8);
+    var t3 = T3*4;
+    console.log(Y1+','+Y2);
+    $("#animate_ul").css3Animate({
+        y: Y1,
+        time: t1,
+        success: function () {
+            $("#animate_ul").css3Animate({
+                y: Y2,
+                time: t2,
+                success: function () {
+                    $("#animate_ul").css3Animate({
+                        y: Y3,
+                        time: t3,
+                        callback: function () {
+                            var me = re -12;
+                            var mesg = msgTrans(12);
+                            $("#afui .top").popup({
+                                id:"myPopup",
+                                message: mesg,
+                                cancelOnly: true
+                            });
+                            $("#myPopup a").click(function() {
+                                    $("#myPopup").trigger("close");
+                            },1000);
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+function msgTrans(num){
+    var msg = [];
+    msg[1]='<div class="pr wi hi" id="msg1"><img class="wi block pr" src="../dazhaxie/images/pop1_03_03.jpg">' +
+        '<a class="pengyou pa" onclick="window.location.href=" ></a> ' +
+        '<a class="weixin pa" onclick="window.location.href=" ></a> ' +
+        '</div>';
+    msg[2]='<div class="pr wi hi" id="msg2"><img class="wi block pr" src="../dazhaxie/images/pop2_03.jpg">' +
+        '<a class="weibo pa" onclick="window.location.href=" ></a>' +
+        '</div>';
+    msg[3]='<div class="pr wi hi" id="msg3"><img class="wi block pr" src="../dazhaxie/images/pop3_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[4]='<div class="pr wi hi" id="msg4"><img class="wi block pr" src="../dazhaxie/images/pop4_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[5]='<div class="pr wi hi" id="msg5"><img class="wi block pr" src="../dazhaxie/images/pop5_03.jpg">' +
+        '<div id="c1" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c2" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c3" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c4" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c5" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+        '<div id="c6" class="pa" onclick="selShow(this)">' +
+        '   <img class="pr wi hi" src="../dazhaxie/images/select_03.png">' +
+        '</div>' +
+
+        '</div>';
+    msg[6]='<div class="pr wi hi" id="msg6"><img class="wi block pr" src="../dazhaxie/images/pop6_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[7]='<div class="pr wi hi" id="msg7"><img class="wi block pr" src="../dazhaxie/images/pop7_03.jpg">' +
+        '<a class="right pa" onclick="window.location.href=" ></a> ' +
+        '<a class="wrong pa" onclick="window.location.href=" ></a> ' +
+        '</div>';
+    msg[8]='<div class="pr wi hi" id="msg8"><img class="wi block pr" src="../dazhaxie/images/pop8_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[9]='<div class="pr wi hi" id="msg9"><img class="wi block pr" src="../dazhaxie/images/pop9_03.jpg">' +
+        '<a class="pengyou pa" onclick="window.location.href=" ></a> ' +
+        '<a class="weixin pa" onclick="window.location.href=" ></a> ' +
+        '</div>';
+    msg[10]='<div class="pr wi hi" id="msg10">' +
+        '<img class="wi block pr" src="../dazhaxie/images/pop10_03.jpg">' +
+        '<input class="pr wi hi" type="text">' +
+        '<input class="pr wi hi" type="button">' +
+        '</div>';
+    msg[11]='<div class="pr wi hi" id="msg11"><img class="wi block pr" src="../dazhaxie/images/pop11_03.jpg">' +
+        '<input class="pa" type="text">' +
+        '<input class="pa" type="button">' +
+        '</div>';
+    msg[12]='<div class="pr wi hi" id="msg12"><img class="wi block pr" src="../dazhaxie/images/pop12_03.jpg">' +
+        '<a class="mmd pa" onclick="window.location.href=\'http://www.baidu.com\'"></a> ' +
+        '<a class="qdb pa" onclick="window.location.href=\'http://www.baidu.com\'" ></a> ' +
+        '<a class="hxq pa" onclick="window.location.href=\'http://www.baidu.com\'" ></a> ' +
+        '<a class="zsm pa" onclick="window.location.href=\'http://www.baidu.com\'" ></a> ' +
+        '</div>';
+    return msg[num];
+}
+
+function toPercent(num){
+    num = Number(num)*100+'%';
+    return num;
+}

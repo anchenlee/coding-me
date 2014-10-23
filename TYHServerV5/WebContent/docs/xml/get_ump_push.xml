@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- API description: 参数：uid,taobao_nick,access_token http://api_server_host:port/taobao/umppush?uid=&taonick=&.....(demo) -->
+<resp>
+	<head>
+		<status></status>
+		<desc></desc>
+		<acctoken>asdasdasdza</acctoken>
+	</head>
+	<data>
+		<umps>
+			<umpitem>
+				<!-- 淘宝商品ID -->
+				<itemid>12132</itemid>
+				<!-- 淘宝商品标题 -->
+				<itemtitle>12132</itemtitle>
+				<!-- 促销ID -->
+				<umpid>taojinbi_20120-181231-4-3123123</umpid>
+				<!-- 促销名称：今日团购、限时折扣、名品会、淘金币。。。。 -->
+				<umpname>今日团购</umpname>
+				<!-- 淘宝商品ID 对应的原价 -->
+				<old_price>1234</old_price>
+				<!-- 促销价 -->
+				<new_price>123</new_price>
+				<!-- 促销描述，通常为空 -->
+				<umpdesc><![CDATA[降价了]]></umpdesc>
+				<!-- 促销结束时间 -->
+				<endtime>139999999</endtime>
+				<!-- 淘宝商品ID 对应的图片，可能没有 -->
+				<img><![CDATA[http://img2012.i01.wimg.taobao.com/bao/uploaded/i1/T1coCtXaxRXXb1upjX.jpg]]></img>
+			</umpitem>
+		</umps>
+	</data>
+</resp>

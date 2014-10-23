@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html><head>
+    <title>UI Starter</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <script type="text/javascript" src="js/appframework.js"></script>
+    <script type="text/javascript" src="ui/appframework.ui.min.js"></script>
+    <script type="text/javascript">
+
+        if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)) {
+            var script = document.createElement("script");
+            script.src = "plugins/af.desktopBrowsers.js";
+            var tag = $("head").append(script);
+        }
+
+        $.ui.ready(function(){
+            $("#afui").get(0).className='ios7';
+        });
+    </script>
+    <script type="text/javascript" charset="utf-8" src="./plugins/af.css3animate.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./plugins/af.passwordBox.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./plugins/af.scroller.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./plugins/af.touchEvents.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./plugins/af.touchLayer.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./plugins/af.popup.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./plugins/af.slidemenu.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="./ui/transitions/fade.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./ui/transitions/flip.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./ui/transitions/pop.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./ui/transitions/slide.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./ui/transitions/slideDown.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./ui/transitions/slideUp.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/af.ui.css" />
+    <!-- emulate touch on desktop browsers only -->
+</head>
+<body>
+
+<div id="afui" class="ios7">
+    <div id="content">
+
+        <div id="home" title="首页" class="panel" selected="true" data-header="custom_header" data-footer="custom_footer">
+
+
+            首页
+
+            <a class="button" onclick="showCustomHtmlSheet()">Show Custom Html Sheet</a>
+
+            <a class="button" onclick="showCustomJsonSheet()">Show showCustomJsonSheet</a>
+
+
+            <a class="button" onclick="showPopup1()">Alert style diaglog</a>
+            <br>
+            <a class="button" onclick="showPopup2()">Detailed ineraction</a>
+            <br>
+            <a class="button" onclick="showPopup3()">HTML markup</a>
+
+
+        </div>
+
+        <div id="about" title="关于我们" class="panel" data-header="custom_header" data-footer="custom_footer">
+
+
+            关于我们11111111111
+
+
+        </div>
+
+
+        <header id="custom_header">
+            <h1>phonegap中文网</h1>
+        </header>
+        <footer id="custom_footer">
+            <a href='#home' class='icon home'>首页</a>
+            <a href='#about' class='icon info'>关于我们</a>
+        </footer>
+        <nav>
+            <ul class="list">
+                <li class="divider">Selector</li>
+                <li>
+                    <a href="#af1">$()</a>
+                </li>
+                <li>
+                    <a href="#af2">$().length()</a>
+                </li>
+                <li>
+                    <a href="#af3">$().find()</a>
+                </li>
+                <li>
+                    <a href="#af4">$().html()</a>
+                </li>
+                <li>
+                    <a href="#af5">$().text()</a>
+                </li>
+                <li>
+                    <a href="#af6">$().css()</a>
+                </li>
+                <li>
+                    <a href="#af7">$().empty()</a>
+                </li>
+                <li>
+                    <a href="#af8">$().hide()</a>
+                </li>
+                <li>
+                    <a href="#af9">$().show()</a>
+                </li>
+                <li>
+                    <a href="#af10">$().toggle()</a>
+                </li>
+                <li>
+                    <a href="#af11">$().val()</a>
+                </li>
+                <li>
+                    <a href="#af12">$().attr()</a>
+                </li>
+                <li>
+                    <a href="#af13">$().removeAttr()</a>
+                </li>
+                <li>
+                    <a href="#af14">$().remove()</a>
+                </li>
+                <li>
+                    <a href="#af15">$().addClass()</a>
+                </li>
+                <li>
+                    <a href="#af16">$().removeClass()</a>
+                </li>
+                <li>
+                    <a href="#af17">$().hasClass()</a>
+                </li>
+                <li>
+                    <a href="#af18">$().bind()</a>
+                </li>
+                <li>
+                    <a href="#af19">$().unbind()</a>
+                </li>
+                <li>
+                    <a href="#af20">$().trigger()</a>
+                </li>
+                <li>
+                    <a href="#af21">$().append()</a>
+                </li>
+                <li>
+                    <a href="#af22">$().prepend()</a>
+                </li>
+                <li>
+                    <a href="#af32">$().get(0)</a>
+                </li>
+                <li>
+                    <a href="#af31">$().offset()</a>
+                </li>
+                <li>
+                    <a href="#afparent">$().parent()</a>
+                </li>
+                <li>
+                    <a href="#af33">$().isArray()</a>
+                </li>
+                <li>
+                    <a href="#af34">$().isFunction()</a>
+                </li>
+                <li>
+                    <a href="#af23">$.jsonP()</a>
+                </li>
+                <li>
+                    <a href="#af24">$.ajax()</a>
+                </li>
+                <li>
+                    <a href="#af25">$.get(0)</a>
+                </li>
+                <li>
+                    <a href="#af26">$.post()</a>
+                </li>
+                <li>
+                    <a href="#af27">$.getJSON()</a>
+                </li>
+                <li>
+                    <a href="#af28">$.param()</a>
+                </li>
+                <li>
+                    <a href="#af29">$.parseJSON()</a>
+                </li>
+                <li>
+                    <a href="#af30">$.os</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<script type="text/javascript">
+
+    //CustomHtmlSheet
+    function showCustomHtmlSheet() {
+        $("#afui").actionsheet('<a  >Back</a><a  onclick="alert(\'hi\');" >Show Alert 3</a><a class="red"  onclick="alert(\'goodbye\');">Show Alert 4</a> <a  onclick="alert(\'你好\');">Show Alert 5</a>');
+    }
+    //CustomJsonSheet
+    function showCustomJsonSheet() {
+        $("#afui").actionsheet(
+                [{
+                    text: '返回',
+                    cssClasses: 'red',
+                    handler: function () {
+                        $.ui.goBack();
+                    }
+                }, {
+                    text: 'show alert 5',
+                    cssClasses: 'blue',
+                    handler: function () {
+                        alert("hi");
+                    }
+                }, {
+                    text: 'show alert 6',
+                    cssClasses: 'red',
+                    handler: function () {
+                        alert("goodbye");
+                    }
+                },{
+                    text: '最后一个actionsheet',
+                    cssClasses: '',
+                    handler: function () {
+                        alert("hello");
+                    }
+                }]);
+    }
+
+
+    function showPopup1() {
+        $("#afui").popup("I'm replacing an alert box");
+    }
+
+    function showPopup2() {
+        $("#afui").popup({
+            title: "标题",
+            message: "内容This is a test of the emergency alert system!! Don't PANIC!",
+            cancelText: "取消",
+            cancelCallback: function () {
+                alert('点击了取消按钮');
+                console.log("cancelled");
+            },
+            doneText: "确定",
+            doneCallback: function () {
+                alert('确定的回调函数');
+                console.log("Done for!");
+            },
+            cancelOnly: false
+        });
+    }
+    function showPopup3() {
+        $("#afui").popup({
+            title: "Login",
+            message: "Username: <input type='text' class='af-ui-forms'><br>Password: <input type='text' class='af-ui-forms' style='webkit-text-security:disc'>Email: <input type='text' id='email' name='email' class='af-ui-forms'>",
+            cancelText: "Cancel",
+            cancelCallback: function () {alert('点击取消了')},
+            doneText: "Login",
+            doneCallback: function () {
+                //alert("Logging in");
+                alert($('#email').val());
+            },
+            cancelOnly: false
+        });
+    }
+
+</script>
+<style type="text/css">
+    #afui #af_actionsheet a.red{
+        background:red;
+        color:#fff;
+
+    }
+    .afPopup > HEADER{
+        background:red;
+
+    }
+</style>
+</body>
+</html>

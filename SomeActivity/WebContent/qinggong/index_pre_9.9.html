@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html><head>
+    <title>秋品上新一减再减</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta content="telephone=no" name="format-detection" /><!--忽略将页面中的数字识别为电话号码-->
+    <link rel="stylesheet" type="text/css" href="css/af/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/af/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/useful.css" />
+    <script type="text/javascript" src="js/appframework.js"></script>
+    <script type="text/javascript" src="js/configuration.js"></script>
+    <script type="text/javascript" src="js/ui/appframework.ui.min.js"></script>
+    <script type="text/javascript">
+	    var num_item = {0:'img/number/0.png',
+			            1:'img/number/1.png',
+			            2:'img/number/2.png',
+			            3:'img/number/3.png',
+			            4:'img/number/4.png',
+			            5:'img/number/5.png',
+			            6:'img/number/6.png',
+			            7:'img/number/7.png',
+			            8:'img/number/8.png',
+			            9:'img/number/9.png'};
+	    var dead_num = {11:12009,12:14367,13:11533,14:11986,21:13268,22:12531,23:10822,24:11621,31:15621,32:17892,33:16734,34:12652,41:23356,42:22619,43:23762,44:25693};
+    	var menu_item = {1:'stu',2:'off',3:'mom',4:'wife'}; //四个模块
+    	var myscroller;
+    	
+    	function changenum(target,clickNum){
+        	var num1 = parseInt(clickNum / 10000);
+        	target.find('.cnum1').attr('src',''+num_item[num1]+'');
+			var num2 = parseInt((clickNum % 10000) / 1000);
+			target.find('.cnum2').attr('src',''+num_item[num2]+'');
+			var num3 = parseInt((clickNum % 1000) / 100);
+			target.find('.cnum3').attr('src',''+num_item[num3]+'');
+			var num4 = parseInt((clickNum % 100) / 10);
+			target.find('.cnum4').attr('src',''+num_item[num4]+'');
+			var num5 = parseInt(clickNum % 10);
+			target.find('.cnum5').attr('src',''+num_item[num5]+'');
+        }
+    	
+        function initt(){
+               $.ui.toggleHeaderMenu(false);
+               $.ui.removeFooterMenu(false);
+	           for(var k=1; k<5; k++){  //4次请求
+       				var target = menu_item[k]; //判断哪个区域
+       				for(var i=1; i<5; i++){
+       					var midnum = k * 10 + i;
+       					var clicknum = dead_num[midnum];
+       					//解析第一位到第五位数字分别为多少   依次展示
+       					changenum($('.'+target+''+i+'_nine'),clicknum);
+       				}
+	           }
+	         //绑定滚动置顶事件
+	     		myscroller = $('#pre').scroller({
+	     			verticalScroll:true,
+	     		   horizontalScroll:false,
+	     		   autoEnable:true,
+	     		});
+	         //监听滚动条
+	         $.bind(myscroller,"scrollend",function(){
+	        	 $('#to_top').show();
+			});
+        }
+    	var u = navigator.userAgent;//判断安卓苹果
+        if (u.indexOf('iPhone') > -1) {//苹果手机
+	        $('#afui').scroller({useJsScroll:true});
+	        if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)){
+	            var script = document.createElement("script");
+	            script.src = "js/plugins/af.desktopBrowsers.js";
+	            var tag = $("head").append(script);
+	        }
+        }else{//其他手机
+        	$.feat.nativeTouchScroll=true;
+        	$('#to_top').show();
+        }
+    </script>
+</head>
+<body onload="initt()">
+<div id="afui">
+    <div id="content">
+        <div id="pre" selected="true" data-header="none" data-footer="none" class="panel"><!--    the 兑换中心首页!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+            <div style="background: #ca0300;padding-bottom: 10%">
+                <img class="width100" src="img/pre/pre_img1.jpg" alt=""/>
+                <img class="width100 mt_5" src="img/praise_time_9.jpg" alt=""/>
+                <img onclick="location.href='http://youhui.cn'" class="width100 mt_5" src="img/pre/pre_img2_9.jpg" alt=""/>
+                <div style="position: relative">
+                    <img class="width100 mt_5" src="img/pre/pre_stu9.9.jpg" alt=""/>
+                    <div class="stu1_nine dz1nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+                    <div class="stu2_nine dz2nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+	                <div class="stu3_nine dz3nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+	                <div class="stu4_nine dz4nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+                </div>
+                <div style="position: relative">
+                    <img class="width100 mt_10" src="img/pre/pre_off9.9.jpg" alt=""/>
+                    <div class="off1_nine dz1nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+                    <div class="off2_nine dz2nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+	                <div class="off3_nine dz3nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+	                <div class="off4_nine dz4nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+                </div>
+                <div style="position: relative">
+                    <img class="width100 mt_10" src="img/pre/pre_mom9.9.jpg" alt=""/>
+                    <div class="mom1_nine dz1nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+                    <div class="mom2_nine dz2nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+	                <div class="mom3_nine dz3nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+	                <div class="mom4_nine dz4nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+                </div>
+                <div style="position: relative">
+                    <img class="width100 mt_10" src="img/pre/pre_wife9.9.jpg" alt=""/>
+                    <div class="wife1_nine dz1nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+                    <div class="wife2_nine dz2nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+	                <div class="wife3_nine dz3nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+	                <div class="wife4_nine dz4nine pa" style="width:35%"><!--显示赞的个数区域-->
+                        <div class="di width65 pr">
+                           <img class="width100" src="img/like_num.jpg" alt="赞数背景"/>
+                           <img class="pa cnum1 cnums" name="0" src="img/number/0.png" alt="第一位"/>
+                           <img class="pa cnum2 cnums" name="0" src="img/number/0.png" alt="第二位"/>
+                           <img class="pa cnum3 cnums" name="0" src="img/number/0.png" alt="第三位"/>
+                           <img class="pa cnum4 cnums" name="0" src="img/number/0.png" alt="第四位"/>
+                           <img class="pa cnum5 cnums" name="0" src="img/number/0.png" alt="第五位"/>
+                       </div>
+	                </div><!--显示赞的个数区域 结束-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <img id="to_top" onclick="myscroller.scrollToTop(200)" class="pa dn" src="img/top.png" />
+</div>
+<script type="text/javascript">
+    function change_like(obj) {
+        var n =$(obj).attr('name');
+        if(n == 0){  //不喜欢 -> 喜欢
+            $(obj).attr('src','img/pre/like.png');
+            $(obj).attr('name',1);
+            var itemid = $(obj).attr('data-name');
+            $.ajax({
+	        	url:'../like',
+	        	type:'POST',
+	        	data:'itemid='+itemid+'&uid=',
+	        	success:function(ret){
+	        		//提交赞成功  没有操作
+	        	}
+	        })
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>0元抽获奖公告</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script><!--jquery包-->
+	<script type="text/javascript" src="js/controller.js"></script><!--导入js-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+	<meta content="telephone=no" name="format-detection" /><!--忽略将页面中的数字识别为电话号码-->
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" /><!--顶端的状态条样式-->
+  	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+  	<style type="text/css">
+    body {background:#1B7AB4; max-width: 640px;margin: 0 auto;font-family: 微软雅黑,Arial, Free Sans;position: relative;}
+	ul,li,p{padding: 0;margin: 0;list-style: none;}
+	img{display: block;}
+	.fl{float: left;}
+	.fr{float: right;}
+	.di{display: inline-block;}
+	.co{color: #ff9f00;}
+	.cw{color: #fff;}
+	.pr{position: relative;}
+	.pa{position: absolute;}
+	.width100{width:100%;}
+    </style>
+</head>
+<body>
+	<img class="width100" src="images/image1.jpg" />
+    <img class="width100" src="images/image2.jpg" />
+	<img class="width100" src="images/image3.jpg" />
+	<img class="width100" src="images/image4.jpg" />
+</body>		
+</html> 	

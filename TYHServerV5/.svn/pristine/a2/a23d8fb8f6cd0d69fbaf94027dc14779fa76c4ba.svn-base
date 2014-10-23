@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>超级惠</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+    <script src="js/jquery.min.js"></script><!--导入js-->
+</head>
+<body onload="init()">
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<h1>呵呵点我啊</h1>
+<p class="pp">呵呵点我啊</p>
+</body>
+<script type="text/javascript">
+$(function(){
+	$('.pp').click(function(){
+		window.open('http://www.baidu.com');
+	})
+})
+
+function init(){
+	alert(1);
+}
+</script>
+</html> 

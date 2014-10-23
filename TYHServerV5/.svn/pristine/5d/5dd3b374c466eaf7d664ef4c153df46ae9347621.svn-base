@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>超级惠</title>
+  <script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+  <link rel="stylesheet" href="css/style.css"/><!--导入css-->
+  <script type="text/javascript" src="js/controller.js"></script><!--导入js-->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+  <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?75879559e59c3ba3d1664abbcb0b53ce";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body onload="start()">
+<img id="titleBg" src="images/titleBg.jpg" alt="即将开始 " />
+<div id="contentPre">
+    <div class="pr">
+        <img class="scTitle width100 db" src="images/scTitle2.png" alt="明日预告" />
+        <span class="pa preText cw"></span>
+        <span class="pa preText2 cr"></span>
+    </div>
+  <img class="scTitlePre db" src="images/scTitlePre.png" alt="" />
+</div>
+<div id="contentBody">
+</div>
+<!-- <div class="foot_btns"><img alt="" src="images/my_seckill.png"><img alt="" src="images/suggestion.png"></div> -->
+<div id="foo"></div>
+<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+<script type="text/javascript" src="js/spin.js"></script>
+</body>
+</html>

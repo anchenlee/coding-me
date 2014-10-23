@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>超低价，买一得二</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script type="text/javascript" src=""></script>
+    <script type="text/javascript" src="../js/wx_share_script.js"></script>
+    <script type="text/javascript" src="appframework.min.js"></script>
+    <script type="text/javascript" src="ui/appframework.ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/bb.css" />
+    <!--侧边栏-->
+    <script type="text/javascript">
+
+        var u = navigator.userAgent;//判断安卓苹果
+	   if (u.indexOf('iPhone') > -1) {//苹果手机
+	       $('#afui').scroller({useJsScroll:true});
+	       if (!((window.DocumentTouch && document instanceof DocumentTouch) || 'ontouchstart' in window)){
+	           var script = document.createElement("script");
+	           script.src = "js/plugins/af.desktopBrowsers.js";
+	           var tag = $("head").append(script);
+	       }
+	   }else{//其他手机
+	   	$.feat.nativeTouchScroll=true;
+	   	$('#to_top').show();
+	   }
+        $.ui.ready(function(){
+            $("#afui").get(0).className="bb";
+            imgUrl = 'http://static.etouch.cn/suishou/ad_img/38r8w2v2rdg.jpg';
+    	    link = 'http://d.b17.cn/sactivity/cookies/share.html';
+    	    title = htmlDecode('超低价买一得二,等你来抢!');
+    	    desc = htmlDecode('牛油曲奇饼干,前60名付款用户买一得二,9月12日上午10:00,随手优惠--超级惠页面,火爆开始~');
+        })
+    </script>
+    <script type="text/javascript" charset="utf-8" src="plugins/af.css3animate.js"></script>
+    <script type="text/javascript" charset="utf-8" src="plugins/af.scroller.js"></script>
+</head>
+<body>
+    <div id="afui" class="bb">
+        <div id="content">
+            <div id="download" style="background:#0071bc" class="panel" selected="true" data-header="none" data-footer="none">
+                <a onclick="javascript:window.location.href='http://youhui.cn/'"><img src="./img/images/wxdownload.png"></a>
+                <img src="./img/images/wxshare.png" >
+            </div>
+        </div>
+    </div>
+</body>
+</html>

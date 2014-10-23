@@ -1,0 +1,100 @@
+body {
+    max-width: 640px;
+    margin: 0 auto;
+    font-family: Î¢ÈíÑÅºÚ,Arial, Free Sans;
+    background: #682b6e;
+}
+
+p{
+	margin: 0;
+	padding: 0;
+}
+
+.pr{
+	position: relative;
+}
+
+.co{
+	color: #ff6900;
+}
+
+.pa{
+	position: absolute;
+}
+
+#title{
+	overflow: hidden;
+	width: 100%;
+}
+
+.bgpic{
+	width: 100%;
+}
+
+.jlpic{
+	width: 14.5%;
+	top:0;
+	right: 30%;
+}
+
+.smpic{
+	width: 23.3%;
+	top: 36%;
+	left: 0%;
+}
+
+.rpic{
+	width: 27%;
+	top: 100%;
+	left: 36.3%;
+}
+
+.bg2pic{
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
+.ctext{
+	color:#434343;
+	width: 80%;
+	top: 34%;
+	left: 12%;
+}
+
+.btns{
+	width: 70%;
+	left: 16%;
+	bottom: 15%;
+}
+
+.btns img{
+	width: 49%;
+}
+
+.fl{
+	float: left;
+}
+
+.fr{
+	float: right;
+}
+
+.footer{
+	left: 15%;
+	bottom: 2%;
+	width: 80%;
+}
+
+.vat{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.kefupic{
+	width: 6.4%;
+}
+
+.cp{
+	cursor: pointer;
+}

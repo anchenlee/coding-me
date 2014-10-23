@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><head>
+    <title>8.8折充话费-随手优惠</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta content="telephone=no" name="format-detection" /><!--忽略将页面中的数字识别为电话号码-->
+    <link rel="stylesheet" type="text/css" href="css/af/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/af/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script type="text/javascript" src="js/ui/appframework.ui.min.js"></script>
+    <script type="text/javascript" src="js/wx_share_script.js"></script>
+    <script type="text/javascript">
+        $.ui.ready(function(){
+               $.ui.removeFooterMenu();
+	            imgUrl = 'http://static.etouch.cn/suishou/ad_img/2z1ey5837ct.jpg';
+	       	    link = 'http://v2.api.njnetting.cn/huafei8-8/share_wx.html';
+	       	    title = htmlDecode('国庆话费最低价');
+	       	    desc = htmlDecode('话费充值8.8折，到哪都没的低价！充完再送集分宝，赶紧来参加哦！');
+	       	 var u = navigator.userAgent;//判断安卓苹果
+	 	    $.feat.nativeTouchScroll=false;
+	 	    if(u.indexOf('MicroMessenger') > -1) {   //在微信里
+	 	    }else{
+	 	    	$.ui.toggleHeaderMenu(false);
+	 	    }
+        })
+    </script>
+    <style>
+        #download{width:100%;position:relative;z-index:10;}
+        #afui > #header{height: auto;border-bottom:none}
+    </style>
+</head>
+<body>
+<div id="afui">
+	<div id="header">
+        <img id="download" onclick="jump_download()" class="width100" src="img/middle_autumn/download.jpg" alt=""/>
+    </div>
+    <div id="content">
+        <div style="background:#51bdee" id="start" class="panel"><!--    the 兑换中心首页!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+            <div style="background: #51bdee">
+                <img class="width100" src="img/middle_autumn/share_bg2.jpg" alt=""/>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/appframework.js"></script>
+<script type="text/javascript" src="js/configuration.js"></script>
+<script type="text/javascript">
+	function jump_download(){//跳转下载
+		window.location.href='http://youhui.cn';
+	}
+</script>
+</body>
+</html>

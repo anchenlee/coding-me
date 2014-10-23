@@ -1,0 +1,30 @@
+#dayInfo{
+	width:1330px;
+	margin:0 auto;
+}
+
+.dayTitle{
+	padding-bottom:5px;
+	border-bottom: 1px solid #ccc;
+}
+
+.dayAds{
+	position: relative;
+}
+
+.dayAd{
+	width:200px;
+	margin: 5px;
+	display:inline-block;
+}
+
+    .i_check{position:relative;display:inline-block;width:18px;height:18px;border:2px solid #428bca;vertical-align:middle;}
+    .i_check input{opacity:0;}
+    .i_check input+span{display:none;position:absolute;left:0;top:0;width:100%;height:100%;background-color:#428bca;}
+    .i_check input+span:after{display:inline-block;content:"";margin:-2px 0 0 16px;width:15px;height:28px;border:2px solid #FFF;border-left-width:0;border-top-width:0;vertical-align:top;
+    transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    }

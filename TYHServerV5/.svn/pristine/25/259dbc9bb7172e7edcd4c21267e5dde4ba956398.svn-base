@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>已确认收货</title>
+  <script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+  <link rel="stylesheet" href="css/style.css"/><!--导入css-->
+  <script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+  <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+  <style type="text/css">
+  	.shits_right{
+  		right:0;
+  		top:43%;
+  		width:5%;
+  	}
+  	.confirm_content{
+  		padding: 5%;
+  		border-bottom: 1px solid #e1e1e1;
+  	}
+  	.foot{color:#b5b5b5;text-align: center;}
+  	.jump{
+  		width: 48%;
+  		padding:2% 0;
+  		margin:3% auto 0;
+  		text-align: center;
+  		background: #ef2b8c;
+  		color:#fff;
+  		line-height: 150%;
+  		position: relative;
+  	}
+  	.corners{width:2%;position: absolute;}
+  	.corner_lt{
+  		left: 0;
+  		top: 0;
+  	}
+  	.corner_rt{
+  		top: 0;
+  		right: 0;
+  		-webkit-transform:rotate(90deg);
+  	}
+  	.corner_ld{
+  		bottom: 0;
+  		left: 0;
+  		-webkit-transform:rotate(270deg);
+  	}
+  	.corner_rd{
+  		bottom: 0;
+  		right: 0;
+  		-webkit-transform:rotate(180deg);
+  	}
+  </style>
+</head>
+<body onload="start()">
+	<div class="confirm_contents">
+		<div onclick="" class="confirm_content">
+			<img class="di" src="xx.png" alt="" style="width:27%;vertical-align: top;">
+			<div class="di pr" style="width:63%;vertical-align: top;margin-left: 5%;">
+				<p style="color:#696969">商品的介绍商品的介绍商品的介绍商品的介绍商品的介绍</p>
+				<p style="margin: 2% 0;color:#ef2b8c">9集分宝</p>
+				<p style="color:#b5b5b5">交易完成时间:2014.7.10</p>
+				<img class="shits_right db pa" alt="详情标记" src="images/shits/right_gray.png" />
+			</div>
+		</div>
+	</div>
+	<p class="foot" style="margin-top: 5%">未找到您要找的商品？</p>
+	<p class="foot">点击按钮跳转到未确认收货页</p>
+	<div class="jump">跳&nbsp转
+		<img class="corners corner_lt" alt="左上" src="images/shits/corner.png" />
+		<img class="corners corner_rt" alt="右上" src="images/shits/corner.png" />
+		<img class="corners corner_ld" alt="左下" src="images/shits/corner.png" />
+		<img class="corners corner_rd" alt="右下" src="images/shits/corner.png" />
+	</div>
+</body>
+<script>
+$(window).resize(function(){font_control();})
+function start(){
+	font_control();
+	var uid = GetQueryString('uid');
+	$.ajax({
+		url:'/superDiscount/GoodsAction?getGoodsByUID',
+		data:'&UID='+uid,
+		success:function(ret){
+		}
+	})
+}
+
+function font_control(){
+	var w = $(window).width();
+	var ms = w / 25;
+	if(w < 640){
+		$('body').css('font-size',ms+'px');
+	}
+}
+
+function GetQueryString(name){   //获取浏览器的参数
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return unescape(r[2]); return '';
+}
+</script>
+</html>

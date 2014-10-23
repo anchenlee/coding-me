@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>下期预告详情</title>
+	<script type="text/javascript" src="js/jquery.js"></script><!--jquery包-->
+	<link rel="stylesheet" href="css/style.css"/><!--导入css-->
+	<script type="text/javascript" src="js/jquery.lazyload.min.js"></script><!--导入js-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/><!--屏幕自适应-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><!--字体-->
+    <meta content="telephone=no" name="format-detection" /><!--忽略识别电话号码-->
+</head>
+<body style="background:#fff;">
+	<img onclick="hreflogin(this)" class="login" alt="请登录" src="images/login.png" />
+<script type="text/javascript">
+	var leftsec = 0; //剩余时间
+	var msec = 0;
+	var id = GetQueryString('id');
+	var uid = GetQueryString('tyh_web_uid');
+	var imggg = new Image();
+	var shareurl = '';
+	imggg.src = 'images/loading_big.png';
+	$.ajax({
+		url:'../super/GetSuperById',
+		data:'id='+id+'&uid='+uid,
+		type:'POST',
+		success:function(ret){
+			console.info(ret);
+			var JSONObj = eval('('+ret+')');
+			shareurl = JSONObj.share_item;
+		var	str = '<div id="SRBTitleBg" class="pr">'
+				+'<img class="width100 db " src="images/loading_big.png" alt="预加载图片" />'
+				+'<img style="left:0;top:0;" class="width100 db pa imgtestgray" src="'+JSONObj.img+'" alt="商品图片" />';
+		if(JSONObj.is_second_kill == 1){
+			str += '<span class="limitNum2 di pa cr">限量'+JSONObj.second_kill_num+'件</span>';
+		}else{
+			if(JSONObj.limit_num > 0){
+				str += '<span class="limitNum2 di pa cr">限量'+JSONObj.limit_num+'件</span>';
+			}
+		}
+			str += '</div>'
+			+'<div id="SRBcontent" style="background:#fff;">'
+				+'<p class="cb">';
+		if (JSONObj.is_baoyou == 1) {    //是否包邮
+			str += '<img class="title_icons vt" src="images/title_icon_baoyou.png" />';
+		}
+		if (JSONObj.is_second_kill == 1){ //是秒杀
+			str += '&nbsp'+JSONObj.title+'</p>';
+			if(JSONObj.item_tags.length != 0){
+				str	+= '<p class="tags">';
+				for(var i=0;i<JSONObj.item_tags.length;i++){
+					str += '<span onclick="tagexplain('+JSONObj.item_tags[i].id+')" class="tag pxljTag sKill">'+JSONObj.item_tags[i].name+'</span>';
+				}
+				str += '</p>';
+			}
+			str += '<p><span class="cr discount_price"><b>￥???</b></span><span class="original_price useness"><b>￥'+JSONObj.original_price+'</b></span>';
+			if(JSONObj.tao_jb != 0){
+				str += '<span class="tjb"><span class="tjb2">淘金币可抵'+JSONObj.di_tao_jb+'元</span></span>';
+			}
+			str	+= '</p></div><div style="padding:0 1%;background:#fff;">'
+					+'<img class="width100" src="images/line.png" alt="分割线">'
+					+'<div class="SRBdiv1">';    //    >>>>>>>>>>>>>>>>>>>>>>>>>>>判断购买状态<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+						str += '<p style="text-align:center;"><span class="djs_total vm di"><span class="djs hour vb"></span><span class="vb c50">时</span><span class="djs min vb"></span><span class="vb c50">分</span><span class="djs sec vb"></span><span class="vb c50">秒</span></span></span><span class="limitNow cb">即将开始</span>'
+							+'<img class="robBtn"  src="images/robBtnBlack.png" alt="立即抢购"></p>';
+						countdown(JSONObj.kill_start_timestamp,JSONObj.time_now);   //倒计时
+		}//    >>>>>>>>>>>>>>>>>>>>>>>>>>>判断购买状态结束<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		else{   //不是秒杀
+			str += ''+JSONObj.title+'</p>';
+			if(JSONObj.item_tags.length != 0){
+				str	+= '<p class="tags">';
+				for(var i=0;i<JSONObj.item_tags.length;i++){
+					str += '<span onclick="tagexplain('+JSONObj.item_tags[i].id+')" class="tag pxljTag sKill">'+JSONObj.item_tags[i].name+'</span>';
+				}
+				str += '</p>';
+			}
+			str	+= '<p><span class="cr discount_price">￥???</span><span class="original_price useness"><b>￥'+JSONObj.original_price+'</b></span>';
+			if(JSONObj.tao_jb != 0){
+				str += '<span class="tjb"><span class="tjb2">淘金币可抵'+JSONObj.di_tao_jb+'元</span></span>';
+			}
+			str	+= '</p></div><div style="padding:0 1%;background:#fff;">'
+					+'<img class="width100" src="images/line.png" alt="分割线">'
+					+'<div class="SRBdiv1">'
+						+'<span>';
+			str += '<p style="text-align:center;"><span class="djs_total vm di"><span class="djs hour vb"></span><span class="vb c50">时</span><span class="djs min vb"></span><span class="vb c50">分</span><span class="djs sec vb"></span><span class="vb c50">秒</span></span></span><span class="limitNow cb">即将开始</span>'
+				+'<img class="robBtn" onclick="" src="images/buyBtnBlack.png" alt="查看商品"></p>';
+				countdown(JSONObj.start_timestamp,JSONObj.time_now);   //倒计时
+		}
+	 	/*+'<div class="SRBdiv1">'
+				+'<img class="ticket" src="images/ticket.png" alt="优惠券图标">'
+				+'<span class="cb">优惠券：<span class="cr">20元店内通用，满200即可使用</span></span>'
+				+'<img class="getBtn" src="images/getBtn.png" alt="领取优惠券按钮">'
+			+'</div>'*/
+		str +=	'</div></div><div class="SRBdiv1" style="background:#fff;padding:1% 3%;">';
+		/* if(JSONObj.item_tags.length != 0){
+			str	+= '<p class="tags">';
+			for(var i=0;i<JSONObj.item_tags.length;i++){
+				str += '<span onclick="tagexplain('+JSONObj.item_tags[i].id+')" class="tag pxljTag sKill">'+JSONObj.item_tags[i].name+'</span>';
+			}
+			str += '</p>';
+		} */
+		str += '</div>';
+		if(shareurl == ''){
+			str += '<img style="margin-top:5%" class="share width100" src="images/share.png" /><p style="text-align:center;"><img class="sharebtn" src="images/sharebtn1.png" alt="微信分享" /><img class="sharebtn" src="images/sharebtn2.png" alt="朋友圈"/><img class="sharebtn" src="images/sharebtn3.png" alt="qq空间"/><img class="sharebtn" alt="微博" src="images/sharebtn4.png" /><img class="sharebtn" alt="腾讯微博" src="images/sharebtn5.png" /></p>';
+		}else{
+			str += '<img class="share width100" src="images/share.png" /><p style="text-align:center;"><img class="sharebtn" onclick="script:window.location.href=\''+shareurl+'&sns_type=weixin\'" src="images/sharebtn1.png" alt="微信分享" /><img class="sharebtn" onclick="script:window.location.href=\''+shareurl+'&sns_type=pengyou\'" src="images/sharebtn2.png" alt="朋友圈"/><img class="sharebtn" onclick="script:window.location.href=\''+shareurl+'&sns_type=qqkj\'" src="images/sharebtn3.png" alt="qq空间"/><img class="sharebtn" onclick="script:window.location.href=\''+shareurl+'&sns_type=weibo\'" alt="微博" src="images/sharebtn4.png" /><img class="sharebtn" onclick="script:window.location.href=\''+shareurl+'&sns_type=txwb\'" alt="腾讯微博" src="images/sharebtn5.png" /></p>';
+		}
+			$('body').append(''+str+'');
+		}
+	})
+
+	function tagexplain(whichone){//跳转到tag解释页面
+		location.href="tagExplain.html?tag_id="+whichone;
+	}
+
+	function GetQueryString(name){   //获取浏览器的参数
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	function backBtn(){   //返回上一页
+		window.history.go(-1);
+	}
+	
+	var stime = 0;
+	function countdown(starttime,nowtime){
+		console.info(1);
+		stime = starttime;
+		var ntime = nowtime;
+		msec = parseInt(nowtime / 1000);
+		var counttime = stime - ntime;
+		if(counttime > 0 && counttime < 86400000){ //开始倒计时
+			leftsec = counttime / 1000; //转化成秒   赋给全局变量
+			changelefttime();
+		}
+	}
+
+	var listener = '';
+	function changelefttime(){//改变剩余时间显示
+		leftsec = parseInt(leftsec);
+		if(leftsec >= 0 && leftsec<172800){
+			var hour = parseInt(leftsec /3600);;//时
+			var minute = parseInt(leftsec % 3600 / 60); //分
+			var sec = parseInt(leftsec % 3600 % 60);//秒
+			$('.hour').text(zero(hour,2));
+			$('.min').text(zero(minute,2));
+			$('.sec').text(zero(sec,2));
+			if(leftsec <= 0){
+				clearInterval(listener);
+				location.reload();
+			}
+			leftsec --;
+			msec ++;
+			listener = setTimeout(changelefttime,1000);
+			if(leftsec % 10 == 0){ // 校准
+				$.ajax({
+					url:'../Countdown?',
+					success:function(ret){
+						
+						ret = parseInt((stime - ret) / 1000);
+						console.info(ret);
+						leftsec = ret;
+					}
+				})
+			}
+		}
+	}
+	
+	function zero(num, n) {
+		return (Array(n).join(0) + num).slice(-n);
+	}
+</script>
+</body>
+</html>

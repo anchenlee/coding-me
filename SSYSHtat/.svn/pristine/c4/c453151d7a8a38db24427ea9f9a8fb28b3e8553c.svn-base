@@ -1,0 +1,363 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lte IE 8]>
+    <script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flot.js"></script>
+    <script type="text/javascript" src="js/json_parse.js"></script>
+    <title>后台管理</title>
+</head>
+<body>
+    <div class="panel panel-primary" style="width: 180px;float: left;box-shadow: 0 0 10px #aaa">
+        <div class="panel-heading" style="font-size: 24px;line-height: 40px;text-align: center;text-shadow: 0 0 10px #000;">后台管理</div>
+        <div class="panel-body" style="font-size: 20px;text-align: center;">
+            <a href="itemsugmanage.html">商品信息</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="statrealtime.html">统计信息</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="keyWord.html">关键字查询</a>
+        </div>
+        <div class="panel-body" style="font-size: 20px;text-align: center">
+            <a href="showGoods.html">商品库管理</a>
+        </div>
+        <!--<p style="position: relative;bottom: 0;display: inline-block">Powered by 江苏随手信息科技有限公司 </p>-->
+    </div>
+    <div class="panel panel-default main-panel" id="content" style="width: 1200px">
+        <div class="panel-heading">
+            <h1 style="display: inline;" class="panel-title">历史查询</h1>
+            <button type="button" class="btn btn-mini btn-info" onclick="location.href='statrealtime.html'" style="float: right">实时查询</button>
+        </div>
+        <div class="panel-body" style="position: relative;">
+            <input value="18720991963" type="text" class="form-control" style="vertical-align: top;width: 160px;display: inline-block;margin-left: 80px;"/>
+            <button class="btn btn-primary" style="vertical-align: top;" onclick="getJson1()">提 交</button>
+            <select id="month" class="form-control" style="vertical-align: top;" onchange="submit()">
+            </select>
+            <select id="type" class="form-control" style="vertical-align: top;" onchange="submit()">
+                <option>查看类型</option>
+                <option>订单创建</option>
+                <option>创建件数</option>
+                <option>订单付款</option>
+                <option>付款件数</option>
+                <option>订单失效</option>
+                <option>失效件数</option>
+                <option>订单成功</option>
+                <option>成功件数</option>
+                <option>订单结算</option>
+                <option>结算件数</option>
+                <option>确认收货</option>
+                <option>浏览数量</option>
+                <option>收藏数量</option>
+            </select>
+            <button type="button" class="btn btn-success result" style="vertical-align: top; margin-left: 50px;">( x , y )</button>
+
+            <div id="placeholder"></div>
+            <div class="detailMonth panel panel-success main-panel">
+                <div class="panel-heading">
+                    <h2>每月汇总</h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table" id="detailMon"  style="border: 1px solid #0088cc;margin-top: 20px;">
+                        <tr><th>商品ID</th><td><a href="" class="orderLink" style="color: #f00"></a></td><th>月份</th><td>0</td></tr>
+                        <tr><th>订单创建</th><td>0</td><th>创建件数</th><td>0</td></tr>
+                        <tr><th>订单付款</th><td>0</td><th>付款件数</th><td>0</td></tr>
+                        <tr><th>订单失效</th><td>0</td><th>失效件数</th><td>0</td></tr>
+                        <tr><th>订单成功</th><td>0</td><th>成功件数</th><td>0</td></tr>
+                        <tr><th>订单结算</th><td>0</td><th>结算件数</th><td>0</td></tr>
+                        <tr><th>浏览数量</th><td>0</td><th>确认收货</th><td>0</td></tr>
+                        <tr><th>收藏数量</th><td>0</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="detailDay panel panel-info main-panel">
+                <div class="panel-heading">
+                    <h2>每日详情</h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table" id="detailDate" style="border: 1px solid #0088cc;margin-top: 20px;">
+                        <tr><th>日期</th><th>订单创建</th><th>创建件数</th><th>订单成功</th><th>成功件数</th>
+                            <th>订单付款</th><th>付款件数</th><th>订单失效</th><th>失效件数</th><th>订单结算</th><th>结算件数</th>
+                            <th>确认收货</th><th>浏览数量</th><th>收藏数量</th></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--设置页面高度-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        var height = $(window).height();
+        //alert(height);
+        if(height>760){
+            $('.panel-primary').height(height);
+        }
+        else{
+            $('.panel-primary').height(760);
+        }
+    })
+</script>
+
+<script type="text/javascript">
+var arrPay = [];
+var arrPay_i = [];
+var arrP_count = [];
+var arrB_count = [];
+var arrS_count = [];
+var arrCre = [];
+var arrCre_i = [];
+var arrInv = [];
+var arrInv_i = [];
+var arrSuc = [];
+var arrSuc_i = [];
+var arrClo = [];
+var arrClo_i = [];
+var parseRe;
+var flag=1;
+var isFirst = true;
+function getJson1(){
+    var pid = $('input').val();
+    $.ajax({
+        url:'FetchProductStat?pid='+pid,
+        type:'GET',
+        success:function(ret){
+            parseRe = JSON.parse(ret);
+            //alert(parseRe.length);
+            addOption();
+            submit();
+        }
+    });
+}
+ function addOption(){
+    while(flag ==1){
+        for(var i=0; i<parseRe.length; i++){
+            var newObj = new Option(parseRe[i].month);
+            $("#month").append(newObj);
+        }
+        flag++;
+    }
+}
+function submit(){
+    for(var i = 0; i<31; i++){
+        arrPay[i]= arrPay_i[i]=arrP_count[i] = arrB_count[i] = arrS_count[i]= arrCre[i] = arrCre_i[i] =arrInv[i] =
+                arrInv_i[i] =arrSuc[i] = arrSuc_i[i] = arrClo[i] = arrClo_i[i] = [i,0];
+    }
+    var month = $('#month option:first-child').val();
+    var retMonth = $('#month option:selected').val();
+    var page = month - retMonth;
+
+    for(var key in parseRe[page]){
+        if(key == 'days'){
+            for(var day in parseRe[page].days){
+                for(var day_key in parseRe[page].days[day]){
+                    var sum = 0;
+                    for(var hour in parseRe[page].days[day][day_key]){
+                        sum += parseRe[page].days[day][day_key][hour];
+                    }
+                    switch(day_key){
+                        case 'pay':
+                            arrPay[day] = [day, sum];
+                            break;
+                        case 'pay_i':
+                            arrPay_i[day] = [day, sum];
+                            break;
+                        case 'p_count':
+                            arrP_count[day] = [day, sum];
+                            break;
+                        case 'b_count':
+                            arrB_count[day] = [day, sum];
+                            break;
+                        case 's_count':
+                            arrS_count[day] = [day, sum];
+                            break;
+                        case 'create':
+                            arrCre[day] = [day, sum];
+                            break;
+                        case 'create_i':
+                            arrCre_i[day] = [day, sum];
+                            break;
+                        case 'invalid':
+                            arrInv[day] = [day, sum];
+                            break;
+                        case 'invalid_i':
+                            arrInv_i[day] = [day, sum];
+                            break;
+                        case 'success':
+                            arrSuc[day] = [day, sum];
+                            break;
+                        case 'success_i':
+                            arrSuc_i[day] = [day, sum];
+                            break;
+                        case 'close':
+                            arrClo[day] = [day, sum];
+                            break;
+                        case 'close_i':
+                            arrClo_i[day] = [day, sum];
+                            break;
+                        default :
+                            break;
+                    }
+                }
+                var dataLine = [];
+                var line1 = { label:"订单付款", data:arrPay };
+                var line2 = { label:"付款件数", data:arrPay_i };
+                var line3 = { label:"订单创建", data:arrCre };
+                var line4 = { label:"创建件数", data:arrCre_i };
+                var line5 = { label:"订单失效", data:arrInv };
+                var line6 = { label:"失效件数", data:arrInv_i };
+                var line7 = { label:"订单成功", data:arrSuc };
+                var line8 = { label:"成功件数", data:arrSuc_i };
+                var line9 = { label:"订单结算", data:arrClo };
+                var line10 = { label:"结算件数", data:arrClo_i };
+                var line11 = { label:"确认收货", data:arrP_count};
+                var line12 = { label:"浏览数量", data:arrB_count };
+                var line13 = { label:"收藏数量", data:arrS_count };
+                
+                var retType = $('#type option:selected').val();//选中的值
+                switch (retType){
+                    case "订单付款":
+                        dataLine.push(line1);
+                        break;
+                    case "付款件数":
+                        dataLine.push(line2);
+                        break;
+                    case "订单创建":
+                        dataLine.push(line3);
+                        break;
+                    case "创建件数":
+                        dataLine.push(line4);
+                        break;
+                    case "订单失效":
+                        dataLine.push(line5);
+                        break;
+                    case "失效件数":
+                        dataLine.push(line6);
+                        break;
+                    case "订单成功":
+                        dataLine.push(line7);
+                        break;
+                    case "成功件数":
+                        dataLine.push(line8);
+                        break;
+                    case "订单结算":
+                        dataLine.push(line9);
+                        break;
+                    case "结算件数":
+                        dataLine.push(line10);
+                        break;
+                    case "确认收货":
+                        dataLine.push(line11);
+                        break;
+                    case "浏览数量":
+                        dataLine.push(line12);
+                        break;
+                    case "收藏数量":
+                        dataLine.push(line13);
+                        break;
+                    default :
+                        dataLine.push(line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,line11,line12,line13);
+                        break;
+                }
+                var max = 0;
+                for(var i=0; i<dataLine.length; i++){
+                    for(var j=0; j<31; j++){
+                        max = Math.max(max,dataLine[i].data[j][1]);
+                    }
+                }
+                $(function(){
+                    var options = {
+                        lines: { show: true, fill:true },
+                        points: { show: true , clickable: true, hoverable: true},
+                        grid: { hoverable: true, clickable: true, borderColor:'#000',borderWidth:1},  
+                        xaxis: {
+                            min:  0,
+                            max: 31,
+                            tickDecimals: 0,
+                            tickSize: 1
+                        },
+                        yaxis: {
+                            min:  0,
+                            max: max+1,
+                            tickDecimals: 0
+                        }
+                    };
+                    var placeholder = $("#placeholder");
+                    $.plot(placeholder, dataLine, options);
+                });
+                $("#placeholder").bind("plotclick",function (event,pos, item) {
+                    $(".result").html('( '+Math.round(pos.x)+ " , " +Math.round(pos.y)+' )');
+                    if (item)
+                    {
+                        console.log(item.series,item.datapoint);
+                        console.log("Youclicked a point!");
+                    }
+                });
+            }
+        }
+    }
+    
+    $('.orderLink').html(parseRe[page].pid);
+    $('.oderLink').attr('href','http://detail.tmall.com/item.htm?id='+parseRe[page].pid);
+    $('#detailMon tr:eq(0) td:eq(1)').html(parseRe[page].month);
+    $('#detailMon tr:eq(1) td:eq(0)').html(parseRe[page].create);
+    $('#detailMon tr:eq(1) td:eq(1)').html(parseRe[page].create_i);
+    $('#detailMon tr:eq(2) td:eq(0)').html(parseRe[page].pay);
+    $('#detailMon tr:eq(2) td:eq(1)').html(parseRe[page].pay_i);
+    $('#detailMon tr:eq(3) td:eq(0)').html(parseRe[page].invalid);
+    $('#detailMon tr:eq(3) td:eq(1)').html(parseRe[page].invalid_i);
+    $('#detailMon tr:eq(4) td:eq(0)').html(parseRe[page].success);
+    $('#detailMon tr:eq(4) td:eq(1)').html(parseRe[page].success_i);
+    $('#detailMon tr:eq(5) td:eq(0)').html(parseRe[page].close);
+    $('#detailMon tr:eq(5) td:eq(0)').html(parseRe[page].close_i);
+    $('#detailMon tr:eq(6) td:eq(0)').html(parseRe[page].b_count);
+    $('#detailMon tr:eq(6) td:eq(1)').html(parseRe[page].p_count);
+    $('#detailMon tr:eq(7) td:eq(0)').html(parseRe[page].s_count);
+    drawTable();
+}
+
+function drawTable(){
+
+    $("#detailDate tr:gt(0)").empty();
+    var month = $('#month option:first-child').val();
+    var retMonth = $('#month option:selected').val();
+    var page = month - retMonth;
+    var data = '';
+    var arrHour=[];
+
+    for(var key in parseRe[page]){
+        if(key == 'days'){
+            for(var day in parseRe[page].days){
+                arrHour=[0,0,0,0,0,0,0,0,0,0,0,0,0];
+                for(var day_key in parseRe[page].days[day]){
+                    var sum=0;
+                    for(var hour in parseRe[page].days[day][day_key]){
+                        sum+= parseRe[page].days[day][day_key][hour];
+                    }
+                    arrHour[translate(day_key)]=sum;
+                }
+                data+='<tr><td>'+parseRe[page].month+day+'</td>';
+                for(var i=0;i<arrHour.length;i++){
+                    data+='<td>'+arrHour[i]+'</td>';
+                }
+                data+='</tr>';
+            }
+            $('#detailDate').append(data);
+        }
+    }
+}
+
+    function translate(key){
+        var dict = {"create":"0","create_i":"1","success":"2","success_i":"3","pay":"4","pay_i":"5",
+            "invalid":"6","invalid_i":"7","close":"8","close_i":"9","p_count":"10","b_count":"11","s_count":"12"};
+        return dict[key];
+    }
+</script>
+</body>
+</html>
