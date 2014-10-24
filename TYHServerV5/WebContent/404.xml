@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resp>
-	<head>
-		<status>1005</status>
-		<desc>Access Forbidden</desc>
-		<acctoken></acctoken>
-	</head>
-</resp>

@@ -1,6 +1,0 @@
-a:hover,
-.nav li ul li a:hover { color: #444; }
-
-#header{
-    background: #232323;
-}
