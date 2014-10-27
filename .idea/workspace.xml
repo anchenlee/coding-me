@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d84903ce-ef96-4c8a-a7be-734d5266f4d7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/h5媒体元素/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/canvas绘图/canvas.js" afterPath="$PROJECT_DIR$/canvas绘图/canvas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/canvas绘图/index.html" afterPath="$PROJECT_DIR$/canvas绘图/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\wamp\www\coding-me\javascript高级程序设计\createObject-工厂模式.js" afterPath="$PROJECT_DIR$/javascript高级程序设计/createObject.js" />
     </list>
     <ignored path="coding-me.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="createObject-工厂模式.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/javascript高级程序设计/createObject-工厂模式.js">
+      <file leaf-file-name="createObject.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/javascript高级程序设计/createObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="26" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="1242">
+            <state line="36" column="26" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="828" max-vertical-offset="1288">
               <folding />
             </state>
           </provider>
@@ -44,12 +46,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="canvas.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="canvas.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/canvas绘图/canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="15" selection-start="494" selection-end="494" vertical-scroll-proportion="0.1882353" vertical-offset="169" max-vertical-offset="1104">
+            <state line="60" column="30" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1748">
               <folding>
                 <element signature="e#0#43#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/h5媒体元素/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="24" selection-start="802" selection-end="802" vertical-scroll-proportion="0.45847178" vertical-offset="0" max-vertical-offset="903">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#video#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,6 +86,7 @@
         <option value="$PROJECT_DIR$/javascript高级程序设计/createObject-工厂模式.js" />
         <option value="$PROJECT_DIR$/canvas绘图/index.html" />
         <option value="$PROJECT_DIR$/canvas绘图/canvas.js" />
+        <option value="$PROJECT_DIR$/h5媒体元素/index.html" />
       </list>
     </option>
   </component>
@@ -151,6 +166,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="h5媒体元素" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coding-me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coding-me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="canvas绘图" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -190,20 +219,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13160793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13270925" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -231,7 +260,30 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/javascript高级程序设计/createObject-工厂模式.js">
+    <entry file="file://$PROJECT_DIR$/javascript高级程序设计/createObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="26" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1288">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas绘图/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="52" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="506">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas绘图/canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="15" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1104">
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript高级程序设计/createObject.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="26" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="1242">
           <folding />
@@ -247,9 +299,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/canvas绘图/canvas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="15" selection-start="494" selection-end="494" vertical-scroll-proportion="0.1882353" vertical-offset="169" max-vertical-offset="1104">
+        <state line="60" column="30" selection-start="1410" selection-end="1410" vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1748">
           <folding>
             <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/h5媒体元素/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="24" selection-start="802" selection-end="802" vertical-scroll-proportion="0.45847178" vertical-offset="0" max-vertical-offset="903">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#video#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

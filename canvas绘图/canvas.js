@@ -35,9 +35,37 @@ if(drawing.getContext){
     //绘制时钟
     //开始路径
     context.beginPath();
-    //绘制外圆
-    context.arc(400, 60, 50, 0, 2*Math.PI, false);
+    /*绘制外圆*/
+    context.arc(300, 60, 50, 0, 2*Math.PI, false);''
+    //绘制内园
+    context.moveTo(345,60);
+    context.arc(300, 60, 45, 0, 2*Math.PI, false);
 
+    context.strokeStyle="#000";
+    //绘制分针
+    context.moveTo(300,60);
+    context.lineTo(300,25);
+
+    //绘制时针
+    context.moveTo(300,60);
+    context.lineTo(270,60);
+
+    //绘制文本
+    context.font = "bold 12px Arial";
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillText("12",300,20);
+
+
+    //变换原点
+    context.translate(100,20);
+
+    //旋转表针
+    context.rotate(1);
+    //绘制分针
+    context.moveTo(300,60);
+    context.lineTo(350,20)
+    //绘制时针
 
     //描边路径
     context.stroke();
